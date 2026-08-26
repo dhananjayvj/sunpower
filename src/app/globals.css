@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7fbff;
+  --foreground: #0e1f40;
+  --muted: #56657d;
+  --border: rgba(113, 135, 170, 0.22);
+  --surface: rgba(255, 255, 255, 0.78);
+  --accent-green: #3da35a;
+  --accent-yellow: #ffd60a;
+  --accent-blue: #1c68f2;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-accent-green: var(--accent-green);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-blue: var(--accent-blue);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+::selection {
+  background: rgba(255, 214, 10, 0.75);
+  color: #0e1f40;
+}
+
+a,
+button {
+  transition-property: transform, color, background-color, border-color, box-shadow, opacity;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+button:active,
+a:active {
+  transform: scale(0.97);
+}
+
+.button-primary {
+  @apply inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_34px_rgba(14,31,64,0.18)] hover:-translate-y-0.5 hover:bg-[#133269];
+}
+
+.button-secondary {
+  @apply inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-[0_10px_28px_rgba(15,23,42,0.06)] hover:-translate-y-0.5 hover:border-accent-blue/35;
+}
+
+.card-panel {
+  @apply rounded-[2rem] border border-border bg-white/86 shadow-[0_18px_55px_rgba(15,23,42,0.08)] backdrop-blur-sm;
+}
+
+.input-field {
+  @apply w-full rounded-2xl border border-border bg-white px-4 py-3 text-base text-foreground outline-none ring-0 placeholder:text-slate-400 focus:border-accent-blue/50;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
