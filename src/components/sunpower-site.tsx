@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -317,6 +318,16 @@ export function SunPowerSite() {
                   index === 4 && "lg:col-span-2",
                 )}
               >
+                <div className="relative -mx-6 -mt-6 mb-6 h-52 overflow-hidden rounded-t-[2rem]">
+                  <Image
+                    src={service.imageSrc}
+                    alt={service.imageAlt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,31,64,0.08),rgba(14,31,64,0.28))]" />
+                </div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-accent-blue">
                   <Icon className="h-5 w-5" />
                 </div>
@@ -430,7 +441,16 @@ export function SunPowerSite() {
               transition={{ ...transitions.smooth, delay: index * 0.07 }}
               className="card-panel overflow-hidden"
             >
-              <div className="h-52 bg-[radial-gradient(circle_at_top_left,_rgba(255,214,10,0.66),_transparent_30%),linear-gradient(135deg,_#0e1f40,_#1753a0_64%,_#54b25e)]" />
+              <div className="relative h-52">
+                <Image
+                  src={project.imageSrc}
+                  alt={project.imageAlt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,31,64,0.06),rgba(14,31,64,0.3))]" />
+              </div>
               <div className="p-6">
                 <p className="text-sm uppercase tracking-[0.24em] text-accent-blue">{project.size}</p>
                 <h3 className="mt-3 text-2xl font-semibold tracking-tight text-foreground">

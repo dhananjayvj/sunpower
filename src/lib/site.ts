@@ -38,30 +38,40 @@ export const services = [
     description:
       "Grid-tied and hybrid rooftop systems for homes, villas, builder floors, and gated communities across Delhi NCR.",
     bullets: ["Bill reduction planning", "Roof suitability check", "Subsidy-ready documentation"],
+    imageSrc: "/images/residential-rooftop.jpg",
+    imageAlt: "Residential rooftop solar array installed on a house terrace.",
   },
   {
     title: "Commercial & Industrial Solar",
     description:
       "Performance-led systems for offices, schools, warehouses, factories, and institutions focused on lower operating cost.",
     bullets: ["Load analysis", "Project phasing", "Long-term maintenance support"],
+    imageSrc: "/images/commercial-rooftop.jpg",
+    imageAlt: "Commercial rooftop covered with solar panels for daytime energy use.",
   },
   {
     title: "MMS Contracting",
     description:
       "Mounting structure design and execution support for rooftop and ground-mounted projects where speed and structural confidence matter.",
     bullets: ["Custom structure layouts", "Site-specific engineering", "Execution coordination"],
+    imageSrc: "/images/install-team.webp",
+    imageAlt: "Installation team working on a rooftop solar mounting structure.",
   },
   {
     title: "Batteries & Inverters",
     description:
       "System pairing for backup reliability, better self-consumption, and cleaner energy management in low-grid-confidence situations.",
     bullets: ["On-grid options", "Off-grid backup", "Hybrid inverter guidance"],
+    imageSrc: "/images/inspection-team.jpg",
+    imageAlt: "Solar team inspecting system details on site before commissioning.",
   },
   {
     title: "PM Surya Ghar Assistance",
     description:
       "Jargon-free help from eligibility checks through application support so homeowners understand the process before committing.",
     bullets: ["Eligibility walkthrough", "Document checklist", "Claim support"],
+    imageSrc: "/images/residential-rooftop.jpg",
+    imageAlt: "Residential rooftop installation used for subsidy and quote planning.",
   },
 ];
 
@@ -71,18 +81,24 @@ export const projectRanges = [
     size: "3-5 kW",
     detail:
       "Case-study layout for subsidy-led residential buyers: bill review, roof-fit validation, on-grid recommendation, and a clean path to site visit.",
+    imageSrc: "/images/residential-rooftop.jpg",
+    imageAlt: "Residential rooftop solar installation on a multi-level home.",
   },
   {
     title: "Noida commercial facility",
     size: "10-100 kW",
     detail:
       "Built for decision-makers comparing tariffs and payback. The story centers on daytime demand, structure constraints, and operating-cost reduction.",
+    imageSrc: "/images/commercial-rooftop.jpg",
+    imageAlt: "Large commercial rooftop with neatly aligned solar modules.",
   },
   {
     title: "NCR industrial site",
     size: "100 kW to 1 MW",
     detail:
       "Large-scope case-study format for industrial buyers who need execution confidence, structure planning, and clearer commercial timelines.",
+    imageSrc: "/images/install-team.webp",
+    imageAlt: "Solar installation crew working across an industrial rooftop array.",
   },
 ];
 
