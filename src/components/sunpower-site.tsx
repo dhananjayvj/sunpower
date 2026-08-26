@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   BadgeCheck,
@@ -14,11 +14,16 @@ import {
   Factory,
   FileText,
   Leaf,
+  MapPin,
   MessageCircle,
   Phone,
   ShieldCheck,
   SunMedium,
 } from "lucide-react";
+import { MobileNav } from "@/components/mobile-nav";
+import { Reveal } from "@/components/reveal";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { fadeUp, staggerContainer, transitions } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import {
   contact,
@@ -35,11 +40,6 @@ import {
 } from "@/lib/site";
 
 const serviceIcons = [SunMedium, Factory, ShieldCheck, BatteryCharging, FileText];
-
-const sectionMotion = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
-};
 
 function SectionHeading({
   eyebrow,
@@ -65,11 +65,15 @@ function SectionHeading({
 
 export function SunPowerSite() {
   const router = useRouter();
+  const shouldReduceMotion = useReducedMotion();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [monthlyBill, setMonthlyBill] = useState(6000);
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [city, setCity] = useState("");
   const [interest, setInterest] = useState("Residential rooftop solar");
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], shouldReduceMotion ? [0, 0] : [0, 70]);
 
   const estimate = useMemo(() => estimateSolar(monthlyBill), [monthlyBill]);
 
@@ -88,6 +92,7 @@ export function SunPowerSite() {
 
   return (
     <main className="relative overflow-x-hidden">
+      <ScrollProgress />
       <div className="absolute inset-x-0 top-0 -z-10 h-[38rem] bg-[radial-gradient(circle_at_top_left,_rgba(255,214,10,0.34),_transparent_35%),radial-gradient(circle_at_top_right,_rgba(24,99,242,0.22),_transparent_32%),linear-gradient(180deg,_#f7fbff_0%,_#eff6e8_55%,_#f8fafc_100%)]" />
 
       <a
@@ -144,6 +149,11 @@ export function SunPowerSite() {
             <a href="#contact" className="button-primary">
               Get a Free Quote
             </a>
+            <MobileNav
+              open={mobileMenuOpen}
+              onToggle={() => setMobileMenuOpen((value) => !value)}
+              items={navigation}
+            />
           </div>
         </div>
       </header>
@@ -153,16 +163,16 @@ export function SunPowerSite() {
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={sectionMotion}
-            transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+            variants={staggerContainer}
+            transition={transitions.smooth}
             className="space-y-8"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-white/72 px-4 py-2 text-sm font-medium text-emerald-900 shadow-[0_10px_30px_rgba(255,255,255,0.5)]">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-white/72 px-4 py-2 text-sm font-medium text-emerald-900 shadow-[0_10px_30px_rgba(255,255,255,0.5)]">
               <BadgeCheck className="h-4 w-4 text-emerald-600" />
               Authorized Loom Solar dealer
-            </div>
+            </motion.div>
 
-            <div className="space-y-5">
+            <motion.div variants={fadeUp} className="space-y-5">
               <h1 className="max-w-3xl text-balance text-5xl font-semibold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
                 Rooftop solar that feels clear before it ever feels technical.
               </h1>
@@ -171,9 +181,9 @@ export function SunPowerSite() {
                 confusion to a real plan: sizing, quotation, subsidy guidance, structure work, and
                 site execution handled by one accountable team.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
               <a href="#contact" className="button-primary">
                 Book a Site Survey
                 <ArrowRight className="h-4 w-4" />
@@ -182,9 +192,9 @@ export function SunPowerSite() {
                 Quote on WhatsApp
                 <MessageCircle className="h-4 w-4" />
               </a>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-700">
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 text-sm text-slate-700">
               <span className="rounded-full bg-white/72 px-3 py-2 shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
                 Response-time promise: one business hour
               </span>
@@ -194,24 +204,25 @@ export function SunPowerSite() {
               <a href="#faq" className="font-semibold text-accent-blue">
                 See common questions
               </a>
-            </div>
+            </motion.div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
+            <motion.div variants={fadeUp} className="grid gap-4 sm:grid-cols-3">
               {stats.map((stat) => (
                 <div key={stat.label} className="card-panel">
                   <p className="text-3xl font-semibold tracking-tight text-foreground">{stat.value}</p>
                   <p className="mt-2 text-sm leading-6 text-muted">{stat.label}</p>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={sectionMotion}
-            transition={{ duration: 0.65, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
-            className="relative"
+            variants={fadeUp}
+            transition={{ ...transitions.smooth, delay: 0.08 }}
+            style={{ y: heroY }}
+            className="relative will-change-transform"
           >
             <div className="card-panel overflow-hidden p-6 sm:p-8">
               <div className="grid gap-5">
@@ -238,12 +249,17 @@ export function SunPowerSite() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   {trustSignals.map((signal) => (
-                    <div key={signal} className="rounded-[1.6rem] border border-border bg-white px-5 py-4">
+                    <motion.div
+                      key={signal}
+                      whileHover={shouldReduceMotion ? undefined : { y: -3 }}
+                      transition={transitions.spring}
+                      className="rounded-[1.6rem] border border-border bg-white px-5 py-4"
+                    >
                       <div className="flex items-start gap-3">
                         <Leaf className="mt-1 h-4 w-4 text-accent-green" />
                         <p className="text-sm leading-6 text-slate-700">{signal}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -290,8 +306,9 @@ export function SunPowerSite() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-120px" }}
-                variants={sectionMotion}
-                transition={{ duration: 0.45, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
+                variants={fadeUp}
+                transition={{ ...transitions.smooth, delay: index * 0.05 }}
+                whileHover={shouldReduceMotion ? undefined : { y: -4 }}
                 className={cn(
                   "card-panel p-6",
                   index === 1 && "lg:translate-y-6",
@@ -321,14 +338,7 @@ export function SunPowerSite() {
 
       <section className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-120px" }}
-            variants={sectionMotion}
-            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-            className="card-panel p-7 sm:p-8"
-          >
+          <Reveal className="card-panel p-7 sm:p-8">
             <SectionHeading
               eyebrow="Calculator"
               title="A simple estimate is often enough to start a serious conversation."
@@ -354,37 +364,30 @@ export function SunPowerSite() {
                 className="mt-8 h-2 w-full cursor-pointer appearance-none rounded-full bg-white/20 accent-yellow-300"
               />
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
+              <motion.div layout className="mt-8 grid gap-4 sm:grid-cols-2">
+                <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
                   <p className="text-sm text-white/64">Estimated system size</p>
                   <p className="mt-2 text-2xl font-semibold">{estimate.systemSizeKw} kW</p>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
+                </motion.div>
+                <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
                   <p className="text-sm text-white/64">Approx. payback</p>
                   <p className="mt-2 text-2xl font-semibold">{estimate.paybackYears} years</p>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
+                </motion.div>
+                <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
                   <p className="text-sm text-white/64">Indicative project cost</p>
                   <p className="mt-2 text-2xl font-semibold">
                     Rs {estimate.costMinLakhs}L - {estimate.costMaxLakhs}L
                   </p>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
+                </motion.div>
+                <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
                   <p className="text-sm text-white/64">Potential annual savings</p>
                   <p className="mt-2 text-2xl font-semibold">Rs {estimate.annualSavingsLakhs}L</p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-120px" }}
-            variants={sectionMotion}
-            transition={{ duration: 0.45, delay: 0.05, ease: [0.23, 1, 0.32, 1] }}
-            className="card-panel bg-[linear-gradient(180deg,_rgba(236,246,255,0.82),_rgba(255,255,255,0.96))] p-7 sm:p-8"
-          >
+          <Reveal delay={0.05} className="card-panel bg-[linear-gradient(180deg,_rgba(236,246,255,0.82),_rgba(255,255,255,0.96))] p-7 sm:p-8">
             <SectionHeading
               eyebrow="Subsidy guide"
               title="PM Surya Ghar only feels complicated when nobody explains the sequence."
@@ -401,7 +404,7 @@ export function SunPowerSite() {
                 </li>
               ))}
             </ol>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -419,8 +422,8 @@ export function SunPowerSite() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-120px" }}
-              variants={sectionMotion}
-              transition={{ duration: 0.45, delay: index * 0.07, ease: [0.23, 1, 0.32, 1] }}
+              variants={fadeUp}
+              transition={{ ...transitions.smooth, delay: index * 0.07 }}
               className="card-panel overflow-hidden"
             >
               <div className="h-52 bg-[radial-gradient(circle_at_top_left,_rgba(255,214,10,0.66),_transparent_30%),linear-gradient(135deg,_#0e1f40,_#1753a0_64%,_#54b25e)]" />
@@ -451,8 +454,8 @@ export function SunPowerSite() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-120px" }}
-                variants={sectionMotion}
-                transition={{ duration: 0.4, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
+                variants={fadeUp}
+                transition={{ ...transitions.smooth, delay: index * 0.05 }}
                 className="card-panel p-6"
               >
                 <h3 className="text-xl font-semibold tracking-tight text-foreground">{card.title}</h3>
@@ -477,10 +480,10 @@ export function SunPowerSite() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-120px" }}
-              variants={sectionMotion}
-              transition={{ duration: 0.4, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
-              className="card-panel p-6"
-            >
+                variants={fadeUp}
+                transition={{ ...transitions.smooth, delay: index * 0.05 }}
+                className="card-panel p-6"
+              >
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent-blue">
                 Pending verified data
               </p>
@@ -518,14 +521,7 @@ export function SunPowerSite() {
 
       <section id="contact" className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-120px" }}
-            variants={sectionMotion}
-            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-            className="card-panel p-7 sm:p-8"
-          >
+          <Reveal className="card-panel p-7 sm:p-8">
             <SectionHeading
               eyebrow="Contact"
               title="Make the next action obvious."
@@ -545,6 +541,7 @@ export function SunPowerSite() {
               </div>
               <div className="flex flex-wrap gap-3 pt-2">
                 <a href={contact.mapsHref} target="_blank" rel="noreferrer" className="button-secondary">
+                  <MapPin className="h-4 w-4" />
                   Open Map
                 </a>
                 <a href={contact.whatsappHref} target="_blank" rel="noreferrer" className="button-secondary">
@@ -552,14 +549,14 @@ export function SunPowerSite() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
           <motion.form
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-120px" }}
-            variants={sectionMotion}
-            transition={{ duration: 0.45, delay: 0.04, ease: [0.23, 1, 0.32, 1] }}
+            variants={fadeUp}
+            transition={{ ...transitions.smooth, delay: 0.04 }}
             className="card-panel p-7 sm:p-8"
             onSubmit={(event) => {
               event.preventDefault();
@@ -641,7 +638,7 @@ export function SunPowerSite() {
 
       <section className="mx-auto max-w-7xl px-4 pb-18 sm:px-6 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="card-panel p-7 sm:p-8">
+          <Reveal className="card-panel p-7 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">
               Directions
             </p>
@@ -657,8 +654,8 @@ export function SunPowerSite() {
                 Get directions
               </a>
             </div>
-          </div>
-          <div className="card-panel overflow-hidden p-2">
+          </Reveal>
+          <Reveal delay={0.04} className="card-panel overflow-hidden p-2">
             <iframe
               title="Sun Power office map"
               src={contact.mapsEmbedHref}
@@ -666,7 +663,7 @@ export function SunPowerSite() {
               referrerPolicy="no-referrer-when-downgrade"
               className="h-[360px] w-full rounded-[1.8rem] border-0"
             />
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -696,7 +693,7 @@ export function SunPowerSite() {
         </div>
       </footer>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-white/96 p-3 shadow-[0_-16px_40px_rgba(15,23,42,0.12)] md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-white/96 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-16px_40px_rgba(15,23,42,0.12)] md:hidden">
         <div className="mx-auto flex max-w-xl gap-3">
           <a href={contact.phoneHref} className="button-secondary min-w-0 flex-1 justify-center">
             <Phone className="h-4 w-4" />
