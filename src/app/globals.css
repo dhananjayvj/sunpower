@@ -6,11 +6,11 @@
 @import "@fontsource/ibm-plex-mono/500.css";
 
 :root {
-  --background: #f7fbff;
+  --background: #eef5ee;
   --foreground: #0e1f40;
   --muted: #56657d;
-  --border: rgba(113, 135, 170, 0.22);
-  --surface: rgba(255, 255, 255, 0.78);
+  --border: rgba(77, 108, 151, 0.18);
+  --surface: rgba(255, 255, 255, 0.72);
   --accent-green: #3da35a;
   --accent-yellow: #ffd60a;
   --accent-blue: #1c68f2;
@@ -40,9 +40,13 @@ html {
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at top left, rgba(255, 214, 10, 0.2), transparent 24%),
+    radial-gradient(circle at 85% 12%, rgba(28, 104, 242, 0.14), transparent 28%),
+    linear-gradient(180deg, #eff7ef 0%, #edf4fb 38%, #f5f8fb 100%);
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
+  background-attachment: fixed;
 }
 
 :focus-visible {
@@ -76,11 +80,15 @@ a:active {
 }
 
 .card-panel {
-  @apply rounded-[2rem] border border-border bg-white/86 shadow-[0_18px_55px_rgba(15,23,42,0.08)] backdrop-blur-sm;
+  @apply rounded-[2rem] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(248,251,255,0.8))] shadow-[0_18px_55px_rgba(15,23,42,0.08)] backdrop-blur-md;
 }
 
 .input-field {
   @apply w-full rounded-2xl border border-border bg-white px-4 py-3 text-base text-foreground outline-none ring-0 placeholder:text-slate-400 focus:border-accent-blue/50;
+}
+
+.section-shell {
+  @apply rounded-[2.5rem] border border-white/50 bg-white/46 shadow-[0_26px_80px_rgba(15,23,42,0.05)] backdrop-blur-sm;
 }
 
 summary::-webkit-details-marker {

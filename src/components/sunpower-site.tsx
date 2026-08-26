@@ -94,6 +94,7 @@ export function SunPowerSite() {
     <main className="relative overflow-x-hidden">
       <ScrollProgress />
       <div className="absolute inset-x-0 top-0 -z-10 h-[38rem] bg-[radial-gradient(circle_at_top_left,_rgba(255,214,10,0.34),_transparent_35%),radial-gradient(circle_at_top_right,_rgba(24,99,242,0.22),_transparent_32%),linear-gradient(180deg,_#f7fbff_0%,_#eff6e8_55%,_#f8fafc_100%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:72px_72px] opacity-40" />
 
       <a
         href={contact.whatsappHref}
@@ -118,7 +119,7 @@ export function SunPowerSite() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-border/70 bg-white/78 backdrop-blur-xl">
+      <header className="sticky top-0 z-30 border-b border-border/70 bg-white/62 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-foreground text-white shadow-[0_12px_30px_rgba(14,31,64,0.22)]">
@@ -268,7 +269,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section className="border-y border-border/80 bg-white/88">
+      <section className="border-y border-border/70 bg-white/50 backdrop-blur-sm">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-slate-700 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
           <div>
             <p className="font-semibold text-foreground">Lead objective</p>
@@ -290,6 +291,7 @@ export function SunPowerSite() {
       </section>
 
       <section id="services" className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
+        <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
         <SectionHeading
           eyebrow="Services"
           title="From home rooftops to large execution scopes, the offer stays understandable."
@@ -333,6 +335,7 @@ export function SunPowerSite() {
               </motion.article>
             );
           })}
+        </div>
         </div>
       </section>
 
@@ -409,6 +412,7 @@ export function SunPowerSite() {
       </section>
 
       <section id="projects" className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
+        <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
         <SectionHeading
           eyebrow="Case studies"
           title="Case-study storytelling is in place, ready for client-approved numbers and project photos."
@@ -437,9 +441,10 @@ export function SunPowerSite() {
             </motion.article>
           ))}
         </div>
+        </div>
       </section>
 
-      <section id="resources" className="border-y border-border/80 bg-slate-50/72">
+      <section id="resources" className="border-y border-border/70 bg-[linear-gradient(180deg,rgba(232,242,251,0.72),rgba(244,249,241,0.66))] backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Resources"
@@ -467,6 +472,7 @@ export function SunPowerSite() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
+        <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
         <SectionHeading
           eyebrow="Reviews"
           title="Real customer reviews should be imported, not invented."
@@ -494,6 +500,7 @@ export function SunPowerSite() {
             </motion.blockquote>
           ))}
         </div>
+        </div>
       </section>
 
       <section id="faq" className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
@@ -520,6 +527,7 @@ export function SunPowerSite() {
       </section>
 
       <section id="contact" className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
+        <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
         <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal className="card-panel p-7 sm:p-8">
             <SectionHeading
@@ -633,6 +641,7 @@ export function SunPowerSite() {
               <MessageCircle className="h-4 w-4" />
             </button>
           </motion.form>
+        </div>
         </div>
       </section>
 
