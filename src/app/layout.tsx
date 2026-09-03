@@ -1,24 +1,38 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Sun Power | Rooftop Solar Solutions in Delhi NCR",
+  title: "Sun Power | Renewable Energy Solutions in Delhi NCR",
   description:
-    "Lead-focused solar website for Sun Power, an authorized Loom Solar dealer serving Delhi NCR with rooftop solar, batteries, inverters, subsidy guidance, and EPC/MMS contracting.",
+    "Sun Power is an authorized Loom Solar dealer in Delhi NCR for rooftop and ground-mounted solar, batteries, inverters, PM Surya Ghar subsidy support, and EPC/MMS contracting.",
   keywords: [
     "solar company Delhi NCR",
     "rooftop solar Delhi",
     "Loom Solar dealer Delhi",
     "PM Surya Ghar subsidy",
     "commercial solar Delhi NCR",
+    "solar panels batteries inverters Delhi NCR",
+    "MMS contracting Delhi NCR",
   ],
-  metadataBase: new URL("https://sunpowerind.com"),
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
-    title: "Sun Power | Rooftop Solar Solutions in Delhi NCR",
+    title: "Sun Power | Renewable Energy Solutions in Delhi NCR",
     description:
-      "Residential, commercial, industrial, and MMS solar contracting with subsidy assistance and rapid site surveys.",
+      "Residential, commercial, industrial, rooftop, ground-mounted, subsidy-linked, and MMS solar solutions for Delhi NCR buyers.",
     type: "website",
-    url: "https://sunpowerind.com",
+    url: siteUrl,
+    images: [
+      {
+        url: `${siteUrl}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Sun Power solar solutions in Delhi NCR",
+      },
+    ],
   },
 };
 
@@ -26,7 +40,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Sun Power",
-  image: "https://sunpowerind.com/opengraph-image",
+  image: `${siteUrl}/images/sunpower-logo.jpg`,
   telephone: "+91 95604 73434",
   address: {
     "@type": "PostalAddress",
@@ -36,7 +50,7 @@ const localBusinessSchema = {
     addressCountry: "IN",
   },
   areaServed: "Delhi NCR",
-  url: "https://sunpowerind.com",
+  url: siteUrl,
   description:
     "Solar energy dealership and EPC/MMS contracting firm offering rooftop and ground-mounted systems, batteries, inverters, and PM Surya Ghar subsidy assistance.",
 };

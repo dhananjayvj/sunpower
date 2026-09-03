@@ -1,20 +1,21 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://sunpowerind.com/",
-      lastModified: new Date("2026-08-26"),
+      url: `${siteUrl}/`,
+      lastModified: new Date("2026-09-03"),
     },
     {
-      url: "https://sunpowerind.com/privacy",
-      lastModified: new Date("2026-08-26"),
+      url: `${siteUrl}/privacy`,
+      lastModified: new Date("2026-09-03"),
     },
     {
-      url: "https://sunpowerind.com/thank-you",
-      lastModified: new Date("2026-08-26"),
+      url: `${siteUrl}/thank-you`,
+      lastModified: new Date("2026-09-03"),
     },
   ];
 }

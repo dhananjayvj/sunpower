@@ -1,3 +1,5 @@
+export const siteUrl = "https://dhananjayvj.github.io/sunpower";
+
 export const contact = {
   phoneDisplay: "+91 95604 73434",
   phoneHref: "tel:+919560473434",
@@ -8,11 +10,16 @@ export const contact = {
     "https://www.google.com/maps/search/?api=1&query=Office+No.+3,+B-47%2FA,+Lane+No.+6,+Joshi+Colony,+I.P.+Extension,+Delhi+-+110092",
   mapsEmbedHref:
     "https://www.google.com/maps?q=Office+No.+3,+B-47%2FA,+Lane+No.+6,+Joshi+Colony,+I.P.+Extension,+Delhi+-+110092&z=15&output=embed",
+  catalogHref: "docs/sun-power-catalog.pdf",
+  dealerCertificateHref: "docs/loom-dealer-certificate.pdf",
+  gstin: "07BQKPV2646A1ZS",
 };
 
 export const navigation = [
   { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
+  { href: "#catalog", label: "Catalog" },
   { href: "#projects", label: "Projects" },
   { href: "#resources", label: "Resources" },
   { href: "#faq", label: "FAQs" },
@@ -20,182 +27,268 @@ export const navigation = [
 ];
 
 export const stats = [
-  { value: "3-5 kW", label: "Typical residential systems" },
-  { value: "1 MW", label: "Large-scale project capacity" },
-  { value: "Delhi NCR", label: "Primary service region" },
+  { value: "3-5 kW", label: "Typical residential rooftop range" },
+  { value: "1 MW", label: "Large-scale execution capacity" },
+  { value: "31 Aug 2028", label: "Loom dealer certificate validity" },
 ];
 
 export const trustSignals = [
-  "Authorized Loom Solar dealer",
-  "Residential to industrial execution range",
-  "PM Surya Ghar subsidy assistance",
-  "EPC + MMS contracting under one team",
+  "Authorized Loom Solar dealer for Delhi",
+  "Solar panels, batteries, inverters, EPC and MMS under one brand",
+  "Residential, commercial, industrial, rooftop and ground-mounted scope",
+  "Delhi NCR site visits with PM Surya Ghar subsidy guidance",
+];
+
+export const leadPoints = [
+  "Qualified quote requests and site visits, not e-commerce checkouts",
+  "Mobile-first CTAs for WhatsApp, callback, and bill-sharing",
+  "Planning support for subsidy-linked homes and commercial buyers",
+];
+
+export const aboutHighlights = [
+  {
+    title: "Business profile",
+    detail:
+      "Sun Power operates as a solar dealership and EPC/MMS contracting firm for rooftop and ground-mounted systems across Delhi NCR.",
+  },
+  {
+    title: "Dealer credential",
+    detail:
+      "The client-supplied Loom dealer certificate lists Sun Power as an authorized dealer in Delhi, certificate no. 23873/DL/08/2026, valid until August 31, 2028.",
+  },
+  {
+    title: "Project range",
+    detail:
+      "The brief covers residential 3-5 kW systems through large commercial and industrial projects reaching 1 MW scale.",
+  },
+];
+
+export const serviceAreas = [
+  "Delhi",
+  "Noida",
+  "Greater Noida",
+  "Ghaziabad",
+  "Gurugram",
+  "Faridabad",
 ];
 
 export const services = [
   {
     title: "Residential Solar",
     description:
-      "Grid-tied and hybrid rooftop systems for homes, villas, builder floors, and gated communities across Delhi NCR.",
-    bullets: ["Bill reduction planning", "Roof suitability check", "Subsidy-ready documentation"],
+      "On-grid and hybrid rooftop systems for homes, villas, builder floors, and societies that want bill reduction plus a clean subsidy path.",
+    bullets: [
+      "Bill-based system sizing",
+      "Roof suitability and shadow checks",
+      "PM Surya Ghar documentation support",
+    ],
     imageSrc: "/images/residential-rooftop.jpg",
     imageAlt: "Residential rooftop solar array installed on a house terrace.",
   },
   {
     title: "Commercial & Industrial Solar",
     description:
-      "Performance-led systems for offices, schools, warehouses, factories, and institutions focused on lower operating cost.",
-    bullets: ["Load analysis", "Project phasing", "Long-term maintenance support"],
+      "Energy-cost-focused systems for offices, schools, warehouses, institutions, and factories that need clearer payback planning.",
+    bullets: [
+      "Load analysis and tariff review",
+      "Rooftop and ground-mounted planning",
+      "Execution support from quotation to commissioning",
+    ],
     imageSrc: "/images/commercial-rooftop.jpg",
     imageAlt: "Commercial rooftop covered with solar panels for daytime energy use.",
   },
   {
     title: "MMS Contracting",
     description:
-      "Mounting structure design and execution support for rooftop and ground-mounted projects where speed and structural confidence matter.",
-    bullets: ["Custom structure layouts", "Site-specific engineering", "Execution coordination"],
+      "Mounting structure design and execution support for rooftop and ground-mounted projects where structural confidence matters as much as generation.",
+    bullets: [
+      "Site-specific structure layouts",
+      "Execution coordination for EPC jobs",
+      "Installation support for larger project scopes",
+    ],
     imageSrc: "/images/install-team.webp",
     imageAlt: "Installation team working on a rooftop solar mounting structure.",
   },
   {
     title: "Batteries & Inverters",
     description:
-      "System pairing for backup reliability, better self-consumption, and cleaner energy management in low-grid-confidence situations.",
-    bullets: ["On-grid options", "Off-grid backup", "Hybrid inverter guidance"],
+      "System pairing for on-grid, off-grid, and hybrid requirements so buyers can choose between maximum savings and stronger backup readiness.",
+    bullets: [
+      "On-grid inverter options",
+      "Off-grid backup planning",
+      "Hybrid system recommendations",
+    ],
     imageSrc: "/images/inspection-team.jpg",
     imageAlt: "Solar team inspecting system details on site before commissioning.",
   },
   {
-    title: "PM Surya Ghar Assistance",
+    title: "Subsidy Assistance",
     description:
-      "Jargon-free help from eligibility checks through application support so homeowners understand the process before committing.",
-    bullets: ["Eligibility walkthrough", "Document checklist", "Claim support"],
+      "Straightforward PM Surya Ghar guidance so homeowners know eligibility, paperwork, application steps, and the handoff points after installation.",
+    bullets: [
+      "Eligibility walkthrough",
+      "Document checklist",
+      "Submission-ready support",
+    ],
     imageSrc: "/images/residential-rooftop.jpg",
     imageAlt: "Residential rooftop installation used for subsidy and quote planning.",
   },
 ];
 
-export const projectRanges = [
+export const catalogGroups = [
   {
-    title: "East Delhi residence",
+    title: "Solar panels",
+    description:
+      "Panel supply planning for residential, commercial, and industrial projects, including DCR and non-DCR decision support where subsidy or sourcing needs change the recommendation.",
+  },
+  {
+    title: "Inverters",
+    description:
+      "On-grid, off-grid, and hybrid inverter guidance matched to daytime usage, outage frequency, and backup expectations.",
+  },
+  {
+    title: "Batteries",
+    description:
+      "Battery options for homes and businesses that want resilience during outages or stronger self-consumption from hybrid systems.",
+  },
+  {
+    title: "Rooftop & ground-mounted installation",
+    description:
+      "Site survey, structure planning, installation, and commissioning support for roofs, sheds, open plots, and larger energy projects.",
+  },
+  {
+    title: "EPC & MMS contracting",
+    description:
+      "Execution support for mounting structures and broader project delivery where procurement, structure work, and installation need one accountable partner.",
+  },
+  {
+    title: "Multi-brand sourcing",
+    description:
+      "The client catalog explicitly positions Sun Power for multi-brand sourcing, which supports practical product recommendations instead of single-SKU selling.",
+  },
+];
+
+export const projectProfiles = [
+  {
+    title: "East Delhi residential rooftops",
     size: "3-5 kW",
+    location: "I.P. Extension and nearby Delhi neighborhoods",
     detail:
-      "Case-study layout for subsidy-led residential buyers: bill review, roof-fit validation, on-grid recommendation, and a clean path to site visit.",
+      "Fit for homeowners comparing subsidy eligibility, roof space, and monthly bill reduction before booking a site survey.",
     imageSrc: "/images/residential-rooftop.jpg",
     imageAlt: "Residential rooftop solar installation on a multi-level home.",
   },
   {
-    title: "Noida commercial facility",
+    title: "Noida and Ghaziabad commercial roofs",
     size: "10-100 kW",
+    location: "Offices, schools, and commercial facilities across NCR",
     detail:
-      "Built for decision-makers comparing tariffs and payback. The story centers on daytime demand, structure constraints, and operating-cost reduction.",
+      "Positioned for teams that care about daytime load coverage, tariff pressure, and cleaner operating cost planning.",
     imageSrc: "/images/commercial-rooftop.jpg",
     imageAlt: "Large commercial rooftop with neatly aligned solar modules.",
   },
   {
-    title: "NCR industrial site",
+    title: "Industrial and large-format sites",
     size: "100 kW to 1 MW",
+    location: "Delhi NCR industrial and open-area installation scopes",
     detail:
-      "Large-scope case-study format for industrial buyers who need execution confidence, structure planning, and clearer commercial timelines.",
+      "Designed for buyers who need confidence on structure work, phasing, commercial coordination, and execution bandwidth.",
     imageSrc: "/images/install-team.webp",
     imageAlt: "Solar installation crew working across an industrial rooftop array.",
   },
+];
+
+export const processSteps = [
+  "Share your latest electricity bill, roof size, or load requirement.",
+  "Sun Power recommends a planning-level system size, category, and cost band.",
+  "The team books a site survey and confirms technical fit, structure needs, and execution scope.",
+  "Final quotation, installation planning, and subsidy support move forward from one point of contact.",
 ];
 
 export const resourceCards = [
   {
     title: "How solar works",
     description:
-      "From panels to inverters to the utility meter, the system is only complicated until someone explains the flow clearly.",
+      "A plain-English walkthrough of panels, inverter, grid, net metering, and where your daytime energy actually goes.",
   },
   {
     title: "On-grid vs off-grid vs hybrid",
     description:
-      "Choose based on outage risk, backup expectations, and how much of your daytime generation you can actually use.",
+      "Use this to decide whether lowest cost, battery backup, or a balance of both should drive the system design.",
   },
   {
     title: "DCR vs non-DCR panels",
     description:
-      "A procurement decision that affects subsidy alignment, sourcing, and total system economics.",
+      "A practical explainer on procurement choice, subsidy linkage, and why the cheaper panel is not always the correct recommendation.",
   },
   {
-    title: "PM Surya Ghar subsidy process",
+    title: "PM Surya Ghar process",
     description:
-      "Know the documents, sequence, and decision points before you submit anything.",
+      "What documents are needed, how the workflow moves, and where Sun Power can reduce confusion for residential buyers.",
   },
 ];
 
-export const reviewReadiness = [
-  {
-    title: "Google Business reviews",
-    detail: "Replace this card with imported or manually approved review excerpts and star ratings.",
-  },
-  {
-    title: "Residential testimonials",
-    detail: "Use only client-approved quotes tied to a real location, system size, and installation month.",
-  },
-  {
-    title: "Commercial references",
-    detail: "Publish proof with real reviewer names or company consent instead of anonymous praise.",
-  },
+export const proofPoints = [
+  "Authorized Loom Solar dealer certificate supplied by the client",
+  "GSTIN listed in the supplied catalog cover: 07BQKPV2646A1ZS",
+  "Delhi NCR office and service-area positioning repeated across the brief and catalog",
 ];
 
 export const faqs = [
   {
     question: "How much does rooftop solar cost in Delhi NCR?",
     answer:
-      "It depends on system size, roof condition, electrical scope, and whether you want batteries. The calculator gives a planning range, then a site survey sharpens it.",
+      "Cost depends on system size, roof type, electrical work, and whether you want batteries. The calculator gives a planning range, then a site survey turns it into a final quotation.",
   },
   {
-    question: "Can I get PM Surya Ghar subsidy support through Sun Power?",
+    question: "Can Sun Power help with PM Surya Ghar subsidy applications?",
     answer:
-      "Yes. The site is positioned around helping homeowners understand eligibility, paperwork, and the steps required before and after installation.",
+      "Yes. Subsidy support is part of the supplied requirement brief, especially for homeowners who need clarity on eligibility, documents, and next steps.",
   },
   {
-    question: "How long does installation take?",
+    question: "What system is right for me: on-grid, off-grid, or hybrid?",
     answer:
-      "Small residential jobs are faster than commercial or industrial systems, but the real driver is site readiness, approvals, and scope complexity.",
+      "On-grid is usually the most economical for bill reduction, off-grid is for backup-first use cases, and hybrid fits buyers who want both savings and resilience.",
   },
   {
-    question: "What is better for me: on-grid, off-grid, or hybrid?",
+    question: "Do you only work on small residential systems?",
     answer:
-      "On-grid usually works best when savings matter most and outages are manageable. Hybrid becomes more attractive when backup reliability matters too.",
+      "No. The brief explicitly covers projects from small 3-5 kW homes up to large commercial and industrial scopes around 1 MW.",
   },
   {
-    question: "Do you handle maintenance after commissioning?",
+    question: "Do you handle mounting structure and EPC work too?",
     answer:
-      "Yes. The offer includes long-term operating confidence, not just installation, especially for customers who want one accountable team.",
+      "Yes. Sun Power is positioned not only as a dealer but also as an EPC and MMS contracting partner for larger execution scopes.",
   },
-];
-
-export const subsidySteps = [
-  "Share your latest electricity bill and property details.",
-  "Confirm likely eligibility, roof fit, and target system size.",
-  "Receive a proposal with system recommendation and cost band.",
-  "Move ahead with installation and the required claim documentation support.",
 ];
 
 export type CalculatorResult = {
   systemSizeKw: number;
+  roofAreaSqFt: number;
   costMinLakhs: number;
   costMaxLakhs: number;
   annualSavingsLakhs: number;
   paybackYears: number;
 };
 
-export function estimateSolar(monthlyBill: number): CalculatorResult {
-  const normalizedBill = Math.max(monthlyBill, 1500);
-  const monthlyUnits = normalizedBill / 8.5;
-  const systemSizeKw = Math.max(2, Math.round((monthlyUnits / 120) * 10) / 10);
+export function estimateSolar(input: { monthlyBill?: number; roofAreaSqFt?: number }): CalculatorResult {
+  const roofAreaSqFt = Math.max(input.roofAreaSqFt ?? 0, 0);
+  const monthlyBill = Math.max(input.monthlyBill ?? 0, 0);
+
+  const sizeFromBill = monthlyBill > 0 ? monthlyBill / 1000 : 0;
+  const sizeFromRoof = roofAreaSqFt > 0 ? roofAreaSqFt / 100 : 0;
+  const systemSizeKw = Math.max(2, Number((sizeFromBill || sizeFromRoof || 3).toFixed(1)));
+  const usableRoofAreaSqFt = Math.round(systemSizeKw * 100);
   const costMinLakhs = Number(((systemSizeKw * 55000) / 100000).toFixed(2));
   const costMaxLakhs = Number(((systemSizeKw * 70000) / 100000).toFixed(2));
-  const annualSavingsLakhs = Number(((normalizedBill * 0.78 * 12) / 100000).toFixed(2));
+  const annualSavingsLakhs = Number(((systemSizeKw * 1350 * 8.5 * 0.78) / 100000).toFixed(2));
   const paybackYears = Number(
     (((costMinLakhs + costMaxLakhs) / 2) / Math.max(annualSavingsLakhs, 0.25)).toFixed(1),
   );
 
   return {
     systemSizeKw,
+    roofAreaSqFt: usableRoofAreaSqFt,
     costMinLakhs,
     costMaxLakhs,
     annualSavingsLakhs,

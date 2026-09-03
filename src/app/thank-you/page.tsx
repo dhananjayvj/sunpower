@@ -19,12 +19,11 @@ export default function ThankYouPage() {
           Enquiry received
         </p>
         <h1 className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          Your next step should still be easy.
+          Your quote request is on the right path.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">
-          Sun Power is using this page as a clean handoff after the enquiry form. If the customer
-          is ready now, move them straight into a WhatsApp or phone conversation instead of making
-          them guess what happens next.
+          The site is designed around direct WhatsApp and call follow-up, so this page keeps the
+          handoff clear for residential and commercial buyers who are ready to move to the next step.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -42,8 +41,8 @@ export default function ThankYouPage() {
         </div>
 
         <div className="mt-8 rounded-[1.8rem] bg-slate-100 p-5 text-sm leading-7 text-slate-700">
-          Response-time promise: WhatsApp and callback requests should be answered within one
-          business hour during working hours.
+          Share your latest electricity bill, roof size, or load requirement in WhatsApp if you want
+          the discussion to start with a planning-level recommendation instead of a generic callback.
         </div>
 
         <div className="mt-8">
