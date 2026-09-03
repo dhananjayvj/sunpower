@@ -12,9 +12,7 @@ import {
   Bolt,
   Calculator,
   ChevronRight,
-  Download,
   Factory,
-  FileBadge2,
   FileText,
   Leaf,
   MapPin,
@@ -142,7 +140,7 @@ export function SunPowerSite() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-4">
             <Image
-              src="/images/sunpower-logo.jpg"
+              src="/images/sunpower-logo.png"
               alt="Sun Power Renewable Energy Solutions logo"
               width={196}
               height={72}
@@ -215,15 +213,6 @@ export function SunPowerSite() {
               <a href={whatsappQuoteHref} target="_blank" rel="noreferrer" className="button-secondary">
                 Quote on WhatsApp
                 <MessageCircle className="h-4 w-4" />
-              </a>
-              <a
-                href={contact.catalogHref}
-                target="_blank"
-                rel="noreferrer"
-                className="button-secondary"
-              >
-                Download Catalog
-                <Download className="h-4 w-4" />
               </a>
             </motion.div>
 
@@ -348,7 +337,7 @@ export function SunPowerSite() {
 
               <div className="mt-6 rounded-[2rem] border border-border/80 bg-white p-4">
                 <Image
-                  src="/images/sunpower-logo.jpg"
+                  src="/images/sunpower-logo.png"
                   alt="Sun Power company logo"
                   width={700}
                   height={700}
@@ -356,20 +345,16 @@ export function SunPowerSite() {
                 />
               </div>
 
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <a
-                  href={contact.dealerCertificateHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="button-secondary justify-center"
-                >
-                  View Dealer Certificate
-                  <FileBadge2 className="h-4 w-4" />
-                </a>
-                <a href={contact.catalogHref} target="_blank" rel="noreferrer" className="button-secondary justify-center">
-                  Open Catalog
-                  <FileText className="h-4 w-4" />
-                </a>
+              <div className="mt-6 rounded-[1.7rem] border border-emerald-200 bg-emerald-50 p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-800">
+                  Certificate detail
+                </p>
+                <p className="mt-3 text-lg font-semibold text-foreground">
+                  Authorized dealer of Loom Solar
+                </p>
+                <p className="mt-2 text-sm leading-6 text-slate-700">
+                  Certificate no. 23873/DL/08/2026. Valid till August 31, 2028.
+                </p>
               </div>
 
               <div className="mt-8">
@@ -499,28 +484,27 @@ export function SunPowerSite() {
             <Reveal delay={0.04} className="card-panel p-6 sm:p-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">
-                    Downloadables
-                  </p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">Catalog scope</p>
                   <h3 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
-                    Send the actual catalog or dealer certificate in one tap
+                    What the supplied catalog clearly confirms
                   </h3>
                 </div>
-                <Download className="h-7 w-7 text-accent-blue" />
+                <FileText className="h-7 w-7 text-accent-blue" />
               </div>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <a href={contact.catalogHref} target="_blank" rel="noreferrer" className="button-primary justify-center">
-                  Product catalog
-                </a>
-                <a
-                  href={contact.dealerCertificateHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="button-secondary justify-center"
-                >
-                  Dealer certificate
-                </a>
+                <div className="rounded-[1.7rem] border border-border bg-slate-50 p-5">
+                  <p className="text-base font-semibold text-foreground">Products</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">
+                    Solar panels, batteries, and inverters with multi-brand sourcing for Delhi NCR buyers.
+                  </p>
+                </div>
+                <div className="rounded-[1.7rem] border border-border bg-slate-50 p-5">
+                  <p className="text-base font-semibold text-foreground">Execution</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">
+                    Rooftop installation, ground-mounted installation, EPC, and MMS contracting.
+                  </p>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -766,8 +750,8 @@ export function SunPowerSite() {
                     <MapPin className="h-4 w-4" />
                     Open Map
                   </a>
-                  <a href={contact.catalogHref} target="_blank" rel="noreferrer" className="button-secondary">
-                    Download Catalog
+                  <a href="#catalog" className="button-secondary">
+                    View Catalog Scope
                   </a>
                 </div>
               </div>
@@ -906,7 +890,7 @@ export function SunPowerSite() {
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
             <Image
-              src="/images/sunpower-logo.jpg"
+              src="/images/sunpower-logo.png"
               alt="Sun Power logo"
               width={196}
               height={72}

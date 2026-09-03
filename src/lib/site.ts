@@ -10,8 +10,6 @@ export const contact = {
     "https://www.google.com/maps/search/?api=1&query=Office+No.+3,+B-47%2FA,+Lane+No.+6,+Joshi+Colony,+I.P.+Extension,+Delhi+-+110092",
   mapsEmbedHref:
     "https://www.google.com/maps?q=Office+No.+3,+B-47%2FA,+Lane+No.+6,+Joshi+Colony,+I.P.+Extension,+Delhi+-+110092&z=15&output=embed",
-  catalogHref: "docs/sun-power-catalog.pdf",
-  dealerCertificateHref: "docs/loom-dealer-certificate.pdf",
   gstin: "07BQKPV2646A1ZS",
 };
 
@@ -54,7 +52,7 @@ export const aboutHighlights = [
   {
     title: "Dealer credential",
     detail:
-      "The client-supplied Loom dealer certificate lists Sun Power as an authorized dealer in Delhi, certificate no. 23873/DL/08/2026, valid until August 31, 2028.",
+      "Authorized dealer of Loom Solar in Delhi. Certificate no. 23873/DL/08/2026. The supplied certificate is valid until August 31, 2028.",
   },
   {
     title: "Project range",
@@ -139,7 +137,7 @@ export const catalogGroups = [
   {
     title: "Solar panels",
     description:
-      "Panel supply planning for residential, commercial, and industrial projects, including DCR and non-DCR decision support where subsidy or sourcing needs change the recommendation.",
+      "Solar panel recommendations for homes, shops, offices, and industrial roofs, including DCR and non-DCR guidance when subsidy or sourcing requirements matter.",
   },
   {
     title: "Inverters",
@@ -152,9 +150,14 @@ export const catalogGroups = [
       "Battery options for homes and businesses that want resilience during outages or stronger self-consumption from hybrid systems.",
   },
   {
-    title: "Rooftop & ground-mounted installation",
+    title: "Rooftop installation",
     description:
-      "Site survey, structure planning, installation, and commissioning support for roofs, sheds, open plots, and larger energy projects.",
+      "Site survey, structure planning, installation, and commissioning support for homes, societies, offices, schools, and factory rooftops.",
+  },
+  {
+    title: "Ground-mounted installation",
+    description:
+      "Ground-mounted solar execution for open-area projects where layout, structure, and long-term maintenance access need to be planned carefully.",
   },
   {
     title: "EPC & MMS contracting",
@@ -229,9 +232,9 @@ export const resourceCards = [
 ];
 
 export const proofPoints = [
-  "Authorized Loom Solar dealer certificate supplied by the client",
+  "Authorized dealer of Loom Solar, certificate no. 23873/DL/08/2026",
   "GSTIN listed in the supplied catalog cover: 07BQKPV2646A1ZS",
-  "Delhi NCR office and service-area positioning repeated across the brief and catalog",
+  "Catalog cover confirms solar panels, batteries, inverters, rooftop and ground-mounted installation, and EPC & MMS contracting",
 ];
 
 export const faqs = [
