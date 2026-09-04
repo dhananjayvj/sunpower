@@ -171,6 +171,124 @@ export const catalogGroups = [
   },
 ];
 
+export type ProductCard = {
+  name: string;
+  badge: string;
+  imageSrc: string;
+  imageAlt: string;
+  chips: string[];
+  ctaLabel: string;
+};
+
+export const productCatalogSections: Array<{
+  title: string;
+  description: string;
+  cards: ProductCard[];
+}> = [
+  {
+    title: "Solar Panels",
+    description:
+      "High-output Loom panel options for residential rooftops, commercial roofs, and larger ground-mounted projects.",
+    cards: [
+      {
+        name: "Shark 550 Mono PERC",
+        badge: "Loom Solar • Shark Series",
+        imageSrc:
+          "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Solar panels installed in sunlight.",
+        chips: ["550 Wp", "Mono PERC", "10Y product", "25Y performance"],
+        ctaLabel: "Request Datasheet",
+      },
+      {
+        name: "Shark 600 N-Type TOPCon",
+        badge: "Loom Solar • Shark Series",
+        imageSrc:
+          "https://images.unsplash.com/photo-1508873696983-2df570464756?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Commercial rooftop solar installation.",
+        chips: ["600 Wp", "N-Type TOPCon", "10Y manufacturing", "30Y performance"],
+        ctaLabel: "Request Datasheet",
+      },
+      {
+        name: "Shark 625 Dual-Glass Bifacial",
+        badge: "Loom Solar • Utility Grade",
+        imageSrc:
+          "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Rows of solar modules viewed close up.",
+        chips: ["625 Wp", "TOPCon bifacial", "15Y product", "30Y performance"],
+        ctaLabel: "Request Datasheet",
+      },
+    ],
+  },
+  {
+    title: "Batteries",
+    description:
+      "LiFePO4 storage choices for backup-heavy homes, hybrid systems, and commercial continuity planning.",
+    cards: [
+      {
+        name: "CAML 2.56 kWh Wall-Mount",
+        badge: "Loom Solar • Lithium Battery",
+        imageSrc:
+          "https://placehold.co/800x600/f8fafc/334155?text=CAML+2.56+kWh+Battery",
+        imageAlt: "Placeholder illustration for a wall-mount lithium battery.",
+        chips: ["25.6V / 100Ah", "LiFePO4", "3Y warranty", "Wall mount"],
+        ctaLabel: "Request Datasheet",
+      },
+      {
+        name: "CAML 5.12 kWh Battery",
+        badge: "Loom Solar • Lithium Battery",
+        imageSrc:
+          "https://placehold.co/800x600/f8fafc/334155?text=CAML+5.12+kWh+Battery",
+        imageAlt: "Placeholder illustration for a 5.12 kWh lithium battery.",
+        chips: ["51.2V / 100Ah", "6000+ cycles", "5Y warranty", "Rack / wall"],
+        ctaLabel: "Request Datasheet",
+      },
+      {
+        name: "CAML 10.24 kWh Battery",
+        badge: "Loom Solar • C&I Storage",
+        imageSrc:
+          "https://placehold.co/800x600/f8fafc/334155?text=CAML+10.24+kWh+Storage",
+        imageAlt: "Placeholder illustration for a commercial battery storage unit.",
+        chips: ["51.2V / 200Ah", "LiFePO4", "5Y warranty", "High backup"],
+        ctaLabel: "Request Datasheet",
+      },
+    ],
+  },
+  {
+    title: "Inverters",
+    description:
+      "On-grid and hybrid inverter options covering homes, shops, three-phase commercial loads, and larger rooftops.",
+    cards: [
+      {
+        name: "Fusion 5 kW Hybrid Inverter",
+        badge: "Loom Solar • Hybrid",
+        imageSrc:
+          "https://placehold.co/800x600/f8fafc/334155?text=Fusion+5+kW+Hybrid+Inverter",
+        imageAlt: "Placeholder illustration for a hybrid solar inverter.",
+        chips: ["5 kW", "48V hybrid", "5Y warranty", "Home / small office"],
+        ctaLabel: "Request Datasheet",
+      },
+      {
+        name: "Fusion 10 kW On-Grid",
+        badge: "Loom Solar • On-Grid",
+        imageSrc:
+          "https://placehold.co/800x600/f8fafc/334155?text=Fusion+10+kW+On-Grid",
+        imageAlt: "Placeholder illustration for an on-grid inverter.",
+        chips: ["10 kW", "3 phase", "10Y warranty", "Commercial rooftops"],
+        ctaLabel: "Request Datasheet",
+      },
+      {
+        name: "Fusion 20 kW On-Grid",
+        badge: "Loom Solar • On-Grid",
+        imageSrc:
+          "https://placehold.co/800x600/f8fafc/334155?text=Fusion+20+kW+On-Grid",
+        imageAlt: "Placeholder illustration for a larger commercial inverter.",
+        chips: ["20 kW", "On-grid", "10Y warranty", "C&I usage"],
+        ctaLabel: "Request Datasheet",
+      },
+    ],
+  },
+];
+
 export const projectProfiles = [
   {
     title: "East Delhi residential rooftops",

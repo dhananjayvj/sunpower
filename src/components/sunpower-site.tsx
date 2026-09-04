@@ -35,6 +35,7 @@ import {
   leadPoints,
   navigation,
   processSteps,
+  productCatalogSections,
   projectProfiles,
   proofPoints,
   resourceCards,
@@ -445,8 +446,8 @@ export function SunPowerSite() {
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Catalog"
-            title="Product & services catalog aligned to the client PDF."
-            description="The supplied catalog is image-based, so the site has been updated from the visible catalog cover scope and the written requirement brief without inventing hidden SKU details."
+            title="Product catalog translated into a cleaner buying interface."
+            description="Instead of dumping raw catalog copy, the site now presents Loom product families in mobile-first equipment cards with the details buyers usually compare first."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -463,6 +464,85 @@ export function SunPowerSite() {
                 <h3 className="text-xl font-semibold tracking-tight text-foreground">{group.title}</h3>
                 <p className="mt-3 text-base leading-7 text-muted">{group.description}</p>
               </motion.article>
+            ))}
+          </div>
+
+          <div className="mt-12 space-y-8">
+            {productCatalogSections.map((section, sectionIndex) => (
+              <motion.div
+                key={section.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-120px" }}
+                variants={fadeUp}
+                transition={{ ...transitions.smooth, delay: sectionIndex * 0.04 }}
+                className="space-y-5"
+              >
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+                      {section.title}
+                    </h3>
+                    <p className="mt-2 max-w-3xl text-base leading-7 text-muted">
+                      {section.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid gap-5 lg:grid-cols-3">
+                  {section.cards.map((card) => (
+                    <article
+                      key={card.name}
+                      className="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.06)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.1)]"
+                    >
+                      <div className="flex h-full flex-col">
+                        <div className="px-5 pt-5">
+                          <span className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white">
+                            {card.badge}
+                          </span>
+                        </div>
+
+                        <div className="px-5 pt-4">
+                          <div className="aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50">
+                            <img
+                              src={card.imageSrc}
+                              alt={card.imageAlt}
+                              loading="lazy"
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex flex-1 flex-col px-5 pt-5 pb-5">
+                          <h4 className="text-xl font-semibold tracking-tight text-foreground">
+                            {card.name}
+                          </h4>
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {card.chips.map((chip) => (
+                              <span
+                                key={chip}
+                                className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700"
+                              >
+                                {chip}
+                              </span>
+                            ))}
+                          </div>
+                          <a
+                            href={`${contact.whatsappHref}?text=${encodeURIComponent(
+                              `Hi Sun Power, please share the datasheet for ${card.name}.`,
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="button-secondary mt-5 justify-center"
+                          >
+                            {card.ctaLabel}
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </motion.div>
             ))}
           </div>
 
