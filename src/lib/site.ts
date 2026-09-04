@@ -72,8 +72,8 @@ export const services = [
       "Roof suitability checks",
       "PM Surya Ghar support",
     ],
-    imageSrc: "/images/residential-rooftop.jpg",
-    imageAlt: "Residential rooftop solar array installed on a house terrace.",
+    imageSrc: "/images/1.png",
+    imageAlt: "Residential rooftop solar panel installation in Delhi NCR",
   },
   {
     title: "Commercial & Industrial Solar",
@@ -83,8 +83,8 @@ export const services = [
       "Rooftop and ground-mounted planning",
       "Turnkey installation",
     ],
-    imageSrc: "/images/commercial-rooftop.jpg",
-    imageAlt: "Commercial rooftop covered with solar panels for daytime energy use.",
+    imageSrc: "/images/2.png",
+    imageAlt: "Commercial and industrial solar EPC installation for a large facility in Delhi NCR",
   },
   {
     title: "MMS (Mounting Structure) Contracting",
@@ -94,8 +94,8 @@ export const services = [
       "Fabrication and erection support",
       "EPC coordination",
     ],
-    imageSrc: "/images/install-team.webp",
-    imageAlt: "Installation team working on a rooftop solar mounting structure.",
+    imageSrc: "/images/3.png",
+    imageAlt: "Solar installation and engineering team on site for EPC and MMS contracting",
   },
   {
     title: "Batteries & Inverters",
@@ -116,8 +116,8 @@ export const services = [
       "Document checklist",
       "Application support",
     ],
-    imageSrc: "/images/residential-rooftop.jpg",
-    imageAlt: "Residential rooftop installation used for subsidy and quote planning.",
+    imageSrc: "/images/1.png",
+    imageAlt: "Residential rooftop solar system used for subsidy and quote planning in Delhi NCR",
   },
 ];
 
@@ -252,8 +252,8 @@ export const projectProfiles = [
     location: "I.P. Extension and nearby Delhi neighborhoods",
     detail:
       "Compact rooftop systems planned for bill reduction, net-metering readiness, and smooth subsidy support.",
-    imageSrc: "/images/residential-rooftop.jpg",
-    imageAlt: "Residential rooftop solar installation on a multi-level home.",
+    imageSrc: "/images/1.png",
+    imageAlt: "3 to 5 kW residential rooftop solar installation in Delhi NCR",
   },
   {
     title: "Noida and Ghaziabad commercial roofs",
@@ -261,8 +261,8 @@ export const projectProfiles = [
     location: "Offices, schools, and commercial facilities across NCR",
     detail:
       "Commercial installations focused on daytime load coverage, operating savings, and scalable execution.",
-    imageSrc: "/images/commercial-rooftop.jpg",
-    imageAlt: "Large commercial rooftop with neatly aligned solar modules.",
+    imageSrc: "/images/2.png",
+    imageAlt: "Commercial rooftop solar installation for offices and facilities in Noida and Ghaziabad",
   },
   {
     title: "Industrial and large-format sites",
@@ -270,8 +270,8 @@ export const projectProfiles = [
     location: "Delhi NCR industrial and open-area installation scopes",
     detail:
       "Larger projects supported with structure planning, phased execution, and coordination for demanding sites.",
-    imageSrc: "/images/install-team.webp",
-    imageAlt: "Solar installation crew working across an industrial rooftop array.",
+    imageSrc: "/images/2.png",
+    imageAlt: "100 kW to 1 MW commercial and industrial solar installation in Delhi NCR",
   },
 ];
 

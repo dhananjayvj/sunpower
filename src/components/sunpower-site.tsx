@@ -394,7 +394,7 @@ export function SunPowerSite() {
                       alt={service.imageAlt}
                       fill
                       sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover"
+                      className="object-cover object-center"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,31,64,0.08),rgba(14,31,64,0.28))]" />
                   </div>
@@ -474,7 +474,7 @@ export function SunPowerSite() {
                               src={card.imageSrc}
                               alt={card.imageAlt}
                               loading="lazy"
-                              className="h-full w-full object-cover"
+                              className="h-full w-full object-cover object-center"
                             />
                           </div>
                         </div>
@@ -648,7 +648,7 @@ export function SunPowerSite() {
                     alt={project.imageAlt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,31,64,0.06),rgba(14,31,64,0.3))]" />
                 </div>
