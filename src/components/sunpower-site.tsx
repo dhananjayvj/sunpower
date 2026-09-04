@@ -73,6 +73,7 @@ export function SunPowerSite() {
   const heroY = useTransform(scrollY, [0, 500], shouldReduceMotion ? [0, 0] : [0, 70]);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const brandLogoSrc = `${basePath}/images/image.png`;
+  const withBasePath = (src: string) => `${basePath}${src}`;
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [calculatorMode, setCalculatorMode] = useState<"bill" | "roof">("bill");
@@ -389,12 +390,11 @@ export function SunPowerSite() {
                   )}
                 >
                   <div className="relative -mx-6 -mt-6 mb-6 h-52 overflow-hidden rounded-t-[2rem]">
-                    <Image
-                      src={service.imageSrc}
+                    <img
+                      src={withBasePath(service.imageSrc)}
                       alt={service.imageAlt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover object-center"
+                      loading="lazy"
+                      className="h-full w-full object-cover object-center"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,31,64,0.08),rgba(14,31,64,0.28))]" />
                   </div>
@@ -643,12 +643,11 @@ export function SunPowerSite() {
                 className="card-panel overflow-hidden"
               >
                 <div className="relative h-52">
-                  <Image
-                    src={project.imageSrc}
+                  <img
+                    src={withBasePath(project.imageSrc)}
                     alt={project.imageAlt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover object-center"
+                    loading="lazy"
+                    className="h-full w-full object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,31,64,0.06),rgba(14,31,64,0.3))]" />
                 </div>
