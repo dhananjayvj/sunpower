@@ -40,7 +40,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Sun Power",
-  image: `${siteUrl}/images/sunpower-logo.png`,
+  image: `${siteUrl}/images/image.png`,
   telephone: "+91 95604 73434",
   address: {
     "@type": "PostalAddress",

@@ -58,7 +58,7 @@ function SectionHeading({
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">
         {eyebrow}
       </p>
-      <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+      <h2 className="text-balance text-3xl leading-tight font-semibold tracking-[-0.04em] text-foreground sm:text-4xl">
         {title}
       </h2>
       <p className="text-pretty text-base leading-7 text-muted sm:text-lg">{description}</p>
@@ -116,7 +116,7 @@ export function SunPowerSite() {
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
-        className="fixed right-5 bottom-24 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#22c55e] text-white shadow-[0_18px_45px_rgba(34,197,94,0.38)] hover:scale-[1.04] active:scale-[0.97]"
+        className="fixed right-5 bottom-24 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#22c55e] text-white shadow-[0_18px_45px_rgba(34,197,94,0.38)] hover:scale-[1.04] hover:shadow-[0_22px_52px_rgba(34,197,94,0.46)] active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#22c55e]"
       >
         <MessageCircle className="h-6 w-6" />
       </a>
@@ -138,7 +138,7 @@ export function SunPowerSite() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-4">
             <Image
-              src="/images/sunpower-logo.png"
+              src="/images/image.png"
               alt="Sun Power Renewable Energy Solutions logo"
               width={196}
               height={72}
@@ -193,10 +193,10 @@ export function SunPowerSite() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="space-y-5">
-              <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-4xl text-balance text-5xl leading-[0.98] font-semibold tracking-[-0.055em] text-foreground sm:text-6xl lg:text-7xl">
                 Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
               </h1>
-              <p className="max-w-2xl text-pretty text-lg leading-8 text-slate-700 sm:text-xl">
+              <p className="max-w-2xl text-pretty text-lg leading-8 text-slate-700/92 sm:text-xl">
                 Authorized Loom Solar dealer delivering end-to-end rooftop installations, PM
                 Surya Ghar subsidy support, and commercial EPC contracting.
               </p>
@@ -214,21 +214,21 @@ export function SunPowerSite() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 text-sm text-slate-700">
-              <span className="rounded-full bg-white/72 px-3 py-2 shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
+              <span className="rounded-full bg-white/78 px-3 py-2 shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
                 Rooftop solar, EPC delivery, and subsidy support under one team
               </span>
-              <a href="#resources" className="font-semibold text-accent-blue">
+              <a href="#resources" className="font-semibold text-accent-blue underline-offset-4 hover:underline">
                 Learn how solar works
               </a>
-              <a href="#catalog" className="font-semibold text-accent-blue">
+              <a href="#catalog" className="font-semibold text-accent-blue underline-offset-4 hover:underline">
                 Explore product options
               </a>
             </motion.div>
 
             <motion.div variants={fadeUp} className="grid gap-4 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="card-panel">
-                  <p className="text-3xl font-semibold tracking-tight text-foreground">{stat.value}</p>
+                {stats.map((stat) => (
+                <div key={stat.label} className="card-panel p-5">
+                  <p className="tech-data text-3xl font-semibold tracking-tight text-foreground">{stat.value}</p>
                   <p className="mt-2 text-sm leading-6 text-muted">{stat.label}</p>
                 </div>
               ))}
@@ -320,7 +320,7 @@ export function SunPowerSite() {
 
               <div className="mt-6 rounded-[2rem] border border-border/80 bg-white p-4">
                 <Image
-                  src="/images/sunpower-logo.png"
+                  src="/images/image.png"
                   alt="Sun Power company logo"
                   width={700}
                   height={700}
@@ -458,7 +458,7 @@ export function SunPowerSite() {
                   {section.cards.map((card) => (
                     <article
                       key={card.name}
-                      className="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.06)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.1)]"
+                      className="group overflow-hidden rounded-[2rem] border border-white/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,251,255,0.88))] shadow-[0_18px_50px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.1)]"
                     >
                       <div className="flex h-full flex-col">
                         <div className="px-5 pt-5">
@@ -486,7 +486,7 @@ export function SunPowerSite() {
                             {card.chips.map((chip) => (
                               <span
                                 key={chip}
-                                className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700"
+                                className="tech-data rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-medium uppercase text-slate-700"
                               >
                                 {chip}
                               </span>
@@ -551,7 +551,7 @@ export function SunPowerSite() {
                   <p className="text-sm uppercase tracking-[0.24em] text-white/60">
                     {calculatorMode === "bill" ? "Monthly bill" : "Roof area"}
                   </p>
-                  <p className="mt-2 text-4xl font-semibold">
+                  <p className="tech-data mt-2 text-4xl font-semibold tracking-[-0.04em]">
                     {calculatorMode === "bill"
                       ? `Rs ${monthlyBill.toLocaleString("en-IN")}`
                       : `${roofAreaSqFt.toLocaleString("en-IN")} sq ft`}
@@ -577,25 +577,25 @@ export function SunPowerSite() {
               <motion.div layout className="mt-8 grid gap-4 sm:grid-cols-2">
                 <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
                   <p className="text-sm text-white/64">Estimated system size</p>
-                  <p className="mt-2 text-2xl font-semibold">{estimate.systemSizeKw} kW</p>
+                  <p className="tech-data mt-2 text-2xl font-semibold">{estimate.systemSizeKw} kW</p>
                 </motion.div>
                 <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
                   <p className="text-sm text-white/64">Approx. roof needed</p>
-                  <p className="mt-2 text-2xl font-semibold">{estimate.roofAreaSqFt} sq ft</p>
+                  <p className="tech-data mt-2 text-2xl font-semibold">{estimate.roofAreaSqFt} sq ft</p>
                 </motion.div>
                 <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
                   <p className="text-sm text-white/64">Indicative project cost</p>
-                  <p className="mt-2 text-2xl font-semibold">
+                  <p className="tech-data mt-2 text-2xl font-semibold">
                     Rs {estimate.costMinLakhs}L - {estimate.costMaxLakhs}L
                   </p>
                 </motion.div>
                 <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
                   <p className="text-sm text-white/64">Approx. payback</p>
-                  <p className="mt-2 text-2xl font-semibold">{estimate.paybackYears} years</p>
+                  <p className="tech-data mt-2 text-2xl font-semibold">{estimate.paybackYears} years</p>
                 </motion.div>
               </motion.div>
 
-              <div className="mt-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-4 text-sm text-white/80">
+              <div className="tech-data mt-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-4 text-sm text-white/80">
                 Planning-level annual savings estimate: Rs {estimate.annualSavingsLakhs}L
               </div>
             </div>
@@ -745,7 +745,7 @@ export function SunPowerSite() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">GSTIN</p>
-                  <p className="mt-2 leading-7">{contact.gstin}</p>
+                  <p className="tech-data mt-2 leading-7">{contact.gstin}</p>
                 </div>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <a href={contact.mapsHref} target="_blank" rel="noreferrer" className="button-secondary">
@@ -858,7 +858,7 @@ export function SunPowerSite() {
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
             <Image
-              src="/images/sunpower-logo.png"
+              src="/images/image.png"
               alt="Sun Power logo"
               width={196}
               height={72}

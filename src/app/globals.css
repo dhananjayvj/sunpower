@@ -11,6 +11,7 @@
   --muted: #56657d;
   --border: rgba(77, 108, 151, 0.18);
   --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.88);
   --accent-green: #3da35a;
   --accent-yellow: #ffd60a;
   --accent-blue: #1c68f2;
@@ -24,6 +25,7 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
   --color-accent-green: var(--accent-green);
   --color-accent-yellow: var(--accent-yellow);
   --color-accent-blue: var(--accent-blue);
@@ -60,7 +62,11 @@ body {
 }
 
 a,
-button {
+button,
+input,
+select,
+textarea,
+summary {
   transition-property: transform, color, background-color, border-color, box-shadow, opacity;
   transition-duration: 180ms;
   transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
@@ -72,23 +78,39 @@ a:active {
 }
 
 .button-primary {
-  @apply inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_34px_rgba(14,31,64,0.18)] hover:-translate-y-0.5 hover:bg-[#133269] touch-manipulation;
+  @apply inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_34px_rgba(14,31,64,0.18)] hover:-translate-y-0.5 hover:bg-[#133269] hover:shadow-[0_22px_42px_rgba(14,31,64,0.22)] touch-manipulation;
 }
 
 .button-secondary {
-  @apply inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-[0_10px_28px_rgba(15,23,42,0.06)] hover:-translate-y-0.5 hover:border-accent-blue/35 touch-manipulation;
+  @apply inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-white/92 px-6 py-3 text-sm font-semibold text-foreground shadow-[0_10px_28px_rgba(15,23,42,0.06)] hover:-translate-y-0.5 hover:border-accent-blue/35 hover:bg-white touch-manipulation;
 }
 
 .card-panel {
-  @apply rounded-[2rem] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(248,251,255,0.8))] shadow-[0_18px_55px_rgba(15,23,42,0.08)] backdrop-blur-md;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 251, 255, 0.84)),
+    radial-gradient(circle at top, rgba(255, 214, 10, 0.08), transparent 42%);
+  @apply relative isolate rounded-[2rem] border border-white/55 shadow-[0_18px_55px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.82)] backdrop-blur-md;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 
 .input-field {
-  @apply w-full rounded-2xl border border-border bg-white px-4 py-3 text-base text-foreground outline-none ring-0 placeholder:text-slate-400 focus:border-accent-blue/50;
+  @apply w-full rounded-2xl border border-border bg-white/92 px-4 py-3 text-base text-foreground outline-none ring-0 placeholder:text-slate-400 hover:border-accent-blue/25 focus:border-accent-blue/50 focus:bg-white focus:shadow-[0_0_0_4px_rgba(28,104,242,0.12)];
 }
 
 .section-shell {
-  @apply rounded-[2.5rem] border border-white/50 bg-white/46 shadow-[0_26px_80px_rgba(15,23,42,0.05)] backdrop-blur-sm;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.36)),
+    radial-gradient(circle at top right, rgba(28, 104, 242, 0.08), transparent 30%);
+  @apply rounded-[2.5rem] border border-white/55 shadow-[0_26px_80px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-sm;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.tech-data {
+  font-family: var(--font-mono), monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }
 
 summary::-webkit-details-marker {

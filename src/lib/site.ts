@@ -6,8 +6,7 @@ export const contact = {
   whatsappHref: "https://wa.me/919560473434",
   address:
     "Office No. 3, B-47/A, Lane No. 6, Joshi Colony, I.P. Extension, Delhi - 110092",
-  mapsHref:
-    "https://www.google.com/maps/search/?api=1&query=Office+No.+3,+B-47%2FA,+Lane+No.+6,+Joshi+Colony,+I.P.+Extension,+Delhi+-+110092",
+  mapsHref: "https://maps.app.goo.gl/MgfvQ3EPFBjs8dBX7?g_st=aw",
   mapsEmbedHref:
     "https://www.google.com/maps?q=Office+No.+3,+B-47%2FA,+Lane+No.+6,+Joshi+Colony,+I.P.+Extension,+Delhi+-+110092&z=15&output=embed",
   gstin: "07BQKPV2646A1ZS",
