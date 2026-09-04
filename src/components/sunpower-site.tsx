@@ -28,16 +28,13 @@ import { fadeUp, staggerContainer, transitions } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import {
   aboutHighlights,
-  catalogGroups,
   contact,
   estimateSolar,
   faqs,
-  leadPoints,
   navigation,
   processSteps,
   productCatalogSections,
   projectProfiles,
-  proofPoints,
   resourceCards,
   serviceAreas,
   services,
@@ -82,7 +79,7 @@ export function SunPowerSite() {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [city, setCity] = useState("Delhi NCR");
-  const [interest, setInterest] = useState("Residential rooftop solar");
+  const [requirement, setRequirement] = useState("Residential rooftop solar");
 
   const estimate = useMemo(
     () =>
@@ -99,14 +96,14 @@ export function SunPowerSite() {
       `Name: ${name || "Not shared yet"}`,
       `Mobile: ${mobile || "Not shared yet"}`,
       `City: ${city || "Delhi NCR"}`,
-      `Interest: ${interest}`,
+      `Requirement: ${requirement || "Residential rooftop solar"}`,
       calculatorMode === "bill"
         ? `Monthly bill: Rs ${monthlyBill.toLocaleString("en-IN")}`
         : `Approx. roof area: ${roofAreaSqFt} sq ft`,
     ].join("\n");
 
     return `${contact.whatsappHref}?text=${encodeURIComponent(message)}`;
-  }, [calculatorMode, city, interest, mobile, monthlyBill, name, roofAreaSqFt]);
+  }, [calculatorMode, city, mobile, monthlyBill, name, requirement, roofAreaSqFt]);
 
   return (
     <main className="relative overflow-x-hidden">
@@ -192,40 +189,39 @@ export function SunPowerSite() {
               className="inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-white/72 px-4 py-2 text-sm font-medium text-emerald-900 shadow-[0_10px_30px_rgba(255,255,255,0.5)]"
             >
               <BadgeCheck className="h-4 w-4 text-emerald-600" />
-              Authorized Loom Solar dealer | Certificate valid till August 31, 2028
+              Authorized Loom Solar Dealer • Delhi NCR
             </motion.div>
 
             <motion.div variants={fadeUp} className="space-y-5">
               <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                Delhi NCR solar quotes that feel trustworthy before they feel technical.
+                Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
               </h1>
               <p className="max-w-2xl text-pretty text-lg leading-8 text-slate-700 sm:text-xl">
-                Sun Power helps homeowners, facilities, and industrial buyers move from bill
-                confusion to a real solar plan: system sizing, quote guidance, subsidy support,
-                product sourcing, and EPC or MMS execution from one accountable team.
+                Authorized Loom Solar dealer delivering end-to-end rooftop installations, PM
+                Surya Ghar subsidy support, and commercial EPC contracting.
               </p>
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
               <a href="#contact" className="button-primary">
-                Book a Site Survey
+                Book a Free Site Survey
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a href={whatsappQuoteHref} target="_blank" rel="noreferrer" className="button-secondary">
-                Quote on WhatsApp
+                Chat on WhatsApp
                 <MessageCircle className="h-4 w-4" />
               </a>
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 text-sm text-slate-700">
               <span className="rounded-full bg-white/72 px-3 py-2 shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
-                Response path: call, WhatsApp, or quote request
+                Rooftop solar, EPC delivery, and subsidy support under one team
               </span>
               <a href="#resources" className="font-semibold text-accent-blue">
-                Read the solar guides
+                Learn how solar works
               </a>
               <a href="#catalog" className="font-semibold text-accent-blue">
-                See product catalog scope
+                Explore product options
               </a>
             </motion.div>
 
@@ -266,10 +262,10 @@ export function SunPowerSite() {
                       Rooftop and ground-mounted systems
                     </div>
                     <div className="rounded-2xl border border-white/12 bg-white/10 p-4">
-                      Authorized Loom Solar dealer with multi-brand sourcing
+                      Panels, inverters, batteries, EPC, and MMS
                     </div>
                     <div className="rounded-2xl border border-white/12 bg-white/10 p-4">
-                      Delhi NCR lead flow built around site surveys and quotations
+                      Delhi NCR site surveys and quotation support
                     </div>
                   </div>
                 </div>
@@ -295,25 +291,14 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section className="border-y border-border/70 bg-white/50 backdrop-blur-sm">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 text-sm text-slate-700 sm:grid-cols-3 sm:px-6 lg:px-8">
-          {leadPoints.map((point) => (
-            <div key={point}>
-              <p className="font-semibold text-foreground">Lead objective</p>
-              <p className="mt-2">{point}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section id="about" className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
         <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
           <div className="grid gap-6 lg:grid-cols-[0.96fr_1.04fr]">
             <Reveal className="card-panel overflow-hidden p-6 sm:p-8">
               <SectionHeading
                 eyebrow="About Sun Power"
-                title="A lead-generation solar website should prove credibility fast."
-                description="The supplied brief is clear about the job of the site: build trust, educate buyers, and make quote requests frictionless on mobile."
+                title="Trusted solar planning and execution for Delhi NCR"
+                description="Sun Power supports homeowners, businesses, and industrial buyers with system design, product selection, installation planning, and project execution."
               />
 
               <div className="mt-8 space-y-4">
@@ -329,10 +314,7 @@ export function SunPowerSite() {
             <Reveal delay={0.05} className="card-panel bg-[linear-gradient(180deg,_rgba(236,246,255,0.9),_rgba(255,255,255,0.96))] p-6 sm:p-8">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="rounded-full bg-emerald-100 px-3 py-2 text-sm font-semibold text-emerald-800">
-                  Authorized Loom Solar dealer
-                </span>
-                <span className="rounded-full bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700">
-                  GSTIN {contact.gstin}
+                  Authorized Loom Solar Dealer
                 </span>
               </div>
 
@@ -348,7 +330,7 @@ export function SunPowerSite() {
 
               <div className="mt-6 rounded-[1.7rem] border border-emerald-200 bg-emerald-50 p-5">
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-800">
-                  Certificate detail
+                  Authorization
                 </p>
                 <p className="mt-3 text-lg font-semibold text-foreground">
                   Authorized dealer of Loom Solar
@@ -382,8 +364,8 @@ export function SunPowerSite() {
         <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
           <SectionHeading
             eyebrow="Services"
-            title="The site now sells clarity across the full Sun Power service stack."
-            description="Each service card is aligned to the written brief and to the catalog scope so buyers can see where Sun Power fits before they ask for a quote."
+            title="Solar services tailored for homes, facilities, and project teams"
+            description="Choose the service you need and speak with Sun Power for a site survey, product recommendation, or project quotation."
           />
 
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -432,7 +414,7 @@ export function SunPowerSite() {
                   </ul>
                   <div className="mt-6">
                     <a href="#contact" className="text-sm font-semibold text-accent-blue">
-                      Get a quote for this service
+                      Get a Free Quote
                     </a>
                   </div>
                 </motion.article>
@@ -445,27 +427,10 @@ export function SunPowerSite() {
       <section id="catalog" className="border-y border-border/70 bg-[linear-gradient(180deg,rgba(232,242,251,0.72),rgba(244,249,241,0.66))] backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
-            eyebrow="Catalog"
-            title="Product catalog translated into a cleaner buying interface."
-            description="Instead of dumping raw catalog copy, the site now presents Loom product families in mobile-first equipment cards with the details buyers usually compare first."
+            eyebrow="Products"
+            title="Panels, batteries, and inverters for every solar project stage"
+            description="Browse common product categories and request the right datasheet or quotation for your site requirement."
           />
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {catalogGroups.map((group, index) => (
-              <motion.article
-                key={group.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-120px" }}
-                variants={fadeUp}
-                transition={{ ...transitions.smooth, delay: index * 0.04 }}
-                className="card-panel p-6"
-              >
-                <h3 className="text-xl font-semibold tracking-tight text-foreground">{group.title}</h3>
-                <p className="mt-3 text-base leading-7 text-muted">{group.description}</p>
-              </motion.article>
-            ))}
-          </div>
 
           <div className="mt-12 space-y-8">
             {productCatalogSections.map((section, sectionIndex) => (
@@ -545,49 +510,6 @@ export function SunPowerSite() {
               </motion.div>
             ))}
           </div>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-[0.86fr_1.14fr]">
-            <Reveal className="card-panel p-6 sm:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent-blue">
-                Verified from client assets
-              </p>
-              <ul className="mt-5 space-y-3 text-sm text-slate-700">
-                {proofPoints.map((point) => (
-                  <li key={point} className="flex items-start gap-3">
-                    <BadgeCheck className="mt-0.5 h-4 w-4 text-accent-green" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal delay={0.04} className="card-panel p-6 sm:p-8">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">Catalog scope</p>
-                  <h3 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
-                    What the supplied catalog clearly confirms
-                  </h3>
-                </div>
-                <FileText className="h-7 w-7 text-accent-blue" />
-              </div>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-[1.7rem] border border-border bg-slate-50 p-5">
-                  <p className="text-base font-semibold text-foreground">Products</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    Solar panels, batteries, and inverters with multi-brand sourcing for Delhi NCR buyers.
-                  </p>
-                </div>
-                <div className="rounded-[1.7rem] border border-border bg-slate-50 p-5">
-                  <p className="text-base font-semibold text-foreground">Execution</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    Rooftop installation, ground-mounted installation, EPC, and MMS contracting.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
         </div>
       </section>
 
@@ -596,8 +518,8 @@ export function SunPowerSite() {
           <Reveal className="card-panel p-7 sm:p-8">
             <SectionHeading
               eyebrow="Calculator"
-              title="A planning estimate should work from either the bill or the roof."
-              description="The brief asked for a lead-friendly calculator, so this one supports the two inputs most real buyers already have on hand."
+              title="Estimate Your Solar Savings"
+              description="Calculate your recommended system size, cost band, and estimated payback period."
             />
 
             <div className="mt-8 rounded-[2rem] bg-slate-950 p-6 text-white">
@@ -681,9 +603,9 @@ export function SunPowerSite() {
 
           <Reveal delay={0.05} className="card-panel bg-[linear-gradient(180deg,_rgba(236,246,255,0.82),_rgba(255,255,255,0.96))] p-7 sm:p-8">
             <SectionHeading
-              eyebrow="Lead flow"
-              title="The path from first enquiry to installed system should read like a process, not a pitch."
-              description="This sequence is built from the supplied requirement brief and the catalog positioning."
+              eyebrow="How It Works"
+              title="From first enquiry to final installation"
+              description="A simple process built for fast quotations, accurate site surveys, and smooth project execution."
             />
 
             <ol className="mt-8 space-y-4">
@@ -704,8 +626,8 @@ export function SunPowerSite() {
         <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
           <SectionHeading
             eyebrow="Projects"
-            title="Project coverage is now framed around the real range Sun Power handles."
-            description="The supplied brief confirms residential through 1 MW-scale work. Where verified savings and commissioning dates are still missing, the section stays factual rather than inventing outcomes."
+            title="Project experience across residential and commercial solar"
+            description="Sun Power supports compact home rooftops, larger commercial installations, and industrial-scale execution across Delhi NCR."
           />
 
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -748,8 +670,8 @@ export function SunPowerSite() {
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Resources"
-            title="The site now teaches the questions Delhi NCR solar buyers actually ask."
-            description="This content is intentionally practical: savings, system types, subsidy process, and sourcing decisions, not abstract solar jargon."
+            title="Clear answers before you book your survey"
+            description="Use these guides to understand system types, subsidy steps, panel choices, and the basics of rooftop solar."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -776,8 +698,8 @@ export function SunPowerSite() {
           <div className="card-panel p-7 sm:p-8">
             <SectionHeading
               eyebrow="FAQs"
-              title="The FAQ now answers cost, subsidy, system-type, and scope questions directly."
-              description="This is written for mobile visitors who usually want to decide whether Sun Power is worth calling before they read every page."
+              title="Common questions from solar buyers"
+              description="Quick answers on pricing, subsidy support, system types, installation scope, and project delivery."
             />
           </div>
 
@@ -800,8 +722,8 @@ export function SunPowerSite() {
             <Reveal className="card-panel p-7 sm:p-8">
               <SectionHeading
                 eyebrow="Contact"
-                title="The form is short because qualified leads are lost in long forms."
-                description="This matches the requirement brief: name, mobile, city, and the most useful sizing signal the buyer already has."
+                title="Speak with the Sun Power team"
+                description="Share your requirement and we will help you plan the right rooftop solar system for your property."
               />
 
               <div className="mt-8 space-y-5 text-base text-slate-700">
@@ -831,7 +753,7 @@ export function SunPowerSite() {
                     Open Map
                   </a>
                   <a href="#catalog" className="button-secondary">
-                    View Catalog Scope
+                    View Products
                   </a>
                 </div>
               </div>
@@ -881,53 +803,20 @@ export function SunPowerSite() {
                   />
                 </label>
                 <label className="space-y-2">
-                  <span className="text-sm font-medium text-slate-700">Interested in</span>
-                  <select
-                    value={interest}
-                    onChange={(event) => setInterest(event.target.value)}
-                    className="input-field"
-                  >
-                    <option>Residential rooftop solar</option>
-                    <option>Commercial solar</option>
-                    <option>Industrial solar</option>
-                    <option>Batteries and inverters</option>
-                    <option>PM Surya Ghar subsidy help</option>
-                    <option>MMS contracting</option>
-                  </select>
-                </label>
-              </div>
-
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <label className="space-y-2">
-                  <span className="text-sm font-medium text-slate-700">Monthly bill</span>
+                  <span className="text-sm font-medium text-slate-700">
+                    Monthly Bill / System Requirement
+                  </span>
                   <input
-                    value={monthlyBill}
-                    onChange={(event) => setMonthlyBill(Number(event.target.value || 0))}
+                    value={requirement}
+                    onChange={(event) => setRequirement(event.target.value)}
                     className="input-field"
-                    type="number"
-                    min={0}
+                    placeholder="e.g. Rs 6,000 monthly bill or 10 kW rooftop solar"
                   />
                 </label>
-                <label className="space-y-2">
-                  <span className="text-sm font-medium text-slate-700">Approx. roof area</span>
-                  <input
-                    value={roofAreaSqFt}
-                    onChange={(event) => setRoofAreaSqFt(Number(event.target.value || 0))}
-                    className="input-field"
-                    type="number"
-                    min={0}
-                  />
-                </label>
-              </div>
-
-              <div className="mt-6 rounded-[1.6rem] bg-slate-100 p-4 text-sm leading-6 text-slate-700">
-                Submitting this form opens a prefilled WhatsApp enquiry and then routes the visitor
-                to the thank-you page. That keeps the static site lead-friendly without pretending a
-                backend CRM exists yet.
               </div>
 
               <button type="submit" className="button-primary mt-6 w-full justify-center">
-                Send enquiry on WhatsApp
+                Request a Callback
                 <MessageCircle className="h-4 w-4" />
               </button>
             </motion.form>
@@ -945,8 +834,7 @@ export function SunPowerSite() {
               Office and map
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-muted">
-              The office address from the brief and the client catalog is wired into the map and
-              direction links so local buyers can go from research to site visit without searching again.
+              Visit the registered office or open the map for directions before your site visit.
             </p>
             <div className="mt-6">
               <a href={contact.mapsHref} target="_blank" rel="noreferrer" className="button-primary">
@@ -986,6 +874,7 @@ export function SunPowerSite() {
               {contact.phoneDisplay}
             </a>
             <p>{contact.address}</p>
+            <p>GSTIN {contact.gstin}</p>
             <div className="flex gap-4 md:justify-end">
               <Link href="/privacy" className="hover:text-white">
                 Privacy policy

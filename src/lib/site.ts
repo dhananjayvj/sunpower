@@ -25,39 +25,33 @@ export const navigation = [
 ];
 
 export const stats = [
-  { value: "3-5 kW", label: "Typical residential rooftop range" },
-  { value: "1 MW", label: "Large-scale execution capacity" },
-  { value: "31 Aug 2028", label: "Loom dealer certificate validity" },
+  { value: "3-5 kW", label: "Typical home rooftop systems" },
+  { value: "1 MW", label: "Commercial and industrial project capacity" },
+  { value: "Delhi NCR", label: "Primary service region" },
 ];
 
 export const trustSignals = [
-  "Authorized Loom Solar dealer for Delhi",
-  "Solar panels, batteries, inverters, EPC and MMS under one brand",
-  "Residential, commercial, industrial, rooftop and ground-mounted scope",
-  "Delhi NCR site visits with PM Surya Ghar subsidy guidance",
-];
-
-export const leadPoints = [
-  "Qualified quote requests and site visits, not e-commerce checkouts",
-  "Mobile-first CTAs for WhatsApp, callback, and bill-sharing",
-  "Planning support for subsidy-linked homes and commercial buyers",
+  "Authorized Loom Solar Dealer",
+  "Rooftop and ground-mounted solar solutions",
+  "PM Surya Ghar subsidy assistance for homeowners",
+  "Site surveys, EPC execution, and MMS contracting across Delhi NCR",
 ];
 
 export const aboutHighlights = [
   {
-    title: "Business profile",
+    title: "Who we are",
     detail:
-      "Sun Power operates as a solar dealership and EPC/MMS contracting firm for rooftop and ground-mounted systems across Delhi NCR.",
+      "Sun Power is a Delhi NCR solar dealership and EPC or MMS contracting firm delivering rooftop and ground-mounted projects for homes, businesses, and industrial facilities.",
   },
   {
-    title: "Dealer credential",
+    title: "Loom Solar credential",
     detail:
-      "Authorized dealer of Loom Solar in Delhi. Certificate no. 23873/DL/08/2026. The supplied certificate is valid until August 31, 2028.",
+      "Authorized dealer of Loom Solar in Delhi. Certificate no. 23873/DL/08/2026. Valid till August 31, 2028.",
   },
   {
-    title: "Project range",
+    title: "What we handle",
     detail:
-      "The brief covers residential 3-5 kW systems through large commercial and industrial projects reaching 1 MW scale.",
+      "Project scope ranges from compact 3-5 kW residential systems to large-format commercial and industrial installations up to 1 MW.",
   },
 ];
 
@@ -72,102 +66,59 @@ export const serviceAreas = [
 
 export const services = [
   {
-    title: "Residential Solar",
-    description:
-      "On-grid and hybrid rooftop systems for homes, villas, builder floors, and societies that want bill reduction plus a clean subsidy path.",
+    title: "Residential Rooftop Solar",
+    description: "Designed for homes that want lower electricity bills and dependable long-term generation.",
     bullets: [
-      "Bill-based system sizing",
-      "Roof suitability and shadow checks",
-      "PM Surya Ghar documentation support",
+      "Custom system sizing",
+      "Roof suitability checks",
+      "PM Surya Ghar support",
     ],
     imageSrc: "/images/residential-rooftop.jpg",
     imageAlt: "Residential rooftop solar array installed on a house terrace.",
   },
   {
     title: "Commercial & Industrial Solar",
-    description:
-      "Energy-cost-focused systems for offices, schools, warehouses, institutions, and factories that need clearer payback planning.",
+    description: "Engineered for facilities that need stronger savings, predictable output, and project discipline.",
     bullets: [
-      "Load analysis and tariff review",
+      "Load and tariff assessment",
       "Rooftop and ground-mounted planning",
-      "Execution support from quotation to commissioning",
+      "Turnkey installation",
     ],
     imageSrc: "/images/commercial-rooftop.jpg",
     imageAlt: "Commercial rooftop covered with solar panels for daytime energy use.",
   },
   {
-    title: "MMS Contracting",
-    description:
-      "Mounting structure design and execution support for rooftop and ground-mounted projects where structural confidence matters as much as generation.",
+    title: "MMS (Mounting Structure) Contracting",
+    description: "Structure solutions built for stability, clean execution, and large-project coordination.",
     bullets: [
-      "Site-specific structure layouts",
-      "Execution coordination for EPC jobs",
-      "Installation support for larger project scopes",
+      "Site-specific layouts",
+      "Fabrication and erection support",
+      "EPC coordination",
     ],
     imageSrc: "/images/install-team.webp",
     imageAlt: "Installation team working on a rooftop solar mounting structure.",
   },
   {
     title: "Batteries & Inverters",
-    description:
-      "System pairing for on-grid, off-grid, and hybrid requirements so buyers can choose between maximum savings and stronger backup readiness.",
+    description: "Smart power electronics and storage options for savings-first or backup-ready systems.",
     bullets: [
-      "On-grid inverter options",
-      "Off-grid backup planning",
-      "Hybrid system recommendations",
+      "On-grid and hybrid options",
+      "Backup planning",
+      "Brand-matched recommendations",
     ],
     imageSrc: "/images/inspection-team.jpg",
     imageAlt: "Solar team inspecting system details on site before commissioning.",
   },
   {
-    title: "Subsidy Assistance",
-    description:
-      "Straightforward PM Surya Ghar guidance so homeowners know eligibility, paperwork, application steps, and the handoff points after installation.",
+    title: "PM Surya Ghar Subsidy Assistance",
+    description: "Clear guidance for homeowners applying for subsidy-linked rooftop solar.",
     bullets: [
-      "Eligibility walkthrough",
+      "Eligibility checks",
       "Document checklist",
-      "Submission-ready support",
+      "Application support",
     ],
     imageSrc: "/images/residential-rooftop.jpg",
     imageAlt: "Residential rooftop installation used for subsidy and quote planning.",
-  },
-];
-
-export const catalogGroups = [
-  {
-    title: "Solar panels",
-    description:
-      "Solar panel recommendations for homes, shops, offices, and industrial roofs, including DCR and non-DCR guidance when subsidy or sourcing requirements matter.",
-  },
-  {
-    title: "Inverters",
-    description:
-      "On-grid, off-grid, and hybrid inverter guidance matched to daytime usage, outage frequency, and backup expectations.",
-  },
-  {
-    title: "Batteries",
-    description:
-      "Battery options for homes and businesses that want resilience during outages or stronger self-consumption from hybrid systems.",
-  },
-  {
-    title: "Rooftop installation",
-    description:
-      "Site survey, structure planning, installation, and commissioning support for homes, societies, offices, schools, and factory rooftops.",
-  },
-  {
-    title: "Ground-mounted installation",
-    description:
-      "Ground-mounted solar execution for open-area projects where layout, structure, and long-term maintenance access need to be planned carefully.",
-  },
-  {
-    title: "EPC & MMS contracting",
-    description:
-      "Execution support for mounting structures and broader project delivery where procurement, structure work, and installation need one accountable partner.",
-  },
-  {
-    title: "Multi-brand sourcing",
-    description:
-      "The client catalog explicitly positions Sun Power for multi-brand sourcing, which supports practical product recommendations instead of single-SKU selling.",
   },
 ];
 
@@ -187,8 +138,7 @@ export const productCatalogSections: Array<{
 }> = [
   {
     title: "Solar Panels",
-    description:
-      "High-output Loom panel options for residential rooftops, commercial roofs, and larger ground-mounted projects.",
+    description: "Selected panel lines for home rooftops, commercial sheds, and larger energy projects.",
     cards: [
       {
         name: "Shark 550 Mono PERC",
@@ -200,29 +150,37 @@ export const productCatalogSections: Array<{
         ctaLabel: "Request Datasheet",
       },
       {
-        name: "Shark 600 N-Type TOPCon",
-        badge: "Loom Solar • Shark Series",
+        name: "Tata Power Solar Rooftop Modules",
+        badge: "Tata Power Solar • Rooftop",
         imageSrc:
           "https://images.unsplash.com/photo-1508873696983-2df570464756?auto=format&fit=crop&w=800&q=80",
         imageAlt: "Commercial rooftop solar installation.",
-        chips: ["600 Wp", "N-Type TOPCon", "10Y manufacturing", "30Y performance"],
+        chips: ["540-550 Wp", "Mono PERC", "25Y module coverage", "Home & C&I"],
         ctaLabel: "Request Datasheet",
       },
       {
-        name: "Shark 625 Dual-Glass Bifacial",
-        badge: "Loom Solar • Utility Grade",
+        name: "Adani Shine TOPCon Modules",
+        badge: "Adani Solar • Shine Series",
         imageSrc:
           "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80",
         imageAlt: "Rows of solar modules viewed close up.",
-        chips: ["625 Wp", "TOPCon bifacial", "15Y product", "30Y performance"],
+        chips: ["565-590 Wp", "TOPCon", "Utility-grade build", "Datasheet on request"],
+        ctaLabel: "Request Datasheet",
+      },
+      {
+        name: "Waaree 540 Mono PERC DCR",
+        badge: "Waaree • Mono PERC",
+        imageSrc:
+          "https://images.unsplash.com/photo-1508873696983-2df570464756?auto=format&fit=crop&w=800&q=80",
+        imageAlt: "Large rooftop array installed on a commercial building.",
+        chips: ["540 Wp", "Mono PERC DCR", "12Y product", "27Y output"],
         ctaLabel: "Request Datasheet",
       },
     ],
   },
   {
     title: "Batteries",
-    description:
-      "LiFePO4 storage choices for backup-heavy homes, hybrid systems, and commercial continuity planning.",
+    description: "Storage options for hybrid systems, outage backup, and better daytime power use.",
     cards: [
       {
         name: "CAML 2.56 kWh Wall-Mount",
@@ -255,8 +213,7 @@ export const productCatalogSections: Array<{
   },
   {
     title: "Inverters",
-    description:
-      "On-grid and hybrid inverter options covering homes, shops, three-phase commercial loads, and larger rooftops.",
+    description: "On-grid and hybrid inverter options for homes, shops, and commercial rooftops.",
     cards: [
       {
         name: "Fusion 5 kW Hybrid Inverter",
@@ -295,7 +252,7 @@ export const projectProfiles = [
     size: "3-5 kW",
     location: "I.P. Extension and nearby Delhi neighborhoods",
     detail:
-      "Fit for homeowners comparing subsidy eligibility, roof space, and monthly bill reduction before booking a site survey.",
+      "Compact rooftop systems planned for bill reduction, net-metering readiness, and smooth subsidy support.",
     imageSrc: "/images/residential-rooftop.jpg",
     imageAlt: "Residential rooftop solar installation on a multi-level home.",
   },
@@ -304,7 +261,7 @@ export const projectProfiles = [
     size: "10-100 kW",
     location: "Offices, schools, and commercial facilities across NCR",
     detail:
-      "Positioned for teams that care about daytime load coverage, tariff pressure, and cleaner operating cost planning.",
+      "Commercial installations focused on daytime load coverage, operating savings, and scalable execution.",
     imageSrc: "/images/commercial-rooftop.jpg",
     imageAlt: "Large commercial rooftop with neatly aligned solar modules.",
   },
@@ -313,7 +270,7 @@ export const projectProfiles = [
     size: "100 kW to 1 MW",
     location: "Delhi NCR industrial and open-area installation scopes",
     detail:
-      "Designed for buyers who need confidence on structure work, phasing, commercial coordination, and execution bandwidth.",
+      "Larger projects supported with structure planning, phased execution, and coordination for demanding sites.",
     imageSrc: "/images/install-team.webp",
     imageAlt: "Solar installation crew working across an industrial rooftop array.",
   },
@@ -321,38 +278,32 @@ export const projectProfiles = [
 
 export const processSteps = [
   "Share your latest electricity bill, roof size, or load requirement.",
-  "Sun Power recommends a planning-level system size, category, and cost band.",
-  "The team books a site survey and confirms technical fit, structure needs, and execution scope.",
-  "Final quotation, installation planning, and subsidy support move forward from one point of contact.",
+  "Receive a preliminary system recommendation and budget range.",
+  "Book a site survey to confirm layout, electrical scope, and structure needs.",
+  "Move ahead with final proposal, installation planning, and support documentation.",
 ];
 
 export const resourceCards = [
   {
     title: "How solar works",
     description:
-      "A plain-English walkthrough of panels, inverter, grid, net metering, and where your daytime energy actually goes.",
+      "Understand how panels, inverters, the grid, and net metering work together in a rooftop solar system.",
   },
   {
     title: "On-grid vs off-grid vs hybrid",
     description:
-      "Use this to decide whether lowest cost, battery backup, or a balance of both should drive the system design.",
+      "Compare the right setup for bill savings, battery backup, or a balanced system.",
   },
   {
     title: "DCR vs non-DCR panels",
     description:
-      "A practical explainer on procurement choice, subsidy linkage, and why the cheaper panel is not always the correct recommendation.",
+      "Learn the difference between DCR and non-DCR modules for subsidy-linked and non-subsidy projects.",
   },
   {
     title: "PM Surya Ghar process",
     description:
-      "What documents are needed, how the workflow moves, and where Sun Power can reduce confusion for residential buyers.",
+      "Get a simple view of eligibility, documentation, approval flow, and installation support.",
   },
-];
-
-export const proofPoints = [
-  "Authorized dealer of Loom Solar, certificate no. 23873/DL/08/2026",
-  "GSTIN listed in the supplied catalog cover: 07BQKPV2646A1ZS",
-  "Catalog cover confirms solar panels, batteries, inverters, rooftop and ground-mounted installation, and EPC & MMS contracting",
 ];
 
 export const faqs = [
@@ -364,7 +315,7 @@ export const faqs = [
   {
     question: "Can Sun Power help with PM Surya Ghar subsidy applications?",
     answer:
-      "Yes. Subsidy support is part of the supplied requirement brief, especially for homeowners who need clarity on eligibility, documents, and next steps.",
+      "Yes. Sun Power assists homeowners with eligibility checks, documentation, and the process required for PM Surya Ghar subsidy claims.",
   },
   {
     question: "What system is right for me: on-grid, off-grid, or hybrid?",
@@ -374,12 +325,12 @@ export const faqs = [
   {
     question: "Do you only work on small residential systems?",
     answer:
-      "No. The brief explicitly covers projects from small 3-5 kW homes up to large commercial and industrial scopes around 1 MW.",
+      "No. Sun Power handles both residential systems and larger commercial or industrial projects up to 1 MW.",
   },
   {
     question: "Do you handle mounting structure and EPC work too?",
     answer:
-      "Yes. Sun Power is positioned not only as a dealer but also as an EPC and MMS contracting partner for larger execution scopes.",
+      "Yes. Sun Power also supports EPC execution and MMS contracting for larger project requirements.",
   },
 ];
 
