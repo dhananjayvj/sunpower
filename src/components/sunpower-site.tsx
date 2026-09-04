@@ -74,6 +74,7 @@ export function SunPowerSite() {
   const brandLogoSrc = `${basePath}/images/image.png`;
   const withBasePath = (src: string) => `${basePath}${src}`;
   const heroPhotoSrc = withBasePath("/images/3.png");
+  const aboutPhotoSrc = withBasePath("/images/install-team.webp");
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [calculatorMode, setCalculatorMode] = useState<"bill" | "roof">("bill");
@@ -639,7 +640,7 @@ export function SunPowerSite() {
           <Reveal delay={0.05} className="card-panel overflow-hidden p-3 sm:p-4">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.9rem]">
               <img
-                src={heroPhotoSrc}
+                src={aboutPhotoSrc}
                 alt="Sun Power engineering team with rooftop solar installation equipment"
                 className="h-full w-full object-cover object-center"
               />
@@ -868,13 +869,7 @@ export function SunPowerSite() {
       <footer className="border-t border-border bg-slate-950 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <img
-              src={brandLogoSrc}
-              alt="Sun Power logo"
-              width={2161}
-              height={2160}
-              className="h-14 w-auto object-contain"
-            />
+            <p className="text-lg font-semibold tracking-tight text-white">Sun Power</p>
             <p className="mt-3 max-w-xl leading-6">
               Solar energy dealership and EPC or MMS contracting firm serving Delhi NCR with
               rooftop, ground-mounted, residential, commercial, industrial, and subsidy-linked solar solutions.

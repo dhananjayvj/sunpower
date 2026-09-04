@@ -94,8 +94,8 @@ export const services = [
       "Fabrication and erection support",
       "EPC coordination",
     ],
-    imageSrc: "/images/3.png",
-    imageAlt: "Solar installation and engineering team on site for EPC and MMS contracting",
+    imageSrc: "/images/4.png",
+    imageAlt: "Solar mounting structure contracting work for a rooftop installation in Delhi NCR",
   },
   {
     title: "Batteries & Inverters",
@@ -105,8 +105,8 @@ export const services = [
       "Backup planning",
       "Brand-matched recommendations",
     ],
-    imageSrc: "/images/inspection-team.jpg",
-    imageAlt: "Solar team inspecting system details on site before commissioning.",
+    imageSrc: "/images/5.png",
+    imageAlt: "Solar battery and inverter setup for residential and commercial energy systems",
   },
   {
     title: "PM Surya Ghar Subsidy Assistance",
@@ -116,8 +116,8 @@ export const services = [
       "Document checklist",
       "Application support",
     ],
-    imageSrc: "/images/1.png",
-    imageAlt: "Residential rooftop solar system used for subsidy and quote planning in Delhi NCR",
+    imageSrc: "/images/6.png",
+    imageAlt: "PM Surya Ghar rooftop solar consultation for subsidy assistance in Delhi NCR",
   },
 ];
 
@@ -143,8 +143,8 @@ export const productCatalogSections: Array<{
         name: "Shark 550 Mono PERC",
         badge: "Loom Solar • Shark Series",
         imageSrc:
-          "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "Solar panels installed in sunlight.",
+          "https://placehold.co/800x600/e8f7ec/0e1f40?text=Loom+Solar+Shark+550",
+        imageAlt: "Placeholder panel card for Loom Solar Shark 550 Mono PERC module.",
         chips: ["550 Wp", "Mono PERC", "10Y product", "25Y performance"],
         ctaLabel: "Request Datasheet",
       },
@@ -152,8 +152,8 @@ export const productCatalogSections: Array<{
         name: "Tata Power Solar Rooftop Modules",
         badge: "Tata Power Solar • Rooftop",
         imageSrc:
-          "https://images.unsplash.com/photo-1508873696983-2df570464756?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "Commercial rooftop solar installation.",
+          "https://placehold.co/800x600/f8f5de/0e1f40?text=Tata+Rooftop+Modules",
+        imageAlt: "Placeholder panel card for Tata Power Solar rooftop modules.",
         chips: ["540-550 Wp", "Mono PERC", "25Y module coverage", "Home & C&I"],
         ctaLabel: "Request Datasheet",
       },
@@ -161,8 +161,8 @@ export const productCatalogSections: Array<{
         name: "Adani Shine TOPCon Modules",
         badge: "Adani Solar • Shine Series",
         imageSrc:
-          "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "Rows of solar modules viewed close up.",
+          "https://placehold.co/800x600/e7f0fb/0e1f40?text=Adani+Shine+TOPCon",
+        imageAlt: "Placeholder panel card for Adani Shine TOPCon modules.",
         chips: ["565-590 Wp", "TOPCon", "Utility-grade build", "Datasheet on request"],
         ctaLabel: "Request Datasheet",
       },
@@ -170,8 +170,8 @@ export const productCatalogSections: Array<{
         name: "Waaree 540 Mono PERC DCR",
         badge: "Waaree • Mono PERC",
         imageSrc:
-          "https://images.unsplash.com/photo-1508873696983-2df570464756?auto=format&fit=crop&w=800&q=80",
-        imageAlt: "Large rooftop array installed on a commercial building.",
+          "https://placehold.co/800x600/ecf5ff/0e1f40?text=Waaree+540+DCR",
+        imageAlt: "Placeholder panel card for Waaree 540 Mono PERC DCR module.",
         chips: ["540 Wp", "Mono PERC DCR", "12Y product", "27Y output"],
         ctaLabel: "Request Datasheet",
       },
@@ -252,8 +252,8 @@ export const projectProfiles = [
     location: "I.P. Extension and nearby Delhi neighborhoods",
     detail:
       "Compact rooftop systems planned for bill reduction, net-metering readiness, and smooth subsidy support.",
-    imageSrc: "/images/1.png",
-    imageAlt: "3 to 5 kW residential rooftop solar installation in Delhi NCR",
+    imageSrc: "/images/residential-rooftop.jpg",
+    imageAlt: "Residential rooftop solar installation for a 3 to 5 kW home system in Delhi NCR",
   },
   {
     title: "Noida and Ghaziabad commercial roofs",
@@ -261,7 +261,7 @@ export const projectProfiles = [
     location: "Offices, schools, and commercial facilities across NCR",
     detail:
       "Commercial installations focused on daytime load coverage, operating savings, and scalable execution.",
-    imageSrc: "/images/2.png",
+    imageSrc: "/images/commercial-rooftop.jpg",
     imageAlt: "Commercial rooftop solar installation for offices and facilities in Noida and Ghaziabad",
   },
   {
@@ -270,8 +270,8 @@ export const projectProfiles = [
     location: "Delhi NCR industrial and open-area installation scopes",
     detail:
       "Larger projects supported with structure planning, phased execution, and coordination for demanding sites.",
-    imageSrc: "/images/2.png",
-    imageAlt: "100 kW to 1 MW commercial and industrial solar installation in Delhi NCR",
+    imageSrc: "/images/inspection-team.jpg",
+    imageAlt: "Industrial solar site inspection for a 100 kW to 1 MW installation in Delhi NCR",
   },
 ];
 
