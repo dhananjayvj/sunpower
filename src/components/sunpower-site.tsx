@@ -71,6 +71,8 @@ export function SunPowerSite() {
   const shouldReduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], shouldReduceMotion ? [0, 0] : [0, 70]);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const brandLogoSrc = `${basePath}/images/image.png`;
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [calculatorMode, setCalculatorMode] = useState<"bill" | "roof">("bill");
@@ -137,13 +139,12 @@ export function SunPowerSite() {
       <header className="sticky top-0 z-30 border-b border-border/70 bg-white/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-4">
-            <Image
-              src="/images/image-trimmed.png"
+            <img
+              src={brandLogoSrc}
               alt="Sun Power Renewable Energy Solutions logo"
-              width={196}
-              height={72}
-              priority
-              className="h-12 w-auto rounded-xl bg-white"
+              width={2161}
+              height={2160}
+              className="h-14 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)]"
             />
           </a>
 
@@ -319,11 +320,11 @@ export function SunPowerSite() {
               </div>
 
               <div className="mt-6 rounded-[2rem] border border-border/80 bg-white p-4">
-                <Image
-                  src="/images/image-trimmed.png"
+                <img
+                  src={brandLogoSrc}
                   alt="Sun Power company logo"
-                  width={700}
-                  height={700}
+                  width={2161}
+                  height={2160}
                   className="h-auto w-full rounded-[1.6rem] object-contain"
                 />
               </div>
@@ -857,12 +858,12 @@ export function SunPowerSite() {
       <footer className="border-t border-border bg-slate-950 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <Image
-              src="/images/image-trimmed.png"
+            <img
+              src={brandLogoSrc}
               alt="Sun Power logo"
-              width={196}
-              height={72}
-              className="h-12 w-auto rounded-xl bg-white"
+              width={2161}
+              height={2160}
+              className="h-14 w-auto object-contain"
             />
             <p className="mt-3 max-w-xl leading-6">
               Solar energy dealership and EPC or MMS contracting firm serving Delhi NCR with
