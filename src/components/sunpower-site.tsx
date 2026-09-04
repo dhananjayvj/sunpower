@@ -138,7 +138,7 @@ export function SunPowerSite() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-4">
             <Image
-              src="/images/image.png"
+              src="/images/image-trimmed.png"
               alt="Sun Power Renewable Energy Solutions logo"
               width={196}
               height={72}
@@ -320,7 +320,7 @@ export function SunPowerSite() {
 
               <div className="mt-6 rounded-[2rem] border border-border/80 bg-white p-4">
                 <Image
-                  src="/images/image.png"
+                  src="/images/image-trimmed.png"
                   alt="Sun Power company logo"
                   width={700}
                   height={700}
@@ -858,7 +858,7 @@ export function SunPowerSite() {
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
             <Image
-              src="/images/image.png"
+              src="/images/image-trimmed.png"
               alt="Sun Power logo"
               width={196}
               height={72}
