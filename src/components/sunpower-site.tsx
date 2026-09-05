@@ -379,7 +379,7 @@ export function SunPowerSite() {
 
       <section className="relative z-20 mx-auto mt-16 max-w-7xl bg-bg-foundation px-4 pb-4 sm:px-6 lg:mt-24 lg:px-8">
         <div className="grid gap-4 lg:grid-cols-[0.78fr_1.22fr]">
-          <Reveal className="rounded-[1.5rem] border border-accent-blue-deep/20 bg-accent-blue-deep p-6 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
+          <Reveal className="rounded-[1.5rem] border border-accent-blue-deep/20 bg-accent-blue-deep p-8 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-blue-100">
               Trusted Execution
             </p>
