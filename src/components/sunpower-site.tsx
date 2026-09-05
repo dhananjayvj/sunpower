@@ -575,7 +575,7 @@ export function SunPowerSite() {
                         <div className="px-5 pt-4">
                           <div className="aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50">
                             <img
-                              src={card.imageSrc}
+                              src={card.imageSrc.startsWith("/") ? withBasePath(card.imageSrc) : card.imageSrc}
                               alt={card.imageAlt}
                               loading="lazy"
                               className="h-full w-full object-cover object-center"

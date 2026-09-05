@@ -182,20 +182,18 @@ export const productCatalogSections: Array<{
     description: "Storage options for hybrid systems, outage backup, and better daytime power use.",
     cards: [
       {
-        name: "CAML 2.56 kWh Wall-Mount",
+        name: "CAML 12.8 V 100 Ah, 1.28 kWh LiFePO4 Battery",
         badge: "Loom Solar • Lithium Battery",
-        imageSrc:
-          "https://placehold.co/800x600/f8fafc/334155?text=CAML+2.56+kWh+Battery",
-        imageAlt: "Placeholder illustration for a wall-mount lithium battery.",
-        chips: ["25.6V / 100Ah", "LiFePO4", "3Y warranty", "Wall mount"],
+        imageSrc: "/images/Caml_10012_Features_Image_1000x.webp",
+        imageAlt: "Loom Solar CAML 12.8V 100Ah LiFePO4 Lithium Battery",
+        chips: ["12.8V / 100Ah", "1.28 kWh", "LiFePO4", "3Y warranty"],
         ctaLabel: "Request Datasheet",
       },
       {
-        name: "CAML 5.12 kWh Battery",
+        name: "CAML 5.12 kWh Wall-Mount Battery",
         badge: "Loom Solar • Lithium Battery",
-        imageSrc:
-          "https://placehold.co/800x600/f8fafc/334155?text=CAML+5.12+kWh+Battery",
-        imageAlt: "Placeholder illustration for a 5.12 kWh lithium battery.",
+        imageSrc: "/images/100Ah_51.2_V_WM_Front_Image_500x.webp",
+        imageAlt: "Loom Solar CAML 5.12 kWh 51.2V Wall-Mount Battery",
         chips: ["51.2V / 100Ah", "6000+ cycles", "5Y warranty", "Rack / wall"],
         ctaLabel: "Request Datasheet",
       },
@@ -252,8 +250,8 @@ export const projectProfiles = [
     location: "I.P. Extension and nearby Delhi neighborhoods",
     detail:
       "Compact rooftop systems planned for bill reduction, net-metering readiness, and smooth subsidy support.",
-    imageSrc: "/images/residential-rooftop.jpg",
-    imageAlt: "Residential rooftop solar installation for a 3 to 5 kW home system in Delhi NCR",
+    imageSrc: "/images/Project-1.png",
+    imageAlt: "3 to 5 kW residential rooftop solar installation in Delhi NCR",
   },
   {
     title: "Noida and Ghaziabad commercial roofs",
@@ -261,8 +259,8 @@ export const projectProfiles = [
     location: "Offices, schools, and commercial facilities across NCR",
     detail:
       "Commercial installations focused on daytime load coverage, operating savings, and scalable execution.",
-    imageSrc: "/images/commercial-rooftop.jpg",
-    imageAlt: "Commercial rooftop solar installation for offices and facilities in Noida and Ghaziabad",
+    imageSrc: "/images/Project-2.png",
+    imageAlt: "10 to 100 kW commercial and industrial rooftop solar installation in Noida",
   },
   {
     title: "Industrial and large-format sites",
@@ -270,8 +268,8 @@ export const projectProfiles = [
     location: "Delhi NCR industrial and open-area installation scopes",
     detail:
       "Larger projects supported with structure planning, phased execution, and coordination for demanding sites.",
-    imageSrc: "/images/inspection-team.jpg",
-    imageAlt: "Industrial solar site inspection for a 100 kW to 1 MW installation in Delhi NCR",
+    imageSrc: "/images/Project-3.png",
+    imageAlt: "Large-scale 100 kW to 1 MW industrial solar installation and EPC inspection",
   },
 ];
 
