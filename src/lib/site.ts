@@ -30,10 +30,10 @@ export const stats = [
 ];
 
 export const trustSignals = [
-  "Authorized Loom Solar Dealer",
-  "Rooftop and ground-mounted solar solutions",
-  "PM Surya Ghar subsidy assistance for homeowners",
-  "Site surveys, EPC execution, and MMS contracting across Delhi NCR",
+  "Dealer certificate no. 23873/DL/08/2026",
+  "Rooftop and ground-mounted solar project execution",
+  "Subsidy guidance for eligible homeowners",
+  "Site surveys, EPC delivery, and MMS contracting across Delhi NCR",
 ];
 
 export const aboutHighlights = [
@@ -43,9 +43,9 @@ export const aboutHighlights = [
       "Sun Power is a Delhi NCR solar dealership and EPC or MMS contracting firm delivering rooftop and ground-mounted projects for homes, businesses, and industrial facilities.",
   },
   {
-    title: "Loom Solar credential",
+    title: "Dealer credential",
     detail:
-      "Authorized dealer of Loom Solar in Delhi. Certificate no. 23873/DL/08/2026. Valid till August 31, 2028.",
+      "Sun Power holds Loom Solar dealer certificate no. 23873/DL/08/2026, valid till August 31, 2028.",
   },
   {
     title: "What we handle",
@@ -72,7 +72,7 @@ export const services = [
       "Roof suitability checks",
       "PM Surya Ghar support",
     ],
-    imageSrc: "/images/1.png",
+    imageSrc: "/images/optimized/service-residential.jpg",
     imageAlt: "Residential rooftop solar panel installation in Delhi NCR",
   },
   {
@@ -83,7 +83,7 @@ export const services = [
       "Rooftop and ground-mounted planning",
       "Turnkey installation",
     ],
-    imageSrc: "/images/2.png",
+    imageSrc: "/images/optimized/service-commercial.jpg",
     imageAlt: "Commercial and industrial solar EPC installation for a large facility in Delhi NCR",
   },
   {
@@ -94,7 +94,7 @@ export const services = [
       "Fabrication and erection support",
       "EPC coordination",
     ],
-    imageSrc: "/images/4.png",
+    imageSrc: "/images/optimized/service-mms.jpg",
     imageAlt: "Solar mounting structure contracting work for a rooftop installation in Delhi NCR",
   },
   {
@@ -105,7 +105,7 @@ export const services = [
       "Backup planning",
       "Brand-matched recommendations",
     ],
-    imageSrc: "/images/5.png",
+    imageSrc: "/images/optimized/service-battery-inverter.jpg",
     imageAlt: "Solar battery and inverter setup for residential and commercial energy systems",
   },
   {
@@ -116,7 +116,7 @@ export const services = [
       "Document checklist",
       "Application support",
     ],
-    imageSrc: "/images/6.png",
+    imageSrc: "/images/optimized/service-subsidy.jpg",
     imageAlt: "PM Surya Ghar rooftop solar consultation for subsidy assistance in Delhi NCR",
   },
 ];
@@ -250,7 +250,7 @@ export const projectProfiles = [
     location: "I.P. Extension and nearby Delhi neighborhoods",
     detail:
       "Compact rooftop systems planned for bill reduction, net-metering readiness, and smooth subsidy support.",
-    imageSrc: "/images/Project-1.png",
+    imageSrc: "/images/optimized/project-residential.jpg",
     imageAlt: "3 to 5 kW residential rooftop solar installation in Delhi NCR",
   },
   {
@@ -259,7 +259,7 @@ export const projectProfiles = [
     location: "Offices, schools, and commercial facilities across NCR",
     detail:
       "Commercial installations focused on daytime load coverage, operating savings, and scalable execution.",
-    imageSrc: "/images/Project-2.png",
+    imageSrc: "/images/optimized/project-commercial.jpg",
     imageAlt: "10 to 100 kW commercial and industrial rooftop solar installation in Noida",
   },
   {
@@ -268,7 +268,7 @@ export const projectProfiles = [
     location: "Delhi NCR industrial and open-area installation scopes",
     detail:
       "Larger projects supported with structure planning, phased execution, and coordination for demanding sites.",
-    imageSrc: "/images/Project-3.png",
+    imageSrc: "/images/optimized/project-industrial.jpg",
     imageAlt: "Large-scale 100 kW to 1 MW industrial solar installation and EPC inspection",
   },
 ];

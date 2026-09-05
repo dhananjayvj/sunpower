@@ -73,7 +73,6 @@ export function SunPowerSite() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const brandLogoSrc = `${basePath}/images/image.png`;
   const withBasePath = (src: string) => `${basePath}${src}`;
-  const heroPhotoSrc = withBasePath("/images/3.png");
   const aboutPhotoSrc = withBasePath("/images/install-team.webp");
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -128,8 +127,7 @@ export function SunPowerSite() {
       <div className="border-b border-white/40 bg-foreground text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 text-sm sm:px-6 lg:px-8">
           <p className="max-w-3xl text-white/84">
-            Authorized Loom Solar dealer for Delhi NCR rooftop solar, subsidy assistance, EPC, and
-            MMS contracting.
+            Delhi NCR rooftop solar, subsidy guidance, EPC delivery, and MMS contracting.
           </p>
           <a className="hidden items-center gap-2 font-medium md:inline-flex" href={contact.phoneHref}>
             <Phone className="h-4 w-4" />
@@ -146,7 +144,9 @@ export function SunPowerSite() {
               alt="Sun Power Renewable Energy Solutions logo"
               width={2161}
               height={2160}
-              className="h-14 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)]"
+              loading="eager"
+              decoding="async"
+              className="h-16 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:h-20"
             />
           </a>
 
@@ -165,9 +165,6 @@ export function SunPowerSite() {
           <div className="flex items-center gap-3">
             <a href={contact.phoneHref} className="hidden text-sm font-semibold text-foreground md:inline">
               Call Now
-            </a>
-            <a href="#contact" className="button-primary">
-              Get a Free Quote
             </a>
             <MobileNav
               open={mobileMenuOpen}
@@ -192,7 +189,7 @@ export function SunPowerSite() {
               className="inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-white/72 px-4 py-2 text-sm font-medium text-emerald-900 shadow-[0_10px_30px_rgba(255,255,255,0.5)]"
             >
               <BadgeCheck className="h-4 w-4 text-emerald-600" />
-              Authorized Loom Solar Dealer • Delhi NCR
+              Authorized Loom Solar Dealer
             </motion.div>
 
             <motion.div variants={fadeUp} className="space-y-5">
@@ -200,8 +197,8 @@ export function SunPowerSite() {
                 Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
               </h1>
               <p className="max-w-xl text-pretty text-lg leading-8 text-slate-700/92 sm:text-xl">
-                Authorized Loom Solar dealer delivering end-to-end rooftop installations, PM
-                Surya Ghar subsidy support, and commercial EPC contracting.
+                End-to-end rooftop installations, PM Surya Ghar support, Loom Solar product access,
+                and commercial EPC contracting.
               </p>
             </motion.div>
 
@@ -246,39 +243,32 @@ export function SunPowerSite() {
             style={{ y: heroY }}
             className="relative will-change-transform"
           >
-            <div className="card-panel overflow-hidden p-3 sm:p-4">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.85rem] sm:aspect-[5/4]">
-                <img
-                  src={heroPhotoSrc}
-                  alt="Sun Power solar installation and engineering team on site in Delhi NCR"
-                  className="h-full w-full object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,28,56,0.04),rgba(10,28,56,0.58))]" />
-                <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5 sm:p-6">
-                  <div className="rounded-full border border-white/18 bg-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white backdrop-blur-sm">
-                    Delhi NCR solar execution
-                  </div>
-                  <div className="rounded-full bg-white/12 p-3 text-white backdrop-blur-sm">
-                    <Bolt className="h-5 w-5 text-yellow-300" />
-                  </div>
+            <div className="card-panel p-6 sm:p-8">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">
+                    Survey to installation
+                  </p>
+                  <h2 className="mt-4 max-w-md text-3xl leading-tight font-semibold text-foreground">
+                    One local team for design, products, structure, installation, and subsidy support
+                  </h2>
                 </div>
-                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                  <div className="rounded-[1.8rem] border border-white/16 bg-white/12 p-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-md">
-                    <p className="text-sm uppercase tracking-[0.24em] text-blue-100">
-                      Survey to commissioning
-                    </p>
-                    <h2 className="mt-3 max-w-sm text-2xl font-semibold tracking-tight">
-                      One local team for design, products, structure, installation, and subsidy support
-                    </h2>
-                    <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-2xl border border-white/12 bg-black/10 px-4 py-3 text-sm">
-                        Homes, schools, offices, and industrial rooftops
-                      </div>
-                      <div className="rounded-2xl border border-white/12 bg-black/10 px-4 py-3 text-sm">
-                        Residential systems to 1 MW project scopes
-                      </div>
-                    </div>
-                  </div>
+                <div className="rounded-full bg-blue-50 p-3 text-accent-blue">
+                  <Bolt className="h-5 w-5" />
+                </div>
+              </div>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-border bg-white/72 p-5">
+                  <p className="text-sm font-semibold text-foreground">Residential systems</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">3-5 kW rooftops with bill-led sizing and subsidy support.</p>
+                </div>
+                <div className="rounded-2xl border border-border bg-white/72 p-5">
+                  <p className="text-sm font-semibold text-foreground">Commercial scopes</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">10 kW to 1 MW planning for facilities and industrial rooftops.</p>
+                </div>
+                <div className="rounded-2xl border border-border bg-white/72 p-5 sm:col-span-2">
+                  <p className="text-sm font-semibold text-foreground">Delhi NCR coverage</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">Site survey, product recommendation, EPC coordination, and structure execution through a single point of contact.</p>
                 </div>
               </div>
             </div>
@@ -288,7 +278,7 @@ export function SunPowerSite() {
 
       <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 lg:grid-cols-[0.78fr_1.22fr]">
-          <Reveal className="rounded-[2.25rem] border border-white/55 bg-[linear-gradient(135deg,rgba(14,31,64,0.95),rgba(28,104,242,0.9)_58%,rgba(61,163,90,0.88))] p-6 text-white shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
+          <Reveal className="rounded-[1.5rem] border border-white/55 bg-[linear-gradient(135deg,rgba(14,31,64,0.95),rgba(28,104,242,0.9)_58%,rgba(61,163,90,0.88))] p-6 text-white shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-blue-100">
               Trusted Execution
             </p>
@@ -450,14 +440,14 @@ export function SunPowerSite() {
                     index === 4 && "lg:col-span-2",
                   )}
                 >
-                  <div className="relative -mx-6 -mt-6 mb-6 h-52 overflow-hidden rounded-t-[2rem]">
+                  <div className="relative -mx-6 -mt-6 mb-6 aspect-video overflow-hidden rounded-t-[1.25rem] bg-slate-100">
                     <img
                       src={withBasePath(service.imageSrc)}
                       alt={service.imageAlt}
                       loading="lazy"
-                      className="h-full w-full object-cover object-center"
+                      decoding="async"
+                      className="h-full w-full object-contain object-center"
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,31,64,0.08),rgba(14,31,64,0.28))]" />
                   </div>
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-accent-blue">
                     <Icon className="h-5 w-5" />
@@ -476,7 +466,7 @@ export function SunPowerSite() {
                   </ul>
                   <div className="mt-6">
                     <a href="#contact" className="text-sm font-semibold text-accent-blue">
-                      Get a Free Quote
+                      Book a Site Survey
                     </a>
                   </div>
                 </motion.article>
@@ -505,14 +495,14 @@ export function SunPowerSite() {
                 transition={{ ...transitions.smooth, delay: index * 0.07 }}
                 className="card-panel overflow-hidden"
               >
-                <div className="relative h-52">
+                <div className="relative aspect-video bg-slate-100">
                   <img
                     src={withBasePath(project.imageSrc)}
                     alt={project.imageAlt}
                     loading="lazy"
-                    className="h-full w-full object-cover object-center"
+                    decoding="async"
+                    className="h-full w-full object-contain object-center"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,31,64,0.06),rgba(14,31,64,0.3))]" />
                 </div>
                 <div className="p-6">
                   <p className="text-sm uppercase tracking-[0.24em] text-accent-blue">
@@ -563,7 +553,7 @@ export function SunPowerSite() {
                   {section.cards.map((card) => (
                     <article
                       key={card.name}
-                      className="group overflow-hidden rounded-[2rem] border border-white/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,251,255,0.88))] shadow-[0_18px_50px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.1)]"
+                      className="group overflow-hidden rounded-[1.5rem] border border-white/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,251,255,0.88))] shadow-[0_18px_50px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.1)]"
                     >
                       <div className="flex h-full flex-col">
                         <div className="px-5 pt-5">
@@ -573,12 +563,13 @@ export function SunPowerSite() {
                         </div>
 
                         <div className="px-5 pt-4">
-                          <div className="aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50">
+                          <div className="aspect-video overflow-hidden rounded-[1rem] border border-slate-200 bg-slate-50">
                             <img
                               src={card.imageSrc.startsWith("/") ? withBasePath(card.imageSrc) : card.imageSrc}
                               alt={card.imageAlt}
                               loading="lazy"
-                              className="h-full w-full object-cover object-center"
+                              decoding="async"
+                              className="h-full w-full object-contain object-center"
                             />
                           </div>
                         </div>
@@ -638,37 +629,36 @@ export function SunPowerSite() {
           </Reveal>
 
           <Reveal delay={0.05} className="card-panel overflow-hidden p-3 sm:p-4">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.9rem]">
+            <div className="relative aspect-video overflow-hidden rounded-[1.25rem] bg-slate-100">
               <img
                 src={aboutPhotoSrc}
                 alt="Sun Power engineering team with rooftop solar installation equipment"
-                className="h-full w-full object-cover object-center"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-contain object-center"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,28,56,0.06),rgba(10,28,56,0.62))]" />
-              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                <div className="rounded-[1.7rem] border border-white/18 bg-white/12 p-5 text-white backdrop-blur-md">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full bg-emerald-100 px-3 py-2 text-sm font-semibold text-emerald-800">
-                      Authorized Loom Solar Dealer
-                    </span>
-                    <span className="rounded-full border border-white/16 bg-black/12 px-3 py-2 text-sm font-medium">
-                      Certificate no. 23873/DL/08/2026
-                    </span>
-                  </div>
-                  <p className="mt-4 max-w-lg text-base leading-7 text-white/90">
-                    Active across Delhi, Noida, Greater Noida, Ghaziabad, Gurugram, and Faridabad for rooftop solar, EPC delivery, and mounting structure execution.
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    {serviceAreas.map((area) => (
-                      <span
-                        key={area}
-                        className="rounded-full border border-white/14 bg-black/12 px-4 py-2 text-sm font-medium text-white"
-                      >
-                        {area}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+            </div>
+            <div className="mt-4 rounded-[1.25rem] border border-border bg-white/72 p-5">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-full bg-emerald-100 px-3 py-2 text-sm font-semibold text-emerald-800">
+                  Loom Solar dealer credential
+                </span>
+                <span className="rounded-full border border-border bg-white px-3 py-2 text-sm font-medium text-slate-700">
+                  Certificate no. 23873/DL/08/2026
+                </span>
+              </div>
+              <p className="mt-4 max-w-lg text-base leading-7 text-slate-700">
+                Active across Delhi, Noida, Greater Noida, Ghaziabad, Gurugram, and Faridabad for rooftop solar, EPC delivery, and mounting structure execution.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {serviceAreas.map((area) => (
+                  <span
+                    key={area}
+                    className="rounded-full border border-border bg-white px-4 py-2 text-sm font-medium text-slate-700"
+                  >
+                    {area}
+                  </span>
+                ))}
               </div>
             </div>
           </Reveal>
