@@ -62,14 +62,21 @@ const avatars = [
   { imageUrl: "https://i.pravatar.cc/150?u=6", name: "Priya Mehta" },
 ];
 
+function BrandName() {
+  return (
+    <span className="brand-name">
+      <span className="text-accent-blue">Sun</span>
+      <span className="text-accent-green">Power</span>
+    </span>
+  );
+}
+
 function BrandText({ children }: { children: string }) {
   return (
     <>
       {children.split(/(Sun Power)/g).map((part, index) =>
         part === "Sun Power" ? (
-          <span key={`${part}-${index}`} className="brand-name">
-            {part}
-          </span>
+          <BrandName key={`${part}-${index}`} />
         ) : (
           part
         ),
@@ -90,7 +97,7 @@ function SectionHeading({
   return (
     <div className="max-w-2xl space-y-4">
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">
-        {eyebrow}
+        <BrandText>{eyebrow}</BrandText>
       </p>
       <h2 className="text-balance text-3xl leading-tight font-semibold tracking-[-0.04em] text-foreground sm:text-4xl">
         <BrandText>{title}</BrandText>
@@ -1009,7 +1016,7 @@ export function SunPowerSite() {
       <footer className="border-t border-border bg-slate-950 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="brand-name text-lg text-white">Sun Power</p>
+            <p className="text-lg text-white"><BrandName /></p>
             <p className="mt-3 max-w-xl leading-6">
               <BrandText>
                 Solar energy dealership and EPC or MMS contracting firm serving Delhi NCR with
