@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   BadgeCheck,
@@ -68,8 +68,6 @@ function SectionHeading({
 export function SunPowerSite() {
   const router = useRouter();
   const shouldReduceMotion = useReducedMotion();
-  const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 500], shouldReduceMotion ? [0, 0] : [0, 70]);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const brandLogoSrc = `${basePath}/images/image.png`;
   const withBasePath = (src: string) => `${basePath}${src}`;
@@ -109,7 +107,7 @@ export function SunPowerSite() {
   }, [calculatorMode, city, mobile, monthlyBill, name, requirement, roofAreaSqFt]);
 
   return (
-    <main className="relative overflow-x-hidden">
+    <main className="relative isolate overflow-x-hidden">
       <ScrollProgress />
       <div className="absolute inset-x-0 top-0 -z-10 h-[40rem] bg-[radial-gradient(circle_at_top_left,_rgba(255,214,10,0.32),_transparent_35%),radial-gradient(circle_at_top_right,_rgba(24,99,242,0.2),_transparent_34%),linear-gradient(180deg,_#f9fcff_0%,_#eef7ec_52%,_#f6f9fb_100%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:72px_72px] opacity-35" />
@@ -124,7 +122,7 @@ export function SunPowerSite() {
         <MessageCircle className="h-6 w-6" />
       </a>
 
-      <div className="border-b border-white/40 bg-foreground text-white">
+      <div className="relative z-30 border-b border-white/40 bg-foreground text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 text-sm sm:px-6 lg:px-8">
           <p className="max-w-3xl text-white/84">
             Delhi NCR rooftop solar, subsidy guidance, EPC delivery, and MMS contracting.
@@ -136,8 +134,8 @@ export function SunPowerSite() {
         </div>
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-border/70 bg-white/70 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-40 border-b border-border/70 bg-white/92 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-4">
             <img
               src={brandLogoSrc}
@@ -146,7 +144,7 @@ export function SunPowerSite() {
               height={2160}
               loading="eager"
               decoding="async"
-              className="h-16 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:h-20"
+              className="h-auto w-36 object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:w-40 lg:w-32 xl:w-36"
             />
           </a>
 
@@ -175,7 +173,7 @@ export function SunPowerSite() {
         </div>
       </header>
 
-      <section id="home" className="mx-auto max-w-7xl px-4 pt-12 pb-10 sm:px-6 lg:px-8 lg:pt-16">
+      <section id="home" className="relative z-10 mx-auto max-w-7xl px-4 pt-10 pb-10 sm:px-6 lg:px-8 lg:pt-14">
         <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-12">
           <motion.div
             initial="hidden"
@@ -240,8 +238,7 @@ export function SunPowerSite() {
             animate="visible"
             variants={fadeUp}
             transition={{ ...transitions.smooth, delay: 0.08 }}
-            style={{ y: heroY }}
-            className="relative will-change-transform"
+            className="relative z-10"
           >
             <div className="card-panel p-6 sm:p-8">
               <div className="flex items-start justify-between gap-4">
@@ -276,7 +273,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
+      <section className="relative z-20 mx-auto max-w-7xl bg-[linear-gradient(180deg,rgba(249,252,255,0.78),rgba(244,249,241,0.72))] px-4 pb-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 lg:grid-cols-[0.78fr_1.22fr]">
           <Reveal className="rounded-[1.5rem] border border-white/55 bg-[linear-gradient(135deg,rgba(14,31,64,0.95),rgba(28,104,242,0.9)_58%,rgba(61,163,90,0.88))] p-6 text-white shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-blue-100">
@@ -304,22 +301,22 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <section className="relative z-30 mx-auto max-w-7xl bg-[linear-gradient(180deg,rgba(246,250,255,0.86),rgba(255,255,255,0.74))] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <Reveal className="card-panel p-7 sm:p-8">
+          <Reveal className="card-panel p-4 sm:p-8">
             <SectionHeading
               eyebrow="Calculator"
               title="Estimate Your Solar Savings"
               description="Calculate your recommended system size, cost band, and estimated payback period."
             />
 
-            <div className="mt-8 rounded-[2rem] bg-slate-950 p-6 text-white">
-              <div className="flex flex-wrap gap-3">
+            <div className="mt-5 rounded-[1.5rem] bg-slate-950 p-4 text-white sm:mt-8 sm:rounded-[2rem] sm:p-6">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={() => setCalculatorMode("bill")}
                   className={cn(
-                    "rounded-full px-4 py-2 text-sm font-semibold",
+                    "rounded-full px-4 py-1.5 text-sm font-semibold sm:py-2",
                     calculatorMode === "bill" ? "bg-white text-slate-950" : "bg-white/10 text-white",
                   )}
                 >
@@ -329,7 +326,7 @@ export function SunPowerSite() {
                   type="button"
                   onClick={() => setCalculatorMode("roof")}
                   className={cn(
-                    "rounded-full px-4 py-2 text-sm font-semibold",
+                    "rounded-full px-4 py-1.5 text-sm font-semibold sm:py-2",
                     calculatorMode === "roof" ? "bg-white text-slate-950" : "bg-white/10 text-white",
                   )}
                 >
@@ -337,18 +334,18 @@ export function SunPowerSite() {
                 </button>
               </div>
 
-              <div className="mt-6 flex items-center justify-between gap-4">
+              <div className="mt-4 flex items-center justify-between gap-4 sm:mt-6">
                 <div>
                   <p className="text-sm uppercase tracking-[0.24em] text-white/60">
                     {calculatorMode === "bill" ? "Monthly bill" : "Roof area"}
                   </p>
-                  <p className="tech-data mt-2 text-4xl font-semibold tracking-[-0.04em]">
+                  <p className="tech-data mt-1 text-3xl font-semibold sm:mt-2 sm:text-4xl">
                     {calculatorMode === "bill"
                       ? `Rs ${monthlyBill.toLocaleString("en-IN")}`
                       : `${roofAreaSqFt.toLocaleString("en-IN")} sq ft`}
                   </p>
                 </div>
-                <Calculator className="h-7 w-7 text-yellow-300" />
+                <Calculator className="h-6 w-6 text-yellow-300 sm:h-7 sm:w-7" />
               </div>
 
               <input
@@ -362,31 +359,31 @@ export function SunPowerSite() {
                     ? setMonthlyBill(Number(event.target.value))
                     : setRoofAreaSqFt(Number(event.target.value))
                 }
-                className="mt-8 h-2 w-full cursor-pointer appearance-none rounded-full bg-white/20 accent-yellow-300"
+                className="mt-5 h-2 w-full cursor-pointer appearance-none rounded-full bg-white/20 accent-yellow-300 sm:mt-8"
               />
 
-              <motion.div layout className="mt-8 grid gap-4 sm:grid-cols-2">
-                <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
+              <motion.div layout className="mt-5 grid gap-2 sm:mt-8 sm:grid-cols-2 sm:gap-4">
+                <motion.div layout className="rounded-[1rem] border border-white/10 bg-white/7 p-3 sm:rounded-[1.5rem] sm:p-4">
                   <p className="text-sm text-white/64">Estimated system size</p>
-                  <p className="tech-data mt-2 text-2xl font-semibold">{estimate.systemSizeKw} kW</p>
+                  <p className="tech-data mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">{estimate.systemSizeKw} kW</p>
                 </motion.div>
-                <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
+                <motion.div layout className="rounded-[1rem] border border-white/10 bg-white/7 p-3 sm:rounded-[1.5rem] sm:p-4">
                   <p className="text-sm text-white/64">Approx. roof needed</p>
-                  <p className="tech-data mt-2 text-2xl font-semibold">{estimate.roofAreaSqFt} sq ft</p>
+                  <p className="tech-data mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">{estimate.roofAreaSqFt} sq ft</p>
                 </motion.div>
-                <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
+                <motion.div layout className="rounded-[1rem] border border-white/10 bg-white/7 p-3 sm:rounded-[1.5rem] sm:p-4">
                   <p className="text-sm text-white/64">Indicative project cost</p>
-                  <p className="tech-data mt-2 text-2xl font-semibold">
+                  <p className="tech-data mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">
                     Rs {estimate.costMinLakhs}L - {estimate.costMaxLakhs}L
                   </p>
                 </motion.div>
-                <motion.div layout className="rounded-[1.5rem] border border-white/10 bg-white/7 p-4">
+                <motion.div layout className="rounded-[1rem] border border-white/10 bg-white/7 p-3 sm:rounded-[1.5rem] sm:p-4">
                   <p className="text-sm text-white/64">Approx. payback</p>
-                  <p className="tech-data mt-2 text-2xl font-semibold">{estimate.paybackYears} years</p>
+                  <p className="tech-data mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">{estimate.paybackYears} years</p>
                 </motion.div>
               </motion.div>
 
-              <div className="tech-data mt-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-4 text-sm text-white/80">
+              <div className="tech-data mt-2 rounded-[1rem] border border-white/10 bg-white/5 p-3 text-sm text-white/80 sm:mt-4 sm:rounded-[1.5rem] sm:p-4">
                 Planning-level annual savings estimate: Rs {estimate.annualSavingsLakhs}L
               </div>
             </div>
@@ -399,13 +396,13 @@ export function SunPowerSite() {
               description="A simple process built for fast quotations, accurate site surveys, and smooth project execution."
             />
 
-            <ol className="mt-8 space-y-4">
+            <ol className="mt-8 list-none space-y-4 p-0">
               {processSteps.map((step, index) => (
-                <li key={step} className="flex gap-4 rounded-[1.7rem] border border-border bg-white/78 p-5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-blue text-sm font-semibold text-white">
+                <li key={step} className="flex gap-4 rounded-[1.25rem] border border-border bg-white/78 p-4 sm:p-5">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-green text-sm font-bold text-white shadow-[0_10px_22px_rgba(61,163,90,0.24)]">
                     0{index + 1}
                   </div>
-                  <p className="pt-1 text-base leading-7 text-slate-700">{step}</p>
+                  <p className="text-base leading-7 text-slate-700">{step}</p>
                 </li>
               ))}
             </ol>
@@ -528,83 +525,92 @@ export function SunPowerSite() {
           />
 
           <div className="mt-12 space-y-8">
-            {productCatalogSections.map((section, sectionIndex) => (
-              <motion.div
-                key={section.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-120px" }}
-                variants={fadeUp}
-                transition={{ ...transitions.smooth, delay: sectionIndex * 0.04 }}
-                className="space-y-5"
-              >
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                  <div>
-                    <h3 className="text-2xl font-semibold tracking-tight text-foreground">
-                      {section.title}
-                    </h3>
-                    <p className="mt-2 max-w-3xl text-base leading-7 text-muted">
-                      {section.description}
-                    </p>
+            {productCatalogSections.map((section, sectionIndex) => {
+              const isBatterySection = section.title === "Batteries";
+
+              return (
+                <motion.div
+                  key={section.title}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-120px" }}
+                  variants={fadeUp}
+                  transition={{ ...transitions.smooth, delay: sectionIndex * 0.04 }}
+                  className="space-y-5"
+                >
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+                        {section.title}
+                      </h3>
+                      <p className="mt-2 max-w-3xl text-base leading-7 text-muted">
+                        {section.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="grid gap-5 lg:grid-cols-3">
-                  {section.cards.map((card) => (
-                    <article
-                      key={card.name}
-                      className="group overflow-hidden rounded-[1.5rem] border border-white/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,251,255,0.88))] shadow-[0_18px_50px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.1)]"
-                    >
-                      <div className="flex h-full flex-col">
-                        <div className="px-5 pt-5">
-                          <span className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white">
-                            {card.badge}
-                          </span>
-                        </div>
+                  <div className="grid gap-5 lg:grid-cols-3">
+                    {section.cards.map((card) => (
+                      <article
+                        key={card.name}
+                        className="group overflow-hidden rounded-[1.5rem] border border-white/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,251,255,0.88))] shadow-[0_18px_50px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.1)]"
+                      >
+                        <div className="flex h-full flex-col">
+                          <div className="px-5 pt-5">
+                            <span className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white">
+                              {card.badge}
+                            </span>
+                          </div>
 
-                        <div className="px-5 pt-4">
-                          <div className="aspect-video overflow-hidden rounded-[1rem] border border-slate-200 bg-slate-50">
-                            <img
-                              src={card.imageSrc.startsWith("/") ? withBasePath(card.imageSrc) : card.imageSrc}
-                              alt={card.imageAlt}
-                              loading="lazy"
-                              decoding="async"
-                              className="h-full w-full object-contain object-center"
-                            />
+                          <div className="px-5 pt-4">
+                            <div
+                              className={cn(
+                                "overflow-hidden rounded-[1rem] border border-slate-200 bg-slate-50",
+                                isBatterySection ? "aspect-square" : "aspect-video",
+                              )}
+                            >
+                              <img
+                                src={card.imageSrc.startsWith("/") ? withBasePath(card.imageSrc) : card.imageSrc}
+                                alt={card.imageAlt}
+                                loading="lazy"
+                                decoding="async"
+                                className="h-full w-full object-contain object-center"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="flex flex-1 flex-col px-5 pt-5 pb-5">
+                            <h4 className="text-xl font-semibold tracking-tight text-foreground">
+                              {card.name}
+                            </h4>
+                            <div className="mt-4 flex flex-wrap gap-2">
+                              {card.chips.map((chip) => (
+                                <span
+                                  key={chip}
+                                  className="tech-data rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-medium uppercase text-slate-700"
+                                >
+                                  {chip}
+                                </span>
+                              ))}
+                            </div>
+                            <a
+                              href={`${contact.whatsappHref}?text=${encodeURIComponent(
+                                `Hi Sun Power, please share the datasheet for ${card.name}.`,
+                              )}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="button-secondary mt-5 justify-center"
+                            >
+                              {card.ctaLabel}
+                            </a>
                           </div>
                         </div>
-
-                        <div className="flex flex-1 flex-col px-5 pt-5 pb-5">
-                          <h4 className="text-xl font-semibold tracking-tight text-foreground">
-                            {card.name}
-                          </h4>
-                          <div className="mt-4 flex flex-wrap gap-2">
-                            {card.chips.map((chip) => (
-                              <span
-                                key={chip}
-                                className="tech-data rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-medium uppercase text-slate-700"
-                              >
-                                {chip}
-                              </span>
-                            ))}
-                          </div>
-                          <a
-                            href={`${contact.whatsappHref}?text=${encodeURIComponent(
-                              `Hi Sun Power, please share the datasheet for ${card.name}.`,
-                            )}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="button-secondary mt-5 justify-center"
-                          >
-                            {card.ctaLabel}
-                          </a>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                      </article>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -641,7 +647,7 @@ export function SunPowerSite() {
             <div className="mt-4 rounded-[1.25rem] border border-border bg-white/72 p-5">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="rounded-full bg-emerald-100 px-3 py-2 text-sm font-semibold text-emerald-800">
-                  Loom Solar dealer credential
+                  Product credential
                 </span>
                 <span className="rounded-full border border-border bg-white px-3 py-2 text-sm font-medium text-slate-700">
                   Certificate no. 23873/DL/08/2026

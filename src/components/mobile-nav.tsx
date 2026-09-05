@@ -27,9 +27,9 @@ export function MobileNav({
         aria-expanded={open}
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={onToggle}
-        className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-[0_10px_24px_rgba(15,23,42,0.08)] touch-manipulation"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white p-2 text-slate-950 shadow-sm hover:border-accent-blue/30 hover:shadow-md touch-manipulation"
       >
-        {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        {open ? <X className="h-5 w-5 stroke-[2.4]" /> : <Menu className="h-5 w-5 stroke-[2.4]" />}
       </button>
 
       <AnimatePresence>

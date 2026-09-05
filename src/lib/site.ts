@@ -8,7 +8,7 @@ export const contact = {
     "Office No. 3, B-47/A, Lane No. 6, Joshi Colony, I.P. Extension, Delhi - 110092",
   mapsHref: "https://maps.app.goo.gl/MgfvQ3EPFBjs8dBX7?g_st=aw",
   mapsEmbedHref:
-    "https://www.google.com/maps?q=Office+No.+3,+B-47%2FA,+Lane+No.+6,+Joshi+Colony,+I.P.+Extension,+Delhi+-+110092&z=15&output=embed",
+    "https://www.google.com/maps?q=Sun%20Power%2C%20Office%20No.%203%2C%20B-47%2FA%2C%20Lane%20No.%206%2C%20Joshi%20Colony%2C%20I.P.%20Extension%2C%20Delhi%20-%20110092&z=17&output=embed",
   gstin: "07BQKPV2646A1ZS",
 };
 
@@ -30,7 +30,7 @@ export const stats = [
 ];
 
 export const trustSignals = [
-  "Dealer certificate no. 23873/DL/08/2026",
+  "Verified product guidance for residential and commercial buyers",
   "Rooftop and ground-mounted solar project execution",
   "Subsidy guidance for eligible homeowners",
   "Site surveys, EPC delivery, and MMS contracting across Delhi NCR",
@@ -43,7 +43,7 @@ export const aboutHighlights = [
       "Sun Power is a Delhi NCR solar dealership and EPC or MMS contracting firm delivering rooftop and ground-mounted projects for homes, businesses, and industrial facilities.",
   },
   {
-    title: "Dealer credential",
+    title: "Product credential",
     detail:
       "Sun Power holds Loom Solar dealer certificate no. 23873/DL/08/2026, valid till August 31, 2028.",
   },
@@ -130,6 +130,19 @@ export type ProductCard = {
   ctaLabel: string;
 };
 
+const equipmentPlaceholder = (title: string, tone: "green" | "yellow" | "blue" | "slate") => {
+  const palettes = {
+    green: ["#ecfdf5", "#d1fae5", "#166534"],
+    yellow: ["#fffbeb", "#fef3c7", "#854d0e"],
+    blue: ["#eff6ff", "#dbeafe", "#1e3a8a"],
+    slate: ["#f8fafc", "#e2e8f0", "#334155"],
+  } as const;
+  const [start, end, ink] = palettes[tone];
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="${title}"><defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${start}"/><stop offset="1" stop-color="${end}"/></linearGradient></defs><rect width="800" height="600" rx="42" fill="url(#bg)"/><rect x="158" y="120" width="484" height="292" rx="28" fill="white" fill-opacity=".72" stroke="${ink}" stroke-opacity=".16" stroke-width="4"/><path d="M190 180h420M190 240h420M190 300h420M190 360h420M260 140v252M400 140v252M540 140v252" stroke="${ink}" stroke-opacity=".18" stroke-width="4"/><circle cx="620" cy="118" r="42" fill="#ffd60a" fill-opacity=".88"/><text x="400" y="488" fill="${ink}" font-family="Manrope, Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle">${title}</text></svg>`;
+
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+};
+
 export const productCatalogSections: Array<{
   title: string;
   description: string;
@@ -142,36 +155,32 @@ export const productCatalogSections: Array<{
       {
         name: "Shark 550 Mono PERC",
         badge: "Loom Solar • Shark Series",
-        imageSrc:
-          "https://placehold.co/800x600/e8f7ec/0e1f40?text=Loom+Solar+Shark+550",
-        imageAlt: "Placeholder panel card for Loom Solar Shark 550 Mono PERC module.",
+        imageSrc: equipmentPlaceholder("Loom Solar Shark 550", "green"),
+        imageAlt: "Loom Solar Shark 550 Mono PERC solar panel card.",
         chips: ["550 Wp", "Mono PERC", "10Y product", "25Y performance"],
         ctaLabel: "Request Datasheet",
       },
       {
         name: "Tata Power Solar Rooftop Modules",
         badge: "Tata Power Solar • Rooftop",
-        imageSrc:
-          "https://placehold.co/800x600/f8f5de/0e1f40?text=Tata+Rooftop+Modules",
-        imageAlt: "Placeholder panel card for Tata Power Solar rooftop modules.",
+        imageSrc: equipmentPlaceholder("Tata Rooftop Modules", "yellow"),
+        imageAlt: "Tata Power Solar rooftop module card.",
         chips: ["540-550 Wp", "Mono PERC", "25Y module coverage", "Home & C&I"],
         ctaLabel: "Request Datasheet",
       },
       {
         name: "Adani Shine TOPCon Modules",
         badge: "Adani Solar • Shine Series",
-        imageSrc:
-          "https://placehold.co/800x600/e7f0fb/0e1f40?text=Adani+Shine+TOPCon",
-        imageAlt: "Placeholder panel card for Adani Shine TOPCon modules.",
+        imageSrc: equipmentPlaceholder("Adani Shine TOPCon", "blue"),
+        imageAlt: "Adani Shine TOPCon solar module card.",
         chips: ["565-590 Wp", "TOPCon", "Utility-grade build", "Datasheet on request"],
         ctaLabel: "Request Datasheet",
       },
       {
         name: "Waaree 540 Mono PERC DCR",
         badge: "Waaree • Mono PERC",
-        imageSrc:
-          "https://placehold.co/800x600/ecf5ff/0e1f40?text=Waaree+540+DCR",
-        imageAlt: "Placeholder panel card for Waaree 540 Mono PERC DCR module.",
+        imageSrc: equipmentPlaceholder("Waaree 540 DCR", "blue"),
+        imageAlt: "Waaree 540 Mono PERC DCR solar module card.",
         chips: ["540 Wp", "Mono PERC DCR", "12Y product", "27Y output"],
         ctaLabel: "Request Datasheet",
       },
@@ -200,9 +209,8 @@ export const productCatalogSections: Array<{
       {
         name: "CAML 10.24 kWh Battery",
         badge: "Loom Solar • C&I Storage",
-        imageSrc:
-          "https://placehold.co/800x600/f8fafc/334155?text=CAML+10.24+kWh+Storage",
-        imageAlt: "Placeholder illustration for a commercial battery storage unit.",
+        imageSrc: equipmentPlaceholder("CAML 10.24 kWh Storage", "slate"),
+        imageAlt: "CAML 10.24 kWh commercial battery storage card.",
         chips: ["51.2V / 200Ah", "LiFePO4", "5Y warranty", "High backup"],
         ctaLabel: "Request Datasheet",
       },
@@ -215,27 +223,24 @@ export const productCatalogSections: Array<{
       {
         name: "Fusion 5 kW Hybrid Inverter",
         badge: "Loom Solar • Hybrid",
-        imageSrc:
-          "https://placehold.co/800x600/f8fafc/334155?text=Fusion+5+kW+Hybrid+Inverter",
-        imageAlt: "Placeholder illustration for a hybrid solar inverter.",
+        imageSrc: equipmentPlaceholder("Fusion 5 kW Hybrid", "slate"),
+        imageAlt: "Fusion 5 kW hybrid solar inverter card.",
         chips: ["5 kW", "48V hybrid", "5Y warranty", "Home / small office"],
         ctaLabel: "Request Datasheet",
       },
       {
         name: "Fusion 10 kW On-Grid",
         badge: "Loom Solar • On-Grid",
-        imageSrc:
-          "https://placehold.co/800x600/f8fafc/334155?text=Fusion+10+kW+On-Grid",
-        imageAlt: "Placeholder illustration for an on-grid inverter.",
+        imageSrc: equipmentPlaceholder("Fusion 10 kW On-Grid", "slate"),
+        imageAlt: "Fusion 10 kW on-grid solar inverter card.",
         chips: ["10 kW", "3 phase", "10Y warranty", "Commercial rooftops"],
         ctaLabel: "Request Datasheet",
       },
       {
         name: "Fusion 20 kW On-Grid",
         badge: "Loom Solar • On-Grid",
-        imageSrc:
-          "https://placehold.co/800x600/f8fafc/334155?text=Fusion+20+kW+On-Grid",
-        imageAlt: "Placeholder illustration for a larger commercial inverter.",
+        imageSrc: equipmentPlaceholder("Fusion 20 kW On-Grid", "slate"),
+        imageAlt: "Fusion 20 kW commercial on-grid solar inverter card.",
         chips: ["20 kW", "On-grid", "10Y warranty", "C&I usage"],
         ctaLabel: "Request Datasheet",
       },
