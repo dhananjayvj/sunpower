@@ -169,7 +169,7 @@ export function SunPowerSite() {
   return (
     <main className="relative isolate overflow-x-hidden pb-20 md:pb-0">
       <ScrollProgress />
-      <div className="absolute inset-x-0 top-0 -z-10 h-[40rem] bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_40%,#f1f5f9_100%)]" />
+      <div className="brand-gradient absolute inset-x-0 top-0 -z-10 h-[40rem]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(15,23,42,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
       <a
@@ -240,7 +240,7 @@ export function SunPowerSite() {
 
             <motion.div variants={fadeUp} className="space-y-5">
               <div className="mx-auto w-full max-w-5xl text-center">
-                <h1 className="text-3xl leading-tight font-semibold tracking-[-0.06em] text-foreground whitespace-normal md:text-5xl lg:text-6xl">
+                <h1 className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-3xl leading-tight font-semibold tracking-[-0.06em] text-transparent whitespace-normal md:text-5xl lg:text-6xl">
                   <span className="block">
                     <TextAnimate animation="blurInUp" by="word" once>
                       Clean, Reliable Solar Energy
@@ -258,7 +258,7 @@ export function SunPowerSite() {
                   </span>
                 </h1>
               </div>
-              <p className="mx-auto max-w-2xl text-pretty text-center text-lg leading-8 text-slate-700/92 sm:text-xl">
+              <p className="mx-auto max-w-2xl text-pretty text-center text-lg leading-8 text-slate-200 sm:text-xl">
                 End-to-end rooftop installations, PM Surya Ghar support, Loom Solar product access,
                 and commercial EPC contracting.
               </p>
@@ -287,10 +287,10 @@ export function SunPowerSite() {
               <span className="rounded-full border border-white/70 bg-white/72 px-3 py-2 shadow-[0_8px_20px_rgba(15,23,42,0.05)]">
                 Rooftop solar, EPC delivery, and subsidy support under one team
               </span>
-              <a href="#resources" className="font-semibold text-accent-blue underline-offset-4 hover:underline">
+              <a href="#resources" className="font-semibold text-emerald-200 underline-offset-4 hover:text-emerald-100 hover:underline">
                 Learn how solar works
               </a>
-              <a href="#projects" className="font-semibold text-accent-blue underline-offset-4 hover:underline">
+              <a href="#projects" className="font-semibold text-emerald-200 underline-offset-4 hover:text-emerald-100 hover:underline">
                 View recent project types
               </a>
             </motion.div>
