@@ -23,10 +23,47 @@ export const navigation = [
   { href: "#contact", label: "Contact" },
 ];
 
-export const stats = [
-  { value: "3-5 kW", label: "Typical home rooftop systems" },
-  { value: "1 MW", label: "Commercial and industrial project capacity" },
-  { value: "Delhi NCR", label: "Primary service region" },
+export const testimonials = [
+  {
+    name: "Rajesh Sharma",
+    location: "I.P. Extension, Delhi",
+    system: "5 kW Rooftop System",
+    initials: "RS",
+    quote:
+      "Sun Power handled our DISCOM net-metering and PM Surya Ghar paperwork from start to finish. Our power bill dropped from Rs 7,200 to near zero within two billing cycles.",
+  },
+  {
+    name: "Amit Aggarwal",
+    location: "Sector 62, Noida",
+    system: "25 kW Commercial Setup",
+    initials: "AA",
+    quote:
+      "Installed a 25 kW on-grid setup on our office terrace. The team was punctual, used authentic Loom Solar panels, and the structure fabrication was remarkably sturdy.",
+  },
+  {
+    name: "Sunita Verma",
+    location: "Rohini Sector 13, Delhi",
+    system: "3 kW Residential",
+    initials: "SV",
+    quote:
+      "Very transparent quotation with zero hidden fees. The subsidy workflow was clearly explained, and installation took just three days with clean, concealed wiring.",
+  },
+  {
+    name: "Vikram Malhotra",
+    location: "DLF Phase 3, Gurugram",
+    system: "10 kW Hybrid System",
+    initials: "VM",
+    quote:
+      "Opted for a hybrid setup with CAML lithium batteries. Power outages during peak summer are no longer an issue, and generation tracking works seamlessly.",
+  },
+  {
+    name: "Neeraj Gupta",
+    location: "Sahibabad Industrial Area, Ghaziabad",
+    system: "100 kW Industrial Project",
+    initials: "NG",
+    quote:
+      "Solid EPC execution. They engineered custom elevated mounting structures for our factory shed and synchronized with the grid right on schedule.",
+  },
 ];
 
 export const trustSignals = [

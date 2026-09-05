@@ -116,3 +116,49 @@ a:active {
 summary::-webkit-details-marker {
   display: none;
 }
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-marquee-track {
+  animation: testimonial-marquee 42s linear infinite;
+  will-change: transform;
+}
+
+.testimonial-marquee-viewport:hover .testimonial-marquee-track,
+.testimonial-marquee-viewport:focus-within .testimonial-marquee-track {
+  animation-play-state: paused;
+}
+
+.testimonial-marquee-track--reduced {
+  animation: none;
+}
+
+@keyframes testimonial-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonial-marquee-track {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-marquee-track {
+    animation: none;
+    will-change: auto;
+  }
+}

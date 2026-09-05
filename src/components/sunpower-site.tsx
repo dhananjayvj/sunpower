@@ -16,9 +16,9 @@ import {
   Leaf,
   MapPin,
   MessageCircle,
-  Phone,
   ShieldCheck,
   SunMedium,
+  Star,
 } from "lucide-react";
 import { MobileNav } from "@/components/mobile-nav";
 import { Reveal } from "@/components/reveal";
@@ -37,7 +37,7 @@ import {
   resourceCards,
   serviceAreas,
   services,
-  stats,
+  testimonials,
   trustSignals,
 } from "@/lib/site";
 
@@ -69,7 +69,7 @@ export function SunPowerSite() {
   const router = useRouter();
   const shouldReduceMotion = useReducedMotion();
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const brandLogoSrc = `${basePath}/images/image.png`;
+  const brandLogoSrc = `${basePath}/images/logo.jpg`;
   const withBasePath = (src: string) => `${basePath}${src}`;
   const aboutPhotoSrc = withBasePath("/images/install-team.webp");
 
@@ -107,7 +107,7 @@ export function SunPowerSite() {
   }, [calculatorMode, city, mobile, monthlyBill, name, requirement, roofAreaSqFt]);
 
   return (
-    <main className="relative isolate overflow-x-hidden">
+    <main className="relative isolate overflow-x-hidden pb-20 md:pb-0">
       <ScrollProgress />
       <div className="absolute inset-x-0 top-0 -z-10 h-[40rem] bg-[radial-gradient(circle_at_top_left,_rgba(255,214,10,0.32),_transparent_35%),radial-gradient(circle_at_top_right,_rgba(24,99,242,0.2),_transparent_34%),linear-gradient(180deg,_#f9fcff_0%,_#eef7ec_52%,_#f6f9fb_100%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:72px_72px] opacity-35" />
@@ -122,29 +122,17 @@ export function SunPowerSite() {
         <MessageCircle className="h-6 w-6" />
       </a>
 
-      <div className="relative z-30 border-b border-white/40 bg-foreground text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 text-sm sm:px-6 lg:px-8">
-          <p className="max-w-3xl text-white/84">
-            Delhi NCR rooftop solar, subsidy guidance, EPC delivery, and MMS contracting.
-          </p>
-          <a className="hidden items-center gap-2 font-medium md:inline-flex" href={contact.phoneHref}>
-            <Phone className="h-4 w-4" />
-            {contact.phoneDisplay}
-          </a>
-        </div>
-      </div>
-
       <header className="sticky top-0 z-40 border-b border-border/70 bg-white/92 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-4">
             <img
               src={brandLogoSrc}
               alt="Sun Power Renewable Energy Solutions logo"
-              width={2161}
-              height={2160}
+              width={1930}
+              height={1001}
               loading="eager"
               decoding="async"
-              className="h-auto w-36 object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:w-40 lg:w-32 xl:w-36"
+              className="h-9 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:h-10 lg:h-12"
             />
           </a>
 
@@ -223,14 +211,6 @@ export function SunPowerSite() {
               </a>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="grid gap-4 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="card-panel p-5">
-                  <p className="tech-data text-3xl font-semibold tracking-tight text-foreground">{stat.value}</p>
-                  <p className="mt-2 text-sm leading-6 text-muted">{stat.label}</p>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -301,7 +281,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section className="relative z-30 mx-auto max-w-7xl bg-[linear-gradient(180deg,rgba(246,250,255,0.86),rgba(255,255,255,0.74))] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <section id="calculator" className="relative z-30 mx-auto max-w-7xl bg-[linear-gradient(180deg,rgba(246,250,255,0.86),rgba(255,255,255,0.74))] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal className="card-panel p-4 sm:p-8">
             <SectionHeading
@@ -461,14 +441,57 @@ export function SunPowerSite() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6">
-                    <a href="#contact" className="text-sm font-semibold text-accent-blue">
-                      Book a Site Survey
-                    </a>
-                  </div>
                 </motion.article>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="border-y border-border/70 bg-[linear-gradient(180deg,rgba(244,249,241,0.72),rgba(232,242,251,0.68))]">
+        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Customer Stories"
+            title="What Delhi NCR customers say after installation"
+            description="Real project experiences from homeowners, businesses, and industrial teams who worked with Sun Power."
+          />
+
+          <div className="testimonial-marquee-viewport group mt-10 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none">
+            <div
+              className={cn(
+                "testimonial-marquee-track flex w-max gap-4 sm:gap-6",
+                shouldReduceMotion ? "testimonial-marquee-track--reduced" : "",
+              )}
+            >
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <article
+                  key={`${testimonial.name}-${index}`}
+                  aria-hidden={index >= testimonials.length}
+                  className="flex min-w-[300px] max-w-[380px] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:min-w-[360px]"
+                >
+                  <div>
+                    <div className="flex items-center gap-1 text-amber-400" aria-label="5 out of 5 stars">
+                      {Array.from({ length: 5 }).map((_, starIndex) => (
+                        <Star key={starIndex} className="h-4 w-4 fill-current" aria-hidden="true" />
+                      ))}
+                    </div>
+                    <p className="mt-5 text-base leading-7 text-slate-700">&ldquo;{testimonial.quote}&rdquo;</p>
+                  </div>
+                  <div className="mt-8 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-sm font-semibold text-white">
+                      {testimonial.initials}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">{testimonial.name}</p>
+                      <p className="text-sm text-muted">{testimonial.location}</p>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent-blue">
+                        Verified buyer · {testimonial.system}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -889,11 +912,11 @@ export function SunPowerSite() {
         </div>
       </footer>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-white/96 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-16px_40px_rgba(15,23,42,0.12)] md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-slate-200 bg-white/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
         <div className="mx-auto flex max-w-xl gap-3">
-          <a href={contact.phoneHref} className="button-secondary min-w-0 flex-1 justify-center">
-            <Phone className="h-4 w-4" />
-            Call
+          <a href="#calculator" className="button-primary min-w-0 flex-1 justify-center">
+            <Calculator className="h-4 w-4" />
+            Get a Free Quote
           </a>
           <a
             href={whatsappQuoteHref}
