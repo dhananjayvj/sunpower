@@ -381,7 +381,7 @@ export function SunPowerSite() {
       <section className="mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:mt-24 lg:px-8">
         <div className="rounded-2xl bg-white/95 p-8 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
           <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
-          <Reveal className="rounded-[1.5rem] border border-accent-blue-deep/20 bg-accent-blue-deep p-8 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] sm:p-10">
+          <div className="rounded-[1.5rem] border border-accent-blue-deep/20 bg-accent-blue-deep p-8 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-blue-100">
               Trusted Execution
             </p>
@@ -391,22 +391,21 @@ export function SunPowerSite() {
             <p className="mt-4 max-w-md text-base leading-7 text-blue-50/92">
               Built for homeowners and businesses that want clear guidance, clean installation, and dependable after-survey support across Delhi NCR.
             </p>
-          </Reveal>
+          </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-6">
             {trustSignals.map((signal, index) => {
               const Icon = trustSignalIcons[index];
 
               return (
-              <Reveal
+              <div
                 key={signal}
-                delay={index * 0.04}
                 className="flex min-h-36 flex-col justify-between rounded-xl border border-border bg-slate-50/80 p-4 shadow-sm"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-accent-green shadow-sm">
                   <Icon className="h-5 w-5" />
                 </div>
                 <p className="mt-5 text-base leading-7 text-slate-700">{signal}</p>
-              </Reveal>
+              </div>
               );
             })}
           </div>
@@ -414,7 +413,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="calculator" className="relative z-30 mx-auto mt-16 max-w-7xl bg-bg-foundation px-4 py-6 sm:px-6 lg:mt-24 lg:px-8 lg:py-8">
+      <section id="calculator" className="mx-auto mt-24 max-w-7xl bg-bg-foundation px-4 py-6 sm:px-6 lg:mt-32 lg:px-8 lg:py-8">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal className="card-panel p-4 sm:p-8">
             <SectionHeading
