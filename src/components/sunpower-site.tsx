@@ -13,7 +13,9 @@ import {
   ChevronRight,
   Factory,
   FileText,
-  Leaf,
+  Home,
+  IndianRupee,
+  Map,
   MapPin,
   MessageCircle,
   ShieldCheck,
@@ -49,14 +51,15 @@ import {
 } from "@/lib/site";
 
 const serviceIcons = [SunMedium, Factory, ShieldCheck, BatteryCharging, FileText];
+const trustSignalIcons = [ShieldCheck, Home, IndianRupee, Map];
 
 const avatars = [
-  { imageUrl: "https://avatars.githubusercontent.com/u/16860528", profileUrl: "https://github.com/dillionverma" },
-  { imageUrl: "https://avatars.githubusercontent.com/u/20110627", profileUrl: "https://github.com/tomonarifeehan" },
-  { imageUrl: "https://avatars.githubusercontent.com/u/106103625", profileUrl: "https://github.com/BankkRoll" },
-  { imageUrl: "https://avatars.githubusercontent.com/u/59228569", profileUrl: "https://github.com/safethecode" },
-  { imageUrl: "https://avatars.githubusercontent.com/u/59442788", profileUrl: "https://github.com/sanjay-mali" },
-  { imageUrl: "https://avatars.githubusercontent.com/u/89768406", profileUrl: "https://github.com/itsarghyadas" },
+  { imageUrl: "https://i.pravatar.cc/150?u=1", name: "Rajesh Sharma" },
+  { imageUrl: "https://i.pravatar.cc/150?u=2", name: "Amit Aggarwal" },
+  { imageUrl: "https://i.pravatar.cc/150?u=3", name: "Sunita Verma" },
+  { imageUrl: "https://i.pravatar.cc/150?u=4", name: "Vikram Malhotra" },
+  { imageUrl: "https://i.pravatar.cc/150?u=5", name: "Neeraj Gupta" },
+  { imageUrl: "https://i.pravatar.cc/150?u=6", name: "Priya Mehta" },
 ];
 
 function SectionHeading({
@@ -301,16 +304,22 @@ export function SunPowerSite() {
             </p>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {trustSignals.map((signal, index) => (
+            {trustSignals.map((signal, index) => {
+              const Icon = trustSignalIcons[index];
+
+              return (
               <Reveal
                 key={signal}
                 delay={index * 0.04}
-                className="card-panel flex min-h-36 flex-col justify-between p-5"
+                className="flex min-h-36 flex-col justify-between rounded-xl border border-border bg-slate-50/80 p-4 shadow-sm"
               >
-                <Leaf className="h-5 w-5 text-accent-green" />
-                <p className="mt-6 text-base leading-7 text-slate-700">{signal}</p>
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-accent-green shadow-sm">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <p className="mt-5 text-base leading-7 text-slate-700">{signal}</p>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -782,8 +791,8 @@ export function SunPowerSite() {
       </section>
 
       <section id="faq" className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-[2rem] border border-white/55 bg-white/62 p-7 shadow-[0_18px_46px_rgba(15,23,42,0.05)] backdrop-blur-sm sm:p-8">
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <div className="w-full min-w-0 rounded-[2rem] border border-white/55 bg-white/62 p-7 shadow-[0_18px_46px_rgba(15,23,42,0.05)] backdrop-blur-sm sm:p-8">
             <SectionHeading
               eyebrow="FAQs"
               title="Common questions from solar buyers"
@@ -791,7 +800,7 @@ export function SunPowerSite() {
             />
           </div>
 
-          <div className="space-y-4">
+          <div className="mx-auto w-full max-w-3xl min-w-0 space-y-4">
             {faqs.map((item) => (
               <details
                 key={item.question}
