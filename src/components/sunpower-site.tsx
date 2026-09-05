@@ -214,11 +214,23 @@ export function SunPowerSite() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="space-y-5">
-              <div className="mx-auto w-full max-w-5xl text-center text-balance">
+              <div className="mx-auto w-full max-w-5xl text-center">
                 <h1 className="text-3xl leading-tight font-semibold tracking-[-0.06em] text-foreground whitespace-normal md:text-5xl lg:text-6xl">
-                  <TextAnimate animation="blurInUp" by="character" once>
-                    Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
-                  </TextAnimate>
+                  <span className="block">
+                    <TextAnimate animation="blurInUp" by="word" once>
+                      Clean, Reliable Solar Energy
+                    </TextAnimate>
+                  </span>
+                  <span className="block">
+                    <TextAnimate animation="blurInUp" by="word" once>
+                      for Homes & Businesses
+                    </TextAnimate>
+                  </span>
+                  <span className="block">
+                    <TextAnimate animation="blurInUp" by="word" once>
+                      across Delhi NCR
+                    </TextAnimate>
+                  </span>
                 </h1>
               </div>
               <p className="mx-auto max-w-2xl text-pretty text-center text-lg leading-8 text-slate-700/92 sm:text-xl">

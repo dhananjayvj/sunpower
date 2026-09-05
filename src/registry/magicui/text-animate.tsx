@@ -10,11 +10,11 @@ export function TextAnimate({
 }: {
   children: string;
   animation?: "blurInUp";
-  by?: "character";
+  by?: "character" | "word";
   once?: boolean;
 }) {
   const shouldReduceMotion = useReducedMotion();
-  const characters = by === "character" ? Array.from(children) : [children];
+  const segments = by === "character" ? Array.from(children) : children.split(/(\s+)/);
 
   return (
     <motion.span
@@ -32,9 +32,9 @@ export function TextAnimate({
         },
       }}
     >
-      {characters.map((character, index) => (
+      {segments.map((segment, index) => (
         <motion.span
-          key={`${character}-${index}`}
+          key={`${segment}-${index}`}
           aria-hidden="true"
           className="inline-block"
           variants={
@@ -51,7 +51,7 @@ export function TextAnimate({
                 }
           }
         >
-          {character === " " ? "\u00a0" : character}
+          {segment.trim() === "" ? segment.replace(/\s/g, "\u00a0") : segment}
         </motion.span>
       ))}
     </motion.span>
