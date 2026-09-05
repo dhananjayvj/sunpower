@@ -64,7 +64,7 @@ const avatars = [
 
 function BrandName() {
   return (
-    <span className="brand-name">
+    <span className="brand-name michroma-regular">
       <span className="text-accent-blue">SUN</span>
       <span className="text-accent-green">POWER</span>
     </span>

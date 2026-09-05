@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
 @import "tailwindcss";
 @import "@fontsource/manrope/400.css";
 @import "@fontsource/manrope/500.css";
 @import "@fontsource/manrope/600.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/500.css";
-@import "@fontsource/michroma/400.css";
 
 :root {
   --background: #eef5ee;
@@ -115,9 +115,13 @@ a:active {
 }
 
 .brand-name {
-  font-family: "Michroma", var(--font-sans), sans-serif;
-  font-weight: 400;
   letter-spacing: -0.025em;
+}
+
+.michroma-regular {
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 summary::-webkit-details-marker {
