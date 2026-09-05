@@ -169,15 +169,15 @@ export function SunPowerSite() {
   return (
     <main className="relative isolate overflow-x-hidden pb-20 md:pb-0">
       <ScrollProgress />
-      <div className="absolute inset-x-0 top-0 -z-10 h-[40rem] bg-[radial-gradient(circle_at_top_left,_rgba(255,214,10,0.32),_transparent_35%),radial-gradient(circle_at_top_right,_rgba(24,99,242,0.2),_transparent_34%),linear-gradient(180deg,_#f9fcff_0%,_#eef7ec_52%,_#f6f9fb_100%)]" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:72px_72px] opacity-35" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[40rem] bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_40%,#f1f5f9_100%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(15,23,42,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
       <a
         href={whatsappQuoteHref}
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
-        className="fixed right-5 bottom-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#22c55e] text-white shadow-[0_18px_45px_rgba(34,197,94,0.38)] hover:scale-[1.04] hover:shadow-[0_22px_52px_rgba(34,197,94,0.46)] active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#22c55e] md:inline-flex"
+        className="fixed right-5 bottom-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#22C55E] text-white shadow-[0_18px_45px_rgba(34,197,94,0.2)] hover:scale-[1.04] hover:bg-[#16a34a] hover:shadow-[0_22px_52px_rgba(34,197,94,0.24)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 md:inline-flex"
       >
         <MessageCircle className="h-6 w-6" />
       </a>
@@ -201,7 +201,7 @@ export function SunPowerSite() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-slate-700 transition-colors hover:text-accent-blue"
+                className="text-sm font-medium text-accent-blue-deep transition-colors hover:text-accent-blue"
               >
                 {item.label}
               </a>
@@ -232,7 +232,7 @@ export function SunPowerSite() {
           >
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-white/72 px-4 py-2 text-sm font-medium text-emerald-900 shadow-[0_10px_30px_rgba(255,255,255,0.5)]"
+              className="inline-flex items-center gap-2 rounded-full border border-accent-green/35 bg-emerald-50 px-4 py-2 text-sm font-medium text-accent-green-dark"
             >
               <BadgeCheck className="h-4 w-4 text-emerald-600" />
               Authorized Loom Solar Dealer
@@ -273,11 +273,11 @@ export function SunPowerSite() {
             className="space-y-7 lg:col-span-1"
           >
             <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
-              <a href="#contact" className="button-primary">
+              <a href="#contact" className="button-whatsapp">
                 Book a Free Site Survey
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a href={whatsappQuoteHref} target="_blank" rel="noreferrer" className="button-secondary">
+              <a href={whatsappQuoteHref} target="_blank" rel="noreferrer" className="button-whatsapp">
                 Chat on WhatsApp
                 <MessageCircle className="h-4 w-4" />
               </a>
@@ -336,9 +336,9 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section className="relative z-20 mx-auto max-w-7xl bg-[linear-gradient(180deg,rgba(249,252,255,0.78),rgba(244,249,241,0.72))] px-4 pb-4 sm:px-6 lg:px-8">
+      <section className="relative z-20 mx-auto max-w-7xl bg-bg-foundation px-4 pb-4 sm:px-6 lg:px-8">
         <div className="grid gap-4 lg:grid-cols-[0.78fr_1.22fr]">
-          <Reveal className="rounded-[1.5rem] border border-white/55 bg-[linear-gradient(135deg,rgba(14,31,64,0.95),rgba(28,104,242,0.9)_58%,rgba(61,163,90,0.88))] p-6 text-white shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
+          <Reveal className="rounded-[1.5rem] border border-accent-blue-deep/20 bg-accent-blue-deep p-6 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-blue-100">
               Trusted Execution
             </p>
@@ -370,7 +370,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="calculator" className="relative z-30 mx-auto max-w-7xl bg-[linear-gradient(180deg,rgba(246,250,255,0.86),rgba(255,255,255,0.74))] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <section id="calculator" className="relative z-30 mx-auto max-w-7xl bg-bg-foundation px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal className="card-panel p-4 sm:p-8">
             <SectionHeading
@@ -379,7 +379,7 @@ export function SunPowerSite() {
               description="Calculate your recommended system size, cost band, and estimated payback period."
             />
 
-            <div className="mt-5 rounded-[1.5rem] bg-slate-950 p-4 text-white sm:mt-8 sm:rounded-[2rem] sm:p-6">
+            <div className="mt-5 rounded-[1.5rem] bg-accent-blue-deep p-4 text-white sm:mt-8 sm:rounded-[2rem] sm:p-6">
               <div className="flex flex-wrap gap-2 sm:gap-3">
                 <button
                   type="button"
@@ -405,7 +405,7 @@ export function SunPowerSite() {
 
               <div className="mt-4 flex items-center justify-between gap-4 sm:mt-6">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.24em] text-white/60">
+                  <p className="text-sm uppercase tracking-[0.24em] text-slate-300">
                     {calculatorMode === "bill" ? "Monthly bill" : "Roof area"}
                   </p>
                   <p className="tech-data mt-1 text-3xl font-semibold sm:mt-2 sm:text-4xl">
@@ -414,7 +414,7 @@ export function SunPowerSite() {
                       : `${roofAreaSqFt.toLocaleString("en-IN")} sq ft`}
                   </p>
                 </div>
-                <Calculator className="h-6 w-6 text-yellow-300 sm:h-7 sm:w-7" />
+                <Calculator className="h-6 w-6 text-accent-yellow sm:h-7 sm:w-7" />
               </div>
 
               <input
@@ -428,37 +428,38 @@ export function SunPowerSite() {
                     ? setMonthlyBill(Number(event.target.value))
                     : setRoofAreaSqFt(Number(event.target.value))
                 }
-                className="mt-5 h-2 w-full cursor-pointer appearance-none rounded-full bg-white/20 accent-yellow-300 sm:mt-8"
+                className="mt-5 h-2 w-full cursor-pointer appearance-none rounded-full bg-white/20 accent-green sm:mt-8"
               />
 
               <motion.div layout className="mt-5 grid gap-2 sm:mt-8 sm:grid-cols-2 sm:gap-4">
                 <motion.div layout className="rounded-[1rem] border border-white/10 bg-white/7 p-3 sm:rounded-[1.5rem] sm:p-4">
-                  <p className="text-sm text-white/64">Estimated system size</p>
+                  <p className="text-sm text-slate-300">Estimated system size</p>
                   <p className="tech-data mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">{estimate.systemSizeKw} kW</p>
                 </motion.div>
                 <motion.div layout className="rounded-[1rem] border border-white/10 bg-white/7 p-3 sm:rounded-[1.5rem] sm:p-4">
-                  <p className="text-sm text-white/64">Approx. roof needed</p>
+                  <p className="text-sm text-slate-300">Approx. roof needed</p>
                   <p className="tech-data mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">{estimate.roofAreaSqFt} sq ft</p>
                 </motion.div>
                 <motion.div layout className="rounded-[1rem] border border-white/10 bg-white/7 p-3 sm:rounded-[1.5rem] sm:p-4">
-                  <p className="text-sm text-white/64">Indicative project cost</p>
+                  <p className="text-sm text-slate-300">Indicative project cost</p>
                   <p className="tech-data mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">
                     Rs {estimate.costMinLakhs}L - {estimate.costMaxLakhs}L
                   </p>
                 </motion.div>
                 <motion.div layout className="rounded-[1rem] border border-white/10 bg-white/7 p-3 sm:rounded-[1.5rem] sm:p-4">
-                  <p className="text-sm text-white/64">Approx. payback</p>
-                  <p className="tech-data mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">{estimate.paybackYears} years</p>
+                  <p className="text-sm text-slate-300">Estimated Payback Period</p>
+                  <p className="tech-data mt-1 text-xl font-bold text-white sm:mt-2 sm:text-2xl">{estimate.paybackYears} years</p>
                 </motion.div>
               </motion.div>
 
-              <div className="tech-data mt-2 rounded-[1rem] border border-white/10 bg-white/5 p-3 text-sm text-white/80 sm:mt-4 sm:rounded-[1.5rem] sm:p-4">
-                Planning-level annual savings estimate: Rs {estimate.annualSavingsLakhs}L
+              <div className="mt-2 rounded-[1rem] border border-emerald-400/20 bg-emerald-400/10 p-3 sm:mt-4 sm:rounded-[1.5rem] sm:p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">Estimated Annual Savings</p>
+                <p className="tech-data mt-1 text-2xl font-bold text-emerald-300">Rs {estimate.annualSavingsLakhs}L</p>
               </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.05} className="card-panel bg-[linear-gradient(180deg,_rgba(236,246,255,0.82),_rgba(255,255,255,0.96))] p-7 sm:p-8">
+          <Reveal delay={0.05} className="card-panel p-7 sm:p-8">
             <SectionHeading
               eyebrow="How It Works"
               title="From first enquiry to final installation"
@@ -468,7 +469,7 @@ export function SunPowerSite() {
             <ol className="mt-8 list-none space-y-4 p-0">
               {processSteps.map((step, index) => (
                 <li key={step} className="flex gap-4 rounded-[1.25rem] border border-border bg-white/78 p-4 sm:p-5">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-green text-sm font-bold text-white shadow-[0_10px_22px_rgba(61,163,90,0.24)]">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-green text-sm font-bold text-white shadow-[0_10px_22px_rgba(34,197,94,0.2)]">
                     0{index + 1}
                   </div>
                   <p className="text-base leading-7 text-slate-700">{step}</p>
@@ -533,7 +534,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="testimonials" className="border-y border-border/70 bg-[linear-gradient(180deg,rgba(244,249,241,0.72),rgba(232,242,251,0.68))]">
+      <section id="testimonials" className="border-y border-border/70 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Customer Stories"
@@ -652,7 +653,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="catalog" className="border-y border-border/70 bg-[linear-gradient(180deg,rgba(232,242,251,0.72),rgba(244,249,241,0.66))] backdrop-blur-sm">
+      <section id="catalog" className="border-y border-border/70 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Products"
@@ -689,11 +690,11 @@ export function SunPowerSite() {
                     {section.cards.map((card) => (
                       <article
                         key={card.name}
-                        className="group overflow-hidden rounded-[1.5rem] border border-white/65 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,251,255,0.88))] shadow-[0_18px_50px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.1)]"
+                        className="group overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white/95 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(15,23,42,0.08)]"
                       >
                         <div className="flex h-full flex-col">
                           <div className="px-5 pt-5">
-                            <span className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white">
+                            <span className="inline-flex rounded-full border border-slate-200/60 bg-slate-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-700">
                               {card.badge}
                             </span>
                           </div>
@@ -723,7 +724,7 @@ export function SunPowerSite() {
                               {card.chips.map((chip) => (
                                 <span
                                   key={chip}
-                                  className="tech-data rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-medium uppercase text-slate-700"
+                                  className="tech-data rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-medium uppercase text-slate-800"
                                 >
                                   {chip}
                                 </span>
@@ -799,7 +800,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="resources" className="border-y border-border/70 bg-[linear-gradient(180deg,rgba(232,242,251,0.72),rgba(244,249,241,0.66))] backdrop-blur-sm">
+      <section id="resources" className="border-y border-border/70 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Resources"
@@ -816,7 +817,7 @@ export function SunPowerSite() {
                 viewport={{ once: true, margin: "-120px" }}
                 variants={fadeUp}
                 transition={{ ...transitions.smooth, delay: index * 0.05 }}
-                className="rounded-[1.85rem] border border-white/60 bg-white/68 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.05)] backdrop-blur-sm"
+                className="rounded-[1.85rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)]"
               >
                 <h3 className="text-xl font-semibold tracking-tight text-foreground">{card.title}</h3>
                 <p className="mt-3 text-base leading-7 text-muted">{card.description}</p>
@@ -828,7 +829,7 @@ export function SunPowerSite() {
 
       <section id="faq" className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <div className="w-full min-w-0 rounded-[2rem] border border-white/55 bg-white/62 p-7 shadow-[0_18px_46px_rgba(15,23,42,0.05)] backdrop-blur-sm sm:p-8">
+          <div className="w-full min-w-0 rounded-[2rem] border border-slate-200/80 bg-white/95 p-7 shadow-[0_10px_30px_rgba(15,23,42,0.04)] sm:p-8">
             <SectionHeading
               eyebrow="FAQs"
               title="Common questions from solar buyers"
@@ -840,7 +841,7 @@ export function SunPowerSite() {
             {faqs.map((item) => (
               <details
                 key={item.question}
-                className="group rounded-[1.8rem] border border-white/60 bg-white/72 p-6 shadow-[0_16px_36px_rgba(15,23,42,0.04)] backdrop-blur-sm"
+                className="group rounded-[1.8rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)]"
               >
                 <summary className="cursor-pointer list-none text-lg font-semibold text-foreground">
                   {item.question}
@@ -875,7 +876,7 @@ export function SunPowerSite() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">WhatsApp</p>
-                  <a href={contact.whatsappHref} className="mt-2 inline-flex font-semibold text-accent-blue">
+                  <a href={contact.whatsappHref} className="mt-2 inline-flex font-semibold text-accent-green-dark">
                     Start a chat
                   </a>
                 </div>
@@ -906,7 +907,7 @@ export function SunPowerSite() {
               variants={fadeUp}
               transition={{ ...transitions.smooth, delay: 0.04 }}
             >
-            <Card className="relative w-full overflow-hidden border-white/65 bg-white/90 shadow-[0_18px_55px_rgba(15,23,42,0.08)]">
+            <Card className="relative w-full overflow-hidden border-slate-200/80 bg-white/95 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
               <CardHeader className="relative z-10 p-7 pb-4 sm:p-8 sm:pb-5">
                 <CardTitle>Request a callback</CardTitle>
                 <CardDescription>Tell us what you are planning and we will get back to you with the next step.</CardDescription>
@@ -1050,7 +1051,7 @@ export function SunPowerSite() {
             href={whatsappQuoteHref}
             target="_blank"
             rel="noreferrer"
-            className="button-primary min-w-0 flex-1 justify-center"
+            className="button-whatsapp min-w-0 flex-1 justify-center"
           >
             <MessageCircle className="h-4 w-4" />
             WhatsApp
