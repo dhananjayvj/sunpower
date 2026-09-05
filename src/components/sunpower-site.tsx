@@ -270,7 +270,7 @@ export function SunPowerSite() {
         </div>
       </header>
 
-      <section id="home" className="w-full bg-gradient-to-r from-accent-blue-deep to-accent-green-dark pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <section id="home" className="w-full bg-gradient-to-r from-accent-blue-deep to-accent-green-dark pt-32 pb-8 lg:pt-40 lg:pb-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-10 lg:grid-cols-2">
           <motion.div
@@ -378,7 +378,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section className="mx-auto mt-12 w-full max-w-7xl px-4 sm:px-6 lg:mt-24 lg:px-8">
+      <section className="mx-auto mt-6 w-full max-w-7xl px-4 sm:px-6 lg:mt-8 lg:px-8">
         <div className="rounded-2xl bg-white/95 p-8 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
           <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
           <div className="rounded-[1.5rem] border border-accent-blue-deep/20 bg-accent-blue-deep p-8 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] sm:p-10">
@@ -413,7 +413,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="calculator" className="mx-auto mt-24 max-w-7xl bg-bg-foundation px-4 py-6 sm:px-6 lg:mt-32 lg:px-8 lg:py-8">
+      <section id="calculator" className="mx-auto mt-10 max-w-7xl bg-bg-foundation px-4 py-6 sm:px-6 lg:mt-14 lg:px-8 lg:py-8">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal className="card-panel p-4 sm:p-8">
             <SectionHeading
