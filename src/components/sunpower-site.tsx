@@ -781,15 +781,7 @@ export function SunPowerSite() {
               />
             </div>
             <div className="mt-4 rounded-[1.25rem] border border-border bg-white/72 p-5">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-emerald-100 px-3 py-2 text-sm font-semibold text-emerald-800">
-                  Product credential
-                </span>
-                <span className="rounded-full border border-border bg-white px-3 py-2 text-sm font-medium text-slate-700">
-                  Certificate no. 23873/DL/08/2026
-                </span>
-              </div>
-              <p className="mt-4 max-w-lg text-base leading-7 text-slate-700">
+              <p className="max-w-lg text-base leading-7 text-slate-700">
                 Active across Delhi, Noida, Greater Noida, Ghaziabad, Gurugram, and Faridabad for rooftop solar, EPC delivery, and mounting structure execution.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
