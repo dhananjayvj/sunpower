@@ -214,12 +214,14 @@ export function SunPowerSite() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="space-y-5">
-              <h1 className="w-full max-w-none text-balance text-3xl leading-[0.98] font-semibold tracking-[-0.06em] text-foreground sm:text-5xl lg:whitespace-nowrap lg:text-4xl xl:text-5xl">
-                <TextAnimate animation="blurInUp" by="character" once>
-                  Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
-                </TextAnimate>
-              </h1>
-              <p className="max-w-2xl text-pretty text-lg leading-8 text-slate-700/92 sm:text-xl">
+              <div className="mx-auto w-full max-w-5xl text-center text-balance">
+                <h1 className="text-3xl leading-tight font-semibold tracking-[-0.06em] text-foreground whitespace-normal md:text-5xl lg:text-6xl">
+                  <TextAnimate animation="blurInUp" by="character" once>
+                    Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
+                  </TextAnimate>
+                </h1>
+              </div>
+              <p className="mx-auto max-w-2xl text-pretty text-center text-lg leading-8 text-slate-700/92 sm:text-xl">
                 End-to-end rooftop installations, PM Surya Ghar support, Loom Solar product access,
                 and commercial EPC contracting.
               </p>
