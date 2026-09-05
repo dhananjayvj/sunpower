@@ -219,7 +219,6 @@ export function SunPowerSite() {
   return (
     <main className="relative isolate overflow-x-hidden pt-20 pb-20 md:pb-0">
       <ScrollProgress />
-      <div className="brand-gradient absolute inset-x-0 top-0 -z-10 h-[40rem]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(15,23,42,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
       <a
@@ -271,8 +270,9 @@ export function SunPowerSite() {
         </div>
       </header>
 
-      <section id="home" className="relative z-10 mx-auto max-w-7xl px-4 pt-10 pb-10 sm:px-6 lg:px-8 lg:pt-14">
-        <div className="grid min-h-[85vh] w-full max-w-7xl items-center gap-10 lg:grid-cols-2">
+      <section id="home" className="brand-gradient relative z-10 w-full pb-20 lg:pb-32">
+        <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:pt-14">
+          <div className="grid min-h-[85vh] w-full items-center gap-10 lg:grid-cols-2">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -374,10 +374,11 @@ export function SunPowerSite() {
               </div>
             </div>
           </motion.div>
+          </div>
         </div>
       </section>
 
-      <section className="relative z-20 mx-auto mt-16 max-w-7xl bg-bg-foundation px-4 pb-4 sm:px-6 lg:mt-24 lg:px-8">
+      <section className="relative z-20 mx-auto mt-12 max-w-7xl bg-bg-foundation px-4 pb-4 sm:px-6 lg:mt-24 lg:px-8">
         <div className="grid gap-4 lg:grid-cols-[0.78fr_1.22fr]">
           <Reveal className="rounded-[1.5rem] border border-accent-blue-deep/20 bg-accent-blue-deep p-8 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08)] sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-blue-100">
@@ -984,6 +985,7 @@ export function SunPowerSite() {
               viewport={{ once: true, margin: "-120px" }}
               variants={fadeUp}
               transition={{ ...transitions.smooth, delay: 0.04 }}
+              className="mx-auto w-full max-w-xl"
             >
             <Card className="relative w-full overflow-hidden border-slate-200/80 bg-white/95 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
               <CardHeader className="relative z-10 p-7 pb-4 sm:p-8 sm:pb-5">
