@@ -7,15 +7,31 @@
 @import "@fontsource/ibm-plex-mono/500.css";
 
 :root {
-  --background: #eef5ee;
-  --foreground: #0e1f40;
-  --muted: #56657d;
-  --border: rgba(77, 108, 151, 0.18);
-  --surface: rgba(255, 255, 255, 0.72);
-  --surface-strong: rgba(255, 255, 255, 0.88);
-  --accent-green: #3da35a;
-  --accent-yellow: #ffd60a;
-  --accent-blue: #1c68f2;
+  /* Brand Accents */
+  --accent-green: #22c55e;
+  --accent-green-dark: #15803d;
+  --accent-yellow: #f59e0b;
+  --accent-blue-deep: #0b192c;
+  --accent-blue: #0284c7;
+
+  /* Neutral Surface & Background Tokens */
+  --bg-foundation: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.88);
+  --border-subtle: #e2e8f0;
+
+  /* Typography */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  /* Compatibility aliases used by existing components */
+  --background: var(--bg-foundation);
+  --foreground: var(--text-primary);
+  --muted: var(--text-muted);
+  --border: var(--border-subtle);
+  --surface: var(--surface-glass);
+  --surface-strong: var(--surface-card);
   --font-sans: "Manrope";
   --font-mono: "IBM Plex Mono";
 }
@@ -28,8 +44,17 @@
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
   --color-accent-green: var(--accent-green);
+  --color-accent-green-dark: var(--accent-green-dark);
   --color-accent-yellow: var(--accent-yellow);
+  --color-accent-blue-deep: var(--accent-blue-deep);
   --color-accent-blue: var(--accent-blue);
+  --color-bg-foundation: var(--bg-foundation);
+  --color-surface-card: var(--surface-card);
+  --color-surface-glass: var(--surface-glass);
+  --color-border-subtle: var(--border-subtle);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
@@ -39,27 +64,27 @@
 }
 
 html {
-  background: var(--background);
+  background: var(--bg-foundation);
 }
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(255, 214, 10, 0.2), transparent 24%),
-    radial-gradient(circle at 85% 12%, rgba(28, 104, 242, 0.14), transparent 28%),
-    linear-gradient(180deg, #eff7ef 0%, #edf4fb 38%, #f5f8fb 100%);
+    radial-gradient(circle at top left, rgba(245, 158, 11, 0.18), transparent 24%),
+    radial-gradient(circle at 85% 12%, rgba(2, 132, 199, 0.14), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, var(--bg-foundation) 45%, #f1f5f9 100%);
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   background-attachment: fixed;
 }
 
 :focus-visible {
-  outline: 2px solid rgba(28, 104, 242, 0.7);
+  outline: 2px solid rgba(2, 132, 199, 0.7);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: rgba(255, 214, 10, 0.75);
-  color: #0e1f40;
+  background: rgba(245, 158, 11, 0.55);
+  color: var(--text-primary);
 }
 
 a,
@@ -79,7 +104,7 @@ a:active {
 }
 
 .button-primary {
-  @apply inline-flex min-h-11 items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_34px_rgba(14,31,64,0.18)] hover:-translate-y-0.5 hover:bg-[#133269] hover:shadow-[0_22px_42px_rgba(14,31,64,0.22)] touch-manipulation;
+  @apply inline-flex min-h-11 items-center gap-2 rounded-full bg-accent-blue-deep px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_34px_rgba(11,25,44,0.18)] hover:-translate-y-0.5 hover:bg-[#132b48] hover:shadow-[0_22px_42px_rgba(11,25,44,0.22)] touch-manipulation;
 }
 
 .button-secondary {
@@ -88,9 +113,9 @@ a:active {
 
 .card-panel {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 251, 255, 0.84)),
-    radial-gradient(circle at top, rgba(255, 214, 10, 0.08), transparent 42%);
-  @apply relative isolate rounded-[1.5rem] border border-white/55 shadow-[0_18px_55px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.82)] backdrop-blur-md;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.84)),
+    radial-gradient(circle at top, rgba(245, 158, 11, 0.08), transparent 42%);
+  @apply relative isolate rounded-[1.5rem] border border-border-subtle shadow-[0_18px_55px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,0.82)] backdrop-blur-md;
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
@@ -101,9 +126,9 @@ a:active {
 
 .section-shell {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.36)),
-    radial-gradient(circle at top right, rgba(28, 104, 242, 0.08), transparent 30%);
-  @apply rounded-[2rem] border border-white/55 shadow-[0_26px_80px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-sm;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.42)),
+    radial-gradient(circle at top right, rgba(2, 132, 199, 0.08), transparent 30%);
+  @apply rounded-[2rem] border border-border-subtle shadow-[0_26px_80px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-sm;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
