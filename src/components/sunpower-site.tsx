@@ -1013,8 +1013,8 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <footer className="border-t border-border bg-slate-950 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
+      <footer className="border-t border-slate-200 bg-slate-100 text-slate-700">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-slate-600 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
             <img
               src={brandLogoSrc}
@@ -1031,16 +1031,16 @@ export function SunPowerSite() {
             </p>
           </div>
           <div className="space-y-2 md:text-right">
-            <a href={contact.phoneHref} className="block font-semibold text-white">
+            <a href={contact.phoneHref} className="block font-semibold text-slate-900">
               {contact.phoneDisplay}
             </a>
             <p>{contact.address}</p>
             <p>GSTIN {contact.gstin}</p>
             <div className="flex gap-4 md:justify-end">
-              <Link href="/privacy" className="hover:text-white">
+              <Link href="/privacy" className="hover:text-accent-blue">
                 Privacy policy
               </Link>
-              <Link href="/thank-you" className="hover:text-white">
+              <Link href="/thank-you" className="hover:text-accent-blue">
                 Thank-you page
               </Link>
             </div>
