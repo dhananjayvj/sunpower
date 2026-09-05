@@ -149,6 +149,16 @@ summary::-webkit-details-marker {
   }
 }
 
+@keyframes border-beam {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-border-beam {
+  animation: border-beam 8s linear infinite;
+}
+
 @media (max-width: 767px) {
   .testimonial-marquee-track {
     animation: none;

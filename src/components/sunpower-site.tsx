@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import {
@@ -21,6 +21,13 @@ import {
   Star,
 } from "lucide-react";
 import { MobileNav } from "@/components/mobile-nav";
+import { AvatarCircles } from "@/registry/magicui/avatar-circles";
+import { BorderBeam } from "@/registry/magicui/border-beam";
+import { TextAnimate } from "@/registry/magicui/text-animate";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/reveal";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { fadeUp, staggerContainer, transitions } from "@/lib/motion";
@@ -42,6 +49,15 @@ import {
 } from "@/lib/site";
 
 const serviceIcons = [SunMedium, Factory, ShieldCheck, BatteryCharging, FileText];
+
+const avatars = [
+  { imageUrl: "https://avatars.githubusercontent.com/u/16860528", profileUrl: "https://github.com/dillionverma" },
+  { imageUrl: "https://avatars.githubusercontent.com/u/20110627", profileUrl: "https://github.com/tomonarifeehan" },
+  { imageUrl: "https://avatars.githubusercontent.com/u/106103625", profileUrl: "https://github.com/BankkRoll" },
+  { imageUrl: "https://avatars.githubusercontent.com/u/59228569", profileUrl: "https://github.com/safethecode" },
+  { imageUrl: "https://avatars.githubusercontent.com/u/59442788", profileUrl: "https://github.com/sanjay-mali" },
+  { imageUrl: "https://avatars.githubusercontent.com/u/89768406", profileUrl: "https://github.com/itsarghyadas" },
+];
 
 function SectionHeading({
   eyebrow,
@@ -69,7 +85,7 @@ export function SunPowerSite() {
   const router = useRouter();
   const shouldReduceMotion = useReducedMotion();
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const brandLogoSrc = `${basePath}/images/logo.jpg`;
+  const brandLogoSrc = `${basePath}/images/logo.png`;
   const withBasePath = (src: string) => `${basePath}${src}`;
   const aboutPhotoSrc = withBasePath("/images/install-team.webp");
 
@@ -78,9 +94,13 @@ export function SunPowerSite() {
   const [monthlyBill, setMonthlyBill] = useState(6000);
   const [roofAreaSqFt, setRoofAreaSqFt] = useState(500);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const [city, setCity] = useState("Delhi NCR");
-  const [requirement, setRequirement] = useState("Residential rooftop solar");
+  const [inquiryMessage, setInquiryMessage] = useState("");
+  const [city] = useState("Delhi NCR");
+  const [requirement] = useState("Residential rooftop solar");
+  const [activeReview, setActiveReview] = useState(0);
+  const reviewViewportRef = useRef<HTMLDivElement>(null);
 
   const estimate = useMemo(
     () =>
@@ -95,16 +115,28 @@ export function SunPowerSite() {
     const message = [
       "Hi Sun Power, I want a solar quote.",
       `Name: ${name || "Not shared yet"}`,
+      `Email: ${email || "Not shared yet"}`,
       `Mobile: ${mobile || "Not shared yet"}`,
       `City: ${city || "Delhi NCR"}`,
       `Requirement: ${requirement || "Residential rooftop solar"}`,
+      `Message: ${inquiryMessage || "Not shared yet"}`,
       calculatorMode === "bill"
         ? `Monthly bill: Rs ${monthlyBill.toLocaleString("en-IN")}`
         : `Approx. roof area: ${roofAreaSqFt} sq ft`,
     ].join("\n");
 
     return `${contact.whatsappHref}?text=${encodeURIComponent(message)}`;
-  }, [calculatorMode, city, mobile, monthlyBill, name, requirement, roofAreaSqFt]);
+  }, [calculatorMode, city, email, inquiryMessage, mobile, monthlyBill, name, requirement, roofAreaSqFt]);
+
+  const scrollToReview = (index: number) => {
+    const viewport = reviewViewportRef.current;
+    const card = viewport?.querySelector<HTMLElement>(`[data-review-index="${index}"]`);
+
+    if (viewport && card) {
+      viewport.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+      setActiveReview(index);
+    }
+  };
 
   return (
     <main className="relative isolate overflow-x-hidden pb-20 md:pb-0">
@@ -180,7 +212,9 @@ export function SunPowerSite() {
 
             <motion.div variants={fadeUp} className="space-y-5">
               <h1 className="max-w-4xl text-balance text-5xl leading-[0.94] font-semibold tracking-[-0.06em] text-foreground sm:text-6xl lg:text-7xl">
-                Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
+                <TextAnimate animation="blurInUp" by="character" once>
+                  Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
+                </TextAnimate>
               </h1>
               <p className="max-w-xl text-pretty text-lg leading-8 text-slate-700/92 sm:text-xl">
                 End-to-end rooftop installations, PM Surya Ghar support, Loom Solar product access,
@@ -456,7 +490,17 @@ export function SunPowerSite() {
             description="Real project experiences from homeowners, businesses, and industrial teams who worked with Sun Power."
           />
 
-          <div className="testimonial-marquee-viewport group mt-10 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none">
+          <div
+            ref={reviewViewportRef}
+            onScroll={(event) => {
+              const firstCard = event.currentTarget.querySelector<HTMLElement>("[data-review-index='0']");
+              const cardStep = firstCard?.nextElementSibling instanceof HTMLElement
+                ? firstCard.nextElementSibling.offsetLeft - firstCard.offsetLeft
+                : firstCard?.offsetWidth ?? 1;
+              setActiveReview(Math.min(testimonials.length - 1, Math.round(event.currentTarget.scrollLeft / Math.max(cardStep, 1))));
+            }}
+            className="testimonial-marquee-viewport group mt-10 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none"
+          >
             <div
               className={cn(
                 "testimonial-marquee-track flex w-max gap-4 sm:gap-6",
@@ -467,6 +511,7 @@ export function SunPowerSite() {
                 <article
                   key={`${testimonial.name}-${index}`}
                   aria-hidden={index >= testimonials.length}
+                  data-review-index={index % testimonials.length}
                   className="flex min-w-[300px] max-w-[380px] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:min-w-[360px]"
                 >
                   <div>
@@ -485,13 +530,28 @@ export function SunPowerSite() {
                       <p className="font-semibold text-foreground">{testimonial.name}</p>
                       <p className="text-sm text-muted">{testimonial.location}</p>
                       <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent-blue">
-                        Verified buyer · {testimonial.system}
+                        {testimonial.system}
                       </p>
                     </div>
                   </div>
                 </article>
               ))}
             </div>
+          </div>
+          <div className="mt-2 flex justify-center gap-2" aria-label="Review navigation">
+            {testimonials.map((testimonial, index) => (
+              <button
+                key={testimonial.name}
+                type="button"
+                aria-label={`Show review ${index + 1}`}
+                aria-current={activeReview === index ? "true" : undefined}
+                onClick={() => scrollToReview(index)}
+                className={cn(
+                  "h-2.5 rounded-full transition-all",
+                  activeReview === index ? "w-7 bg-accent-blue" : "w-2.5 bg-slate-300 hover:bg-slate-400",
+                )}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -757,6 +817,10 @@ export function SunPowerSite() {
                 description="Share your requirement and we will help you plan the right rooftop solar system for your property."
               />
 
+              <div className="mt-6">
+                <AvatarCircles numPeople={99} avatarUrls={avatars} />
+              </div>
+
               <div className="mt-8 space-y-5 text-base text-slate-700">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">Phone</p>
@@ -790,13 +854,20 @@ export function SunPowerSite() {
               </div>
             </Reveal>
 
-            <motion.form
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-120px" }}
               variants={fadeUp}
               transition={{ ...transitions.smooth, delay: 0.04 }}
-              className="card-panel p-7 sm:p-8"
+            >
+            <Card className="relative w-full overflow-hidden border-white/65 bg-white/90 shadow-[0_18px_55px_rgba(15,23,42,0.08)]">
+              <CardHeader className="relative z-10 p-7 pb-4 sm:p-8 sm:pb-5">
+                <CardTitle>Request a callback</CardTitle>
+                <CardDescription>Tell us what you are planning and we will get back to you with the next step.</CardDescription>
+              </CardHeader>
+              <CardContent className="relative z-10 p-7 pt-2 sm:p-8 sm:pt-3">
+              <form
               onSubmit={(event) => {
                 event.preventDefault();
                 window.open(whatsappQuoteHref, "_blank", "noopener,noreferrer");
@@ -804,53 +875,57 @@ export function SunPowerSite() {
               }}
             >
               <div className="grid gap-4 sm:grid-cols-2">
-                <label className="space-y-2">
-                  <span className="text-sm font-medium text-slate-700">Name</span>
-                  <input
+                <Label className="space-y-2">
+                  <span>Name</span>
+                  <Input
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     className="input-field"
                     placeholder="Your name"
                     required
                   />
-                </label>
-                <label className="space-y-2">
-                  <span className="text-sm font-medium text-slate-700">Mobile number</span>
-                  <input
+                </Label>
+                <Label className="space-y-2">
+                  <span>Email</span>
+                  <Input
+                    type="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="you@example.com"
+                  />
+                </Label>
+                <Label className="space-y-2">
+                  <span>Phone</span>
+                  <Input
                     value={mobile}
                     onChange={(event) => setMobile(event.target.value)}
-                    className="input-field"
                     placeholder="+91"
                     required
                   />
-                </label>
-                <label className="space-y-2">
-                  <span className="text-sm font-medium text-slate-700">City</span>
-                  <input
-                    value={city}
-                    onChange={(event) => setCity(event.target.value)}
-                    className="input-field"
-                    placeholder="Delhi / Noida / Gurgaon"
+                </Label>
+                <Label className="space-y-2 sm:col-span-2">
+                  <span>Message</span>
+                  <textarea
+                    value={inquiryMessage}
+                    onChange={(event) => setInquiryMessage(event.target.value)}
+                    className="input-field min-h-28 resize-y"
+                    placeholder="Tell us about your roof, monthly bill, or project requirement"
+                    required
                   />
-                </label>
-                <label className="space-y-2">
-                  <span className="text-sm font-medium text-slate-700">
-                    Monthly Bill / System Requirement
-                  </span>
-                  <input
-                    value={requirement}
-                    onChange={(event) => setRequirement(event.target.value)}
-                    className="input-field"
-                    placeholder="e.g. Rs 6,000 monthly bill or 10 kW rooftop solar"
-                  />
-                </label>
+                </Label>
               </div>
 
-              <button type="submit" className="button-primary mt-6 w-full justify-center">
-                Request a Callback
-                <MessageCircle className="h-4 w-4" />
-              </button>
-            </motion.form>
+              <CardFooter className="p-0 pt-6">
+                <Button type="submit" className="w-full justify-center">
+                  Request a Callback
+                  <MessageCircle className="h-4 w-4" />
+                </Button>
+              </CardFooter>
+            </form>
+            </CardContent>
+            <BorderBeam duration={8} size={100} />
+            </Card>
+            </motion.div>
           </div>
         </div>
       </section>

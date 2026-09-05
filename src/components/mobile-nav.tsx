@@ -48,7 +48,7 @@ export function MobileNav({
               animate={shouldReduceMotion ? {} : { opacity: 1, y: 0, scale: 1 }}
               exit={shouldReduceMotion ? {} : { opacity: 0, y: -16, scale: 0.98 }}
               transition={shouldReduceMotion ? { duration: 0 } : transitions.springSoft}
-              className="fixed inset-x-4 top-22 z-50 rounded-[2rem] border border-border bg-white/96 p-4 shadow-[0_24px_60px_rgba(15,23,42,0.16)]"
+              className="fixed inset-x-4 top-22 z-50 rounded-[2rem] border border-slate-200 bg-[linear-gradient(145deg,#ffffff,#f4f8fb)] p-4 shadow-[0_24px_60px_rgba(15,23,42,0.2)]"
             >
               <div className="grid gap-2">
                 {items.map((item) => (
