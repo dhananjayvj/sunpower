@@ -18,11 +18,11 @@ export function TextAnimate({
 
   return (
     <motion.span
-      initial="hidden"
+      initial={false}
       whileInView="visible"
       viewport={{ once }}
       aria-label={children}
-      className="inline"
+      className="inline-block min-h-[1.15em]"
       variants={{
         hidden: {},
         visible: {

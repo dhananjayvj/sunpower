@@ -327,21 +327,29 @@ export const resourceCards = [
     title: "How solar works",
     description:
       "Understand how panels, inverters, the grid, and net metering work together in a rooftop solar system.",
+    detail:
+      "Solar panels produce DC electricity, the inverter converts it to usable AC power, and the home consumes generation before drawing from the grid. Net metering records exported surplus so the bill reflects the net energy used.",
   },
   {
     title: "On-grid vs off-grid vs hybrid",
     description:
       "Compare the right setup for bill savings, battery backup, or a balanced system.",
+    detail:
+      "On-grid systems prioritize savings and work with the utility grid, while off-grid systems rely on batteries for independent backup. Hybrid systems combine grid savings with stored power for outage resilience.",
   },
   {
     title: "DCR vs non-DCR panels",
     description:
       "Learn the difference between DCR and non-DCR modules for subsidy-linked and non-subsidy projects.",
+    detail:
+      "DCR modules use domestically manufactured cells and are generally required for subsidy-linked residential projects. Non-DCR modules can suit projects where subsidy eligibility is not part of the brief.",
   },
   {
     title: "PM Surya Ghar process",
     description:
       "Get a simple view of eligibility, documentation, approval flow, and installation support.",
+    detail:
+      "The process typically covers eligibility review, documents, vendor selection, installation, inspection, and subsidy claim steps. SUNPOWER helps homeowners prepare the required information and coordinate the installation workflow.",
   },
 ];
 

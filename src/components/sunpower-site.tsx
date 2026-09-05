@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   BadgeCheck,
@@ -11,6 +11,7 @@ import {
   Bolt,
   Calculator,
   ChevronRight,
+  ChevronDown,
   Factory,
   FileText,
   Home,
@@ -128,7 +129,15 @@ export function SunPowerSite() {
   const [city] = useState("Delhi NCR");
   const [requirement] = useState("Residential rooftop solar");
   const [activeReview, setActiveReview] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openResource, setOpenResource] = useState<number | null>(null);
   const reviewViewportRef = useRef<HTMLDivElement>(null);
+  const aboutImageRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: aboutImageProgress } = useScroll({
+    target: aboutImageRef,
+    offset: ["start end", "end start"],
+  });
+  const aboutImageY = useTransform(aboutImageProgress, [0, 1], ["-3%", "3%"]);
 
   const estimate = useMemo(
     () =>
@@ -501,7 +510,7 @@ export function SunPowerSite() {
                   variants={fadeUp}
                   transition={{ ...transitions.smooth, delay: index * 0.05 }}
                   whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-                  className="card-panel flex h-full flex-col p-6"
+                  className="group card-panel flex h-full flex-col p-6"
                 >
                   <div className="relative -mx-6 -mt-6 mb-6 aspect-video overflow-hidden rounded-t-[1.25rem] bg-slate-100">
                     <img
@@ -509,7 +518,7 @@ export function SunPowerSite() {
                       alt={service.imageAlt}
                       loading="lazy"
                       decoding="async"
-                      className="h-full w-full object-contain object-center"
+                      className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-accent-blue">
@@ -627,7 +636,7 @@ export function SunPowerSite() {
                 viewport={{ once: true, margin: "-120px" }}
                 variants={fadeUp}
                 transition={{ ...transitions.smooth, delay: index * 0.07 }}
-                className="card-panel overflow-hidden"
+                className="group card-panel overflow-hidden"
               >
                 <div className="relative aspect-video bg-slate-100">
                   <img
@@ -635,7 +644,7 @@ export function SunPowerSite() {
                     alt={project.imageAlt}
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-contain object-center"
+                    className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
@@ -711,7 +720,7 @@ export function SunPowerSite() {
                                 alt={card.imageAlt}
                                 loading="lazy"
                                 decoding="async"
-                                className="h-full w-full object-contain object-center"
+                                className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
                               />
                             </div>
                           </div>
@@ -772,13 +781,14 @@ export function SunPowerSite() {
           </Reveal>
 
           <Reveal delay={0.05} className="card-panel overflow-hidden p-3 sm:p-4">
-            <div className="relative aspect-video overflow-hidden rounded-[1.25rem] bg-slate-100">
-              <img
+            <div ref={aboutImageRef} className="group relative aspect-video overflow-hidden rounded-[1.25rem] bg-slate-100">
+              <motion.img
                 src={aboutPhotoSrc}
                 alt="SUNPOWER engineering team with rooftop solar installation equipment"
                 loading="lazy"
                 decoding="async"
-                className="h-full w-full object-contain object-center"
+                style={{ y: shouldReduceMotion ? 0 : aboutImageY }}
+                className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             <div className="mt-4 rounded-[1.25rem] border border-border bg-white/72 p-5">
@@ -809,7 +819,10 @@ export function SunPowerSite() {
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {resourceCards.map((card, index) => (
+            {resourceCards.map((card, index) => {
+              const isOpen = openResource === index;
+
+              return (
               <motion.article
                 key={card.title}
                 initial="hidden"
@@ -817,12 +830,43 @@ export function SunPowerSite() {
                 viewport={{ once: true, margin: "-120px" }}
                 variants={fadeUp}
                 transition={{ ...transitions.smooth, delay: index * 0.05 }}
-                className="rounded-[1.85rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)]"
+                className={cn(
+                  "rounded-[1.85rem] border bg-white/95 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition-colors",
+                  isOpen ? "border-accent-blue-deep/45" : "border-slate-200/80",
+                )}
               >
-                <h3 className="text-xl font-semibold tracking-tight text-foreground">{card.title}</h3>
-                <p className="mt-3 text-base leading-7 text-muted">{card.description}</p>
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={`resource-detail-${index}`}
+                  onClick={() => setOpenResource(isOpen ? null : index)}
+                  className="flex min-h-11 w-full items-start justify-between gap-4 text-left"
+                >
+                  <span>
+                    <span className={cn("block text-xl font-semibold tracking-tight", isOpen ? "text-accent-blue-deep" : "text-foreground")}>
+                      {card.title}
+                    </span>
+                    <span className="mt-3 block text-base leading-7 text-muted">{card.description}</span>
+                  </span>
+                  <ChevronDown className={cn("mt-1 h-5 w-5 shrink-0 text-accent-blue-deep transition-transform duration-300", isOpen && "rotate-180")} />
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen ? (
+                    <motion.div
+                      id={`resource-detail-${index}`}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="border-t border-slate-200 pt-4 text-sm leading-6 text-slate-700">{card.detail}</p>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
               </motion.article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -838,17 +882,46 @@ export function SunPowerSite() {
           </div>
 
           <div className="mx-auto w-full max-w-3xl min-w-0 space-y-4">
-            {faqs.map((item) => (
-              <details
+            {faqs.map((item, index) => {
+              const isOpen = openFaq === index;
+
+              return (
+              <div
                 key={item.question}
-                className="group rounded-[1.8rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)]"
+                className={cn(
+                  "rounded-[1.8rem] border bg-white/95 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition-colors",
+                  isOpen ? "border-accent-blue-deep/45" : "border-slate-200/80",
+                )}
               >
-                <summary className="cursor-pointer list-none text-lg font-semibold text-foreground">
-                  {item.question}
-                </summary>
-                <p className="mt-4 text-base leading-7 text-muted">{item.answer}</p>
-              </details>
-            ))}
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
+                  onClick={() => setOpenFaq(isOpen ? null : index)}
+                  className="flex min-h-11 w-full items-center justify-between gap-4 text-left"
+                >
+                  <span className={cn("text-lg font-semibold", isOpen ? "text-accent-blue-deep" : "text-foreground")}>
+                    {item.question}
+                  </span>
+                  <ChevronDown className={cn("h-5 w-5 shrink-0 text-accent-blue-deep transition-transform duration-300", isOpen && "rotate-180")} />
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen ? (
+                    <motion.div
+                      id={`faq-answer-${index}`}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p className="mt-4 text-base leading-7 text-muted">{item.answer}</p>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </div>
+              );
+            })}
           </div>
         </div>
       </section>
