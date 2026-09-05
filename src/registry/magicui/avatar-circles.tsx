@@ -11,7 +11,7 @@ export function AvatarCircles({
   avatarUrls: AvatarCircle[];
 }) {
   return (
-    <div className="flex items-center" aria-label={`${numPeople ?? avatarUrls.length} Sun Power customers`}>
+    <div className="flex items-center" aria-label={`${numPeople ?? avatarUrls.length} SUNPOWER customers`}>
       <div className="flex -space-x-3">
         {avatarUrls.map((avatar) => (
           <div

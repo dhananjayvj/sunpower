@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Sun Power",
+  title: "Privacy Policy | SUNPOWER",
   description:
-    "Privacy policy for Sun Power website enquiries, calls, WhatsApp contact, and quote requests.",
+    "Privacy policy for SUNPOWER website enquiries, calls, WhatsApp contact, and quote requests.",
 };
 
 export default function PrivacyPage() {
@@ -18,11 +18,11 @@ export default function PrivacyPage() {
             Privacy policy
           </p>
           <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Sun Power collects enquiry details for quotation and follow-up, not for clutter.
+            SUNPOWER collects enquiry details for quotation and follow-up, not for clutter.
           </h1>
           <p className="text-lg leading-8 text-muted">
             This draft policy covers website lead forms, phone calls, and WhatsApp enquiries for
-            Sun Power. It should still be reviewed against the company&apos;s final legal and
+            SUNPOWER. It should still be reviewed against the company&apos;s final legal and
             operational requirements before launch.
           </p>
         </header>
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="text-2xl font-semibold text-foreground">How we handle it</h2>
           <p className="leading-7 text-slate-700">
-            Sun Power should limit access to enquiry data to the people involved in sales,
+            SUNPOWER should limit access to enquiry data to the people involved in sales,
             technical review, installation planning, and customer support. Data should not be sold
             to third parties.
           </p>
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="text-2xl font-semibold text-foreground">Contact about privacy</h2>
           <p className="leading-7 text-slate-700">
-            For privacy requests, use the primary Sun Power contact number listed on the website
+            For privacy requests, use the primary SUNPOWER contact number listed on the website
             until a dedicated privacy email is published.
           </p>
         </section>

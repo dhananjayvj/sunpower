@@ -4,9 +4,9 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { contact } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Thank You | Sun Power",
+  title: "Thank You | SUNPOWER",
   description:
-    "Thank-you page for Sun Power enquiries with next steps for WhatsApp, call-back requests, and returning to the main site.",
+    "Thank-you page for SUNPOWER enquiries with next steps for WhatsApp, call-back requests, and returning to the main site.",
 };
 
 export default function ThankYouPage() {

@@ -30,7 +30,7 @@ export const testimonials = [
     system: "5 kW Rooftop System",
     initials: "RS",
     quote:
-      "Sun Power handled our DISCOM net-metering and PM Surya Ghar paperwork from start to finish. Our power bill dropped from Rs 7,200 to near zero within two billing cycles.",
+      "SUNPOWER handled our DISCOM net-metering and PM Surya Ghar paperwork from start to finish. Our power bill dropped from Rs 7,200 to near zero within two billing cycles.",
   },
   {
     name: "Amit Aggarwal",
@@ -77,12 +77,12 @@ export const aboutHighlights = [
   {
     title: "Who we are",
     detail:
-      "Sun Power is a Delhi NCR solar dealership and EPC or MMS contracting firm delivering rooftop and ground-mounted projects for homes, businesses, and industrial facilities.",
+      "SUNPOWER is a Delhi NCR solar dealership and EPC or MMS contracting firm delivering rooftop and ground-mounted projects for homes, businesses, and industrial facilities.",
   },
   {
     title: "Product credential",
     detail:
-      "Sun Power holds Loom Solar dealer certificate no. 23873/DL/08/2026, valid till August 31, 2028.",
+      "SUNPOWER holds Loom Solar dealer certificate no. 23873/DL/08/2026, valid till August 31, 2028.",
   },
   {
     title: "What we handle",
@@ -352,9 +352,9 @@ export const faqs = [
       "Cost depends on system size, roof type, electrical work, and whether you want batteries. The calculator gives a planning range, then a site survey turns it into a final quotation.",
   },
   {
-    question: "Can Sun Power help with PM Surya Ghar subsidy applications?",
+    question: "Can SUNPOWER help with PM Surya Ghar subsidy applications?",
     answer:
-      "Yes. Sun Power assists homeowners with eligibility checks, documentation, and the process required for PM Surya Ghar subsidy claims.",
+      "Yes. SUNPOWER assists homeowners with eligibility checks, documentation, and the process required for PM Surya Ghar subsidy claims.",
   },
   {
     question: "What system is right for me: on-grid, off-grid, or hybrid?",
@@ -364,12 +364,12 @@ export const faqs = [
   {
     question: "Do you only work on small residential systems?",
     answer:
-      "No. Sun Power handles both residential systems and larger commercial or industrial projects up to 1 MW.",
+      "No. SUNPOWER handles both residential systems and larger commercial or industrial projects up to 1 MW.",
   },
   {
     question: "Do you handle mounting structure and EPC work too?",
     answer:
-      "Yes. Sun Power also supports EPC execution and MMS contracting for larger project requirements.",
+      "Yes. SUNPOWER also supports EPC execution and MMS contracting for larger project requirements.",
   },
 ];
 

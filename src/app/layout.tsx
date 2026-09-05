@@ -3,9 +3,9 @@ import "./globals.css";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Sun Power | Renewable Energy Solutions in Delhi NCR",
+  title: "SUNPOWER | Renewable Energy Solutions in Delhi NCR",
   description:
-    "Sun Power is an authorized Loom Solar dealer in Delhi NCR for rooftop and ground-mounted solar, batteries, inverters, PM Surya Ghar subsidy support, and EPC/MMS contracting.",
+    "SUNPOWER is an authorized Loom Solar dealer in Delhi NCR for rooftop and ground-mounted solar, batteries, inverters, PM Surya Ghar subsidy support, and EPC/MMS contracting.",
   keywords: [
     "solar company Delhi NCR",
     "rooftop solar Delhi",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "Sun Power | Renewable Energy Solutions in Delhi NCR",
+    title: "SUNPOWER | Renewable Energy Solutions in Delhi NCR",
     description:
       "Residential, commercial, industrial, rooftop, ground-mounted, subsidy-linked, and MMS solar solutions for Delhi NCR buyers.",
     type: "website",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: `${siteUrl}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Sun Power solar solutions in Delhi NCR",
+        alt: "SUNPOWER solar solutions in Delhi NCR",
       },
     ],
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Sun Power",
+  name: "SUNPOWER",
   image: `${siteUrl}/images/logo.png`,
   telephone: "+91 95604 73434",
   address: {

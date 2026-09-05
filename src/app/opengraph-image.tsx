@@ -48,7 +48,7 @@ export default function OpenGraphImage() {
             ☀
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: "42px", fontWeight: 700 }}>Sun Power</div>
+            <div style={{ fontSize: "42px", fontWeight: 700 }}>SUNPOWER</div>
             <div style={{ fontSize: "20px", opacity: 0.8, letterSpacing: "0.28em", textTransform: "uppercase" }}>
               Delhi NCR solar
             </div>

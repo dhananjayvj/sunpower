@@ -65,8 +65,8 @@ const avatars = [
 function BrandName() {
   return (
     <span className="brand-name">
-      <span className="text-accent-blue">Sun</span>
-      <span className="text-accent-green">Power</span>
+      <span className="text-accent-blue">SUN</span>
+      <span className="text-accent-green">POWER</span>
     </span>
   );
 }
@@ -74,8 +74,8 @@ function BrandName() {
 function BrandText({ children }: { children: string }) {
   return (
     <>
-      {children.split(/(Sun Power)/g).map((part, index) =>
-        part === "Sun Power" ? (
+      {children.split(/(Sun Power|SUNPOWER)/g).map((part, index) =>
+        part === "Sun Power" || part === "SUNPOWER" ? (
           <BrandName key={`${part}-${index}`} />
         ) : (
           part
@@ -141,7 +141,7 @@ export function SunPowerSite() {
 
   const whatsappQuoteHref = useMemo(() => {
     const message = [
-      "Hi Sun Power, I want a solar quote.",
+      "Hi SUNPOWER, I want a solar quote.",
       `Name: ${name || "Not shared yet"}`,
       `Email: ${email || "Not shared yet"}`,
       `Mobile: ${mobile || "Not shared yet"}`,
@@ -187,7 +187,7 @@ export function SunPowerSite() {
           <a href="#home" className="flex items-center gap-4">
             <img
               src={brandLogoSrc}
-              alt="Sun Power Renewable Energy Solutions logo"
+              alt="SUNPOWER Renewable Energy Solutions logo"
               width={1930}
               height={1001}
               loading="eager"
@@ -484,7 +484,7 @@ export function SunPowerSite() {
           <SectionHeading
             eyebrow="Services"
             title="Solar services tailored for homes, facilities, and project teams"
-            description="Choose the service you need and speak with Sun Power for a site survey, product recommendation, or project quotation."
+            description="Choose the service you need and speak with SUNPOWER for a site survey, product recommendation, or project quotation."
           />
 
           <div className="mt-10 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -538,7 +538,7 @@ export function SunPowerSite() {
           <SectionHeading
             eyebrow="Customer Stories"
             title="What Delhi NCR customers say after installation"
-            description="Real project experiences from homeowners, businesses, and industrial teams who worked with Sun Power."
+            description="Real project experiences from homeowners, businesses, and industrial teams who worked with SUNPOWER."
           />
 
           <div
@@ -614,7 +614,7 @@ export function SunPowerSite() {
           <SectionHeading
             eyebrow="Projects"
             title="Project experience across residential and commercial solar"
-            description="Sun Power supports compact home rooftops, larger commercial installations, and industrial-scale execution across Delhi NCR."
+            description="SUNPOWER supports compact home rooftops, larger commercial installations, and industrial-scale execution across Delhi NCR."
           />
 
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -731,7 +731,7 @@ export function SunPowerSite() {
                             </div>
                             <a
                               href={`${contact.whatsappHref}?text=${encodeURIComponent(
-                                `Hi Sun Power, please share the datasheet for ${card.name}.`,
+                                `Hi SUNPOWER, please share the datasheet for ${card.name}.`,
                               )}`}
                               target="_blank"
                               rel="noreferrer"
@@ -755,9 +755,9 @@ export function SunPowerSite() {
         <div className="grid gap-6 lg:grid-cols-[0.96fr_1.04fr]">
           <Reveal className="card-panel overflow-hidden p-6 sm:p-8">
             <SectionHeading
-              eyebrow="About Sun Power"
+              eyebrow="About SUNPOWER"
               title="Trusted solar planning and execution for Delhi NCR"
-              description="Sun Power supports homeowners, businesses, and industrial buyers with system design, product selection, installation planning, and project execution."
+              description="SUNPOWER supports homeowners, businesses, and industrial buyers with system design, product selection, installation planning, and project execution."
             />
 
             <div className="mt-8 space-y-4">
@@ -774,7 +774,7 @@ export function SunPowerSite() {
             <div className="relative aspect-video overflow-hidden rounded-[1.25rem] bg-slate-100">
               <img
                 src={aboutPhotoSrc}
-                alt="Sun Power engineering team with rooftop solar installation equipment"
+                alt="SUNPOWER engineering team with rooftop solar installation equipment"
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-contain object-center"
@@ -866,7 +866,7 @@ export function SunPowerSite() {
             <Reveal className="card-panel p-7 sm:p-8">
               <SectionHeading
                 eyebrow="Contact"
-                title="Speak with the Sun Power team"
+                title="Speak with the SUNPOWER team"
                 description="Share your requirement and we will help you plan the right rooftop solar system for your property."
               />
 
@@ -1003,7 +1003,7 @@ export function SunPowerSite() {
           </Reveal>
           <Reveal delay={0.04} className="card-panel overflow-hidden p-2">
             <iframe
-              title="Sun Power office map"
+              title="SUNPOWER office map"
               src={contact.mapsEmbedHref}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

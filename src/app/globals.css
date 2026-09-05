@@ -4,6 +4,7 @@
 @import "@fontsource/manrope/600.css";
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/michroma/400.css";
 
 :root {
   --background: #eef5ee;
@@ -114,9 +115,9 @@ a:active {
 }
 
 .brand-name {
-  font-family: "Lokko St Extra Bold", "Lokko St", "Arial Black", var(--font-sans), sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.045em;
+  font-family: "Michroma", var(--font-sans), sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
 }
 
 summary::-webkit-details-marker {
