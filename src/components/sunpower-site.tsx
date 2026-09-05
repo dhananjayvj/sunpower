@@ -755,7 +755,7 @@ export function SunPowerSite() {
         <div className="grid gap-6 lg:grid-cols-[0.96fr_1.04fr]">
           <Reveal className="card-panel overflow-hidden p-6 sm:p-8">
             <SectionHeading
-              eyebrow="About SUNPOWER"
+              eyebrow="About Us"
               title="Trusted solar planning and execution for Delhi NCR"
               description="SUNPOWER supports homeowners, businesses, and industrial buyers with system design, product selection, installation planning, and project execution."
             />
@@ -1016,12 +1016,18 @@ export function SunPowerSite() {
       <footer className="border-t border-border bg-slate-950 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-lg text-white"><BrandName /></p>
+            <img
+              src={brandLogoSrc}
+              alt="SUNPOWER logo"
+              width={1930}
+              height={1001}
+              loading="lazy"
+              decoding="async"
+              className="h-12 w-auto rounded-lg object-contain"
+            />
             <p className="mt-3 max-w-xl leading-6">
-              <BrandText>
-                Solar energy dealership and EPC or MMS contracting firm serving Delhi NCR with
-                rooftop, ground-mounted, residential, commercial, industrial, and subsidy-linked solar solutions.
-              </BrandText>
+              Solar energy dealership and EPC or MMS contracting firm serving Delhi NCR with
+              rooftop, ground-mounted, residential, commercial, industrial, and subsidy-linked solar solutions.
             </p>
           </div>
           <div className="space-y-2 md:text-right">
