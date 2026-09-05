@@ -197,13 +197,13 @@ export function SunPowerSite() {
       </header>
 
       <section id="home" className="relative z-10 mx-auto max-w-7xl px-4 pt-10 pb-10 sm:px-6 lg:px-8 lg:pt-14">
-        <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-12">
+        <div className="grid w-full max-w-7xl gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-start lg:gap-12">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
             transition={transitions.smooth}
-            className="space-y-7"
+            className="space-y-7 lg:col-span-2"
           >
             <motion.div
               variants={fadeUp}
@@ -214,17 +214,25 @@ export function SunPowerSite() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="space-y-5">
-              <h1 className="max-w-4xl text-balance text-5xl leading-[0.94] font-semibold tracking-[-0.06em] text-foreground sm:text-6xl lg:text-7xl">
+              <h1 className="w-full max-w-none text-balance text-3xl leading-[0.98] font-semibold tracking-[-0.06em] text-foreground sm:text-5xl lg:whitespace-nowrap lg:text-4xl xl:text-5xl">
                 <TextAnimate animation="blurInUp" by="character" once>
                   Clean, Reliable Solar Energy for Homes & Businesses across Delhi NCR
                 </TextAnimate>
               </h1>
-              <p className="max-w-xl text-pretty text-lg leading-8 text-slate-700/92 sm:text-xl">
+              <p className="max-w-2xl text-pretty text-lg leading-8 text-slate-700/92 sm:text-xl">
                 End-to-end rooftop installations, PM Surya Ghar support, Loom Solar product access,
                 and commercial EPC contracting.
               </p>
             </motion.div>
+          </motion.div>
 
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            transition={transitions.smooth}
+            className="space-y-7 lg:col-span-1"
+          >
             <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
               <a href="#contact" className="button-primary">
                 Book a Free Site Survey
@@ -247,7 +255,6 @@ export function SunPowerSite() {
                 View recent project types
               </a>
             </motion.div>
-
           </motion.div>
 
           <motion.div
@@ -255,7 +262,7 @@ export function SunPowerSite() {
             animate="visible"
             variants={fadeUp}
             transition={{ ...transitions.smooth, delay: 0.08 }}
-            className="relative z-10"
+            className="relative z-10 lg:col-span-1"
           >
             <div className="card-panel p-6 sm:p-8">
               <div className="flex items-start justify-between gap-4">
@@ -441,7 +448,7 @@ export function SunPowerSite() {
             description="Choose the service you need and speak with Sun Power for a site survey, product recommendation, or project quotation."
           />
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {services.map((service, index) => {
               const Icon = serviceIcons[index];
 
@@ -454,11 +461,7 @@ export function SunPowerSite() {
                   variants={fadeUp}
                   transition={{ ...transitions.smooth, delay: index * 0.05 }}
                   whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-                  className={cn(
-                    "card-panel p-6",
-                    index === 1 && "lg:translate-y-6",
-                    index === 4 && "lg:col-span-2",
-                  )}
+                  className="card-panel flex h-full flex-col p-6"
                 >
                   <div className="relative -mx-6 -mt-6 mb-6 aspect-video overflow-hidden rounded-t-[1.25rem] bg-slate-100">
                     <img
@@ -476,7 +479,7 @@ export function SunPowerSite() {
                     {service.title}
                   </h3>
                   <p className="mt-3 text-base leading-7 text-muted">{service.description}</p>
-                  <ul className="mt-6 space-y-3 text-sm text-slate-700">
+                  <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
                     {service.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-3">
                         <ChevronRight className="mt-0.5 h-4 w-4 text-accent-green" />
