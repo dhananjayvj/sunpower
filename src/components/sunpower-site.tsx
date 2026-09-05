@@ -175,6 +175,38 @@ export function SunPowerSite() {
     }
   };
 
+  const renderTestimonials = (duplicate = false) =>
+    testimonials.map((testimonial, index) => (
+      <article
+        key={`${duplicate ? "duplicate" : "primary"}-${testimonial.name}`}
+        data-review-index={index}
+        className="flex min-w-[300px] max-w-[380px] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:min-w-[360px]"
+      >
+        <div>
+          <div className="flex items-center gap-1 text-amber-400" aria-label="5 out of 5 stars">
+            {Array.from({ length: 5 }).map((_, starIndex) => (
+              <Star key={starIndex} className="h-4 w-4 fill-current" aria-hidden="true" />
+            ))}
+          </div>
+          <p className="mt-5 text-base leading-7 text-slate-700">
+            &ldquo;<BrandText>{testimonial.quote}</BrandText>&rdquo;
+          </p>
+        </div>
+        <div className="mt-8 flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-sm font-semibold text-white">
+            {testimonial.initials}
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">{testimonial.name}</p>
+            <p className="text-sm text-muted">{testimonial.location}</p>
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent-blue">
+              {testimonial.system}
+            </p>
+          </div>
+        </div>
+      </article>
+    ));
+
   return (
     <main className="relative isolate overflow-x-hidden pb-20 md:pb-0">
       <ScrollProgress />
@@ -568,37 +600,10 @@ export function SunPowerSite() {
                 shouldReduceMotion ? "testimonial-marquee-track--reduced" : "",
               )}
             >
-              {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <article
-                  key={`${testimonial.name}-${index}`}
-                  aria-hidden={index >= testimonials.length}
-                  data-review-index={index % testimonials.length}
-                  className="flex min-w-[300px] max-w-[380px] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:min-w-[360px]"
-                >
-                  <div>
-                    <div className="flex items-center gap-1 text-amber-400" aria-label="5 out of 5 stars">
-                      {Array.from({ length: 5 }).map((_, starIndex) => (
-                        <Star key={starIndex} className="h-4 w-4 fill-current" aria-hidden="true" />
-                      ))}
-                    </div>
-                    <p className="mt-5 text-base leading-7 text-slate-700">
-                      &ldquo;<BrandText>{testimonial.quote}</BrandText>&rdquo;
-                    </p>
-                  </div>
-                  <div className="mt-8 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-sm font-semibold text-white">
-                      {testimonial.initials}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">{testimonial.name}</p>
-                      <p className="text-sm text-muted">{testimonial.location}</p>
-                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent-blue">
-                        {testimonial.system}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              ))}
+              <div className="flex gap-4 sm:gap-6">{renderTestimonials()}</div>
+              <div aria-hidden="true" className="flex gap-4 sm:gap-6">
+                {renderTestimonials(true)}
+              </div>
             </div>
           </div>
           <div className="mt-2 flex justify-center gap-2" aria-label="Review navigation">
