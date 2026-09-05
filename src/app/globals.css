@@ -113,6 +113,12 @@ a:active {
   letter-spacing: -0.01em;
 }
 
+.brand-name {
+  font-family: "Lokko St Extra Bold", "Lokko St", "Arial Black", var(--font-sans), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
 summary::-webkit-details-marker {
   display: none;
 }

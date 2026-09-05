@@ -62,6 +62,22 @@ const avatars = [
   { imageUrl: "https://i.pravatar.cc/150?u=6", name: "Priya Mehta" },
 ];
 
+function BrandText({ children }: { children: string }) {
+  return (
+    <>
+      {children.split(/(Sun Power)/g).map((part, index) =>
+        part === "Sun Power" ? (
+          <span key={`${part}-${index}`} className="brand-name">
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
 function SectionHeading({
   eyebrow,
   title,
@@ -77,9 +93,11 @@ function SectionHeading({
         {eyebrow}
       </p>
       <h2 className="text-balance text-3xl leading-tight font-semibold tracking-[-0.04em] text-foreground sm:text-4xl">
-        {title}
+        <BrandText>{title}</BrandText>
       </h2>
-      <p className="text-pretty text-base leading-7 text-muted sm:text-lg">{description}</p>
+      <p className="text-pretty text-base leading-7 text-muted sm:text-lg">
+        <BrandText>{description}</BrandText>
+      </p>
     </div>
   );
 }
@@ -167,7 +185,7 @@ export function SunPowerSite() {
               height={1001}
               loading="eager"
               decoding="async"
-              className="h-9 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:h-10 lg:h-12"
+              className="h-12 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:h-14 lg:h-16"
             />
           </a>
 
@@ -546,7 +564,9 @@ export function SunPowerSite() {
                         <Star key={starIndex} className="h-4 w-4 fill-current" aria-hidden="true" />
                       ))}
                     </div>
-                    <p className="mt-5 text-base leading-7 text-slate-700">&ldquo;{testimonial.quote}&rdquo;</p>
+                    <p className="mt-5 text-base leading-7 text-slate-700">
+                      &ldquo;<BrandText>{testimonial.quote}</BrandText>&rdquo;
+                    </p>
                   </div>
                   <div className="mt-8 flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-sm font-semibold text-white">
@@ -989,10 +1009,12 @@ export function SunPowerSite() {
       <footer className="border-t border-border bg-slate-950 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/74 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-lg font-semibold tracking-tight text-white">Sun Power</p>
+            <p className="brand-name text-lg text-white">Sun Power</p>
             <p className="mt-3 max-w-xl leading-6">
-              Solar energy dealership and EPC or MMS contracting firm serving Delhi NCR with
-              rooftop, ground-mounted, residential, commercial, industrial, and subsidy-linked solar solutions.
+              <BrandText>
+                Solar energy dealership and EPC or MMS contracting firm serving Delhi NCR with
+                rooftop, ground-mounted, residential, commercial, industrial, and subsidy-linked solar solutions.
+              </BrandText>
             </p>
           </div>
           <div className="space-y-2 md:text-right">
