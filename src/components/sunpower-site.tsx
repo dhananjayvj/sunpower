@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
@@ -131,6 +131,7 @@ export function SunPowerSite() {
   const [activeReview, setActiveReview] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openResource, setOpenResource] = useState<number | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const reviewViewportRef = useRef<HTMLDivElement>(null);
   const aboutImageRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: aboutImageProgress } = useScroll({
@@ -138,6 +139,14 @@ export function SunPowerSite() {
     offset: ["start end", "end start"],
   });
   const aboutImageY = useTransform(aboutImageProgress, [0, 1], ["-3%", "3%"]);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 150);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const estimate = useMemo(
     () =>
@@ -208,7 +217,7 @@ export function SunPowerSite() {
     ));
 
   return (
-    <main className="relative isolate overflow-x-hidden pb-20 md:pb-0">
+    <main className="relative isolate overflow-x-hidden pt-20 pb-20 md:pb-0">
       <ScrollProgress />
       <div className="brand-gradient absolute inset-x-0 top-0 -z-10 h-[40rem]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(15,23,42,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
@@ -223,7 +232,7 @@ export function SunPowerSite() {
         <MessageCircle className="h-6 w-6" />
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-border/70 bg-white/92 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md transition-all">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-4">
             <img
@@ -263,13 +272,13 @@ export function SunPowerSite() {
       </header>
 
       <section id="home" className="relative z-10 mx-auto max-w-7xl px-4 pt-10 pb-10 sm:px-6 lg:px-8 lg:pt-14">
-        <div className="grid w-full max-w-7xl gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-start lg:gap-12">
+        <div className="grid min-h-[85vh] w-full max-w-7xl items-center gap-10 lg:grid-cols-2">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
             transition={transitions.smooth}
-            className="space-y-7 lg:col-span-2"
+            className="space-y-7"
           >
             <motion.div
               variants={fadeUp}
@@ -299,20 +308,10 @@ export function SunPowerSite() {
                   </span>
                 </h1>
               </div>
-              <p className="mx-auto max-w-2xl text-pretty text-center text-lg leading-8 text-slate-200 sm:text-xl">
+              <p className="max-w-2xl text-pretty text-lg leading-8 text-slate-200 sm:text-xl">
                 End-to-end rooftop installations, PM Surya Ghar support, Loom Solar product access,
                 and commercial EPC contracting.
               </p>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            transition={transitions.smooth}
-            className="space-y-7 lg:col-span-1"
-          >
             <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
               <a href="#contact" className="button-whatsapp">
                 Book a Free Site Survey
@@ -324,8 +323,8 @@ export function SunPowerSite() {
               </a>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 text-sm text-slate-700">
-              <span className="rounded-full border border-white/70 bg-white/72 px-3 py-2 shadow-[0_8px_20px_rgba(15,23,42,0.05)]">
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 text-sm text-slate-200">
+              <span className="rounded-full border border-white/25 bg-white/10 px-3 py-2">
                 Rooftop solar, EPC delivery, and subsidy support under one team
               </span>
               <a href="#resources" className="font-semibold text-emerald-200 underline-offset-4 hover:text-emerald-100 hover:underline">
@@ -335,6 +334,7 @@ export function SunPowerSite() {
                 View recent project types
               </a>
             </motion.div>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -342,7 +342,7 @@ export function SunPowerSite() {
             animate="visible"
             variants={fadeUp}
             transition={{ ...transitions.smooth, delay: 0.08 }}
-            className="relative z-10 lg:col-span-1"
+            className="relative z-10"
           >
             <div className="card-panel p-6 sm:p-8">
               <div className="flex items-start justify-between gap-4">
@@ -377,7 +377,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section className="relative z-20 mx-auto max-w-7xl bg-bg-foundation px-4 pb-4 sm:px-6 lg:px-8">
+      <section className="relative z-20 mx-auto mt-16 max-w-7xl bg-bg-foundation px-4 pb-4 sm:px-6 lg:mt-24 lg:px-8">
         <div className="grid gap-4 lg:grid-cols-[0.78fr_1.22fr]">
           <Reveal className="rounded-[1.5rem] border border-accent-blue-deep/20 bg-accent-blue-deep p-6 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-blue-100">
@@ -1119,23 +1119,33 @@ export function SunPowerSite() {
         </div>
       </footer>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-slate-200 bg-white/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
-        <div className="mx-auto flex max-w-xl gap-3">
-          <a href="#calculator" className="button-primary min-w-0 flex-1 justify-center">
+      <motion.div
+        initial={false}
+        animate={isScrolled ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+        transition={shouldReduceMotion ? { duration: 0 } : transitions.springSoft}
+        aria-hidden={!isScrolled}
+        className={cn(
+          "fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-slate-200 bg-white/85 px-4 pt-3 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur-lg rounded-t-3xl pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden",
+          isScrolled ? "pointer-events-auto" : "pointer-events-none",
+        )}
+      >
+        <div className="mx-auto flex w-full max-w-xl gap-3">
+          <a href="#calculator" tabIndex={isScrolled ? 0 : -1} className="button-primary min-w-0 flex-1 justify-center whitespace-nowrap">
             <Calculator className="h-4 w-4" />
-            Get a Free Quote
+            Free Quote
           </a>
           <a
             href={whatsappQuoteHref}
             target="_blank"
             rel="noreferrer"
+            tabIndex={isScrolled ? 0 : -1}
             className="button-whatsapp min-w-0 flex-1 justify-center"
           >
             <MessageCircle className="h-4 w-4" />
             WhatsApp
           </a>
         </div>
-      </div>
+      </motion.div>
     </main>
   );
 }
