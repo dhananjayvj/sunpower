@@ -192,7 +192,7 @@ export const productCatalogSections: Array<{
       {
         name: "Shark 550 Mono PERC",
         badge: "Loom Solar • Shark Series",
-        imageSrc: equipmentPlaceholder("Loom Solar Shark 550", "green"),
+        imageSrc: "/images/Shark 550 Mono PERC.webp",
         imageAlt: "Loom Solar Shark 550 Mono PERC solar panel card.",
         chips: ["550 Wp", "Mono PERC", "10Y product", "25Y performance"],
         ctaLabel: "Request Datasheet",
@@ -200,7 +200,7 @@ export const productCatalogSections: Array<{
       {
         name: "Tata Power Solar Rooftop Modules",
         badge: "Tata Power Solar • Rooftop",
-        imageSrc: equipmentPlaceholder("Tata Rooftop Modules", "yellow"),
+        imageSrc: "/images/tata-power-solar-540w-glass-glass-mono-perc-bifacial-144-half-cells-efficiency-21-29-tp540hg10b.png",
         imageAlt: "Tata Power Solar rooftop module card.",
         chips: ["540-550 Wp", "Mono PERC", "25Y module coverage", "Home & C&I"],
         ctaLabel: "Request Datasheet",
@@ -208,7 +208,7 @@ export const productCatalogSections: Array<{
       {
         name: "Adani Shine TOPCon Modules",
         badge: "Adani Solar • Shine Series",
-        imageSrc: equipmentPlaceholder("Adani Shine TOPCon", "blue"),
+        imageSrc: "/images/Adani-Solar_Panel_DCR_565wp_TOPCon.webp",
         imageAlt: "Adani Shine TOPCon solar module card.",
         chips: ["565-590 Wp", "TOPCon", "Utility-grade build", "Datasheet on request"],
         ctaLabel: "Request Datasheet",
@@ -216,7 +216,7 @@ export const productCatalogSections: Array<{
       {
         name: "Waaree 540 Mono PERC DCR",
         badge: "Waaree • Mono PERC",
-        imageSrc: equipmentPlaceholder("Waaree 540 DCR", "blue"),
+        imageSrc: "/images/waaree 540 Mono PERC.png",
         imageAlt: "Waaree 540 Mono PERC DCR solar module card.",
         chips: ["540 Wp", "Mono PERC DCR", "12Y product", "27Y output"],
         ctaLabel: "Request Datasheet",
@@ -246,7 +246,7 @@ export const productCatalogSections: Array<{
       {
         name: "CAML 10.24 kWh Battery",
         badge: "Loom Solar • C&I Storage",
-        imageSrc: equipmentPlaceholder("CAML 10.24 kWh Storage", "slate"),
+        imageSrc: "/images/CAML 10.24 kWh Battery .jpg",
         imageAlt: "CAML 10.24 kWh commercial battery storage card.",
         chips: ["51.2V / 200Ah", "LiFePO4", "5Y warranty", "High backup"],
         ctaLabel: "Request Datasheet",
@@ -260,7 +260,7 @@ export const productCatalogSections: Array<{
       {
         name: "Fusion 5 kW Hybrid Inverter",
         badge: "Loom Solar • Hybrid",
-        imageSrc: equipmentPlaceholder("Fusion 5 kW Hybrid", "slate"),
+        imageSrc: "/images/Fusion_5_Kw_Hybrid_Inverter_1000x.webp",
         imageAlt: "Fusion 5 kW hybrid solar inverter card.",
         chips: ["5 kW", "48V hybrid", "5Y warranty", "Home / small office"],
         ctaLabel: "Request Datasheet",
@@ -268,7 +268,7 @@ export const productCatalogSections: Array<{
       {
         name: "Fusion 10 kW On-Grid",
         badge: "Loom Solar • On-Grid",
-        imageSrc: equipmentPlaceholder("Fusion 10 kW On-Grid", "slate"),
+        imageSrc: "/images/Fusion_10_kW_3phase_0n-Grid_Inverter_model_1000x.webp",
         imageAlt: "Fusion 10 kW on-grid solar inverter card.",
         chips: ["10 kW", "3 phase", "10Y warranty", "Commercial rooftops"],
         ctaLabel: "Request Datasheet",
@@ -276,7 +276,7 @@ export const productCatalogSections: Array<{
       {
         name: "Fusion 20 kW On-Grid",
         badge: "Loom Solar • On-Grid",
-        imageSrc: equipmentPlaceholder("Fusion 20 kW On-Grid", "slate"),
+        imageSrc: "/images/Fusion_20_kW_3phase_0n-Grid_Inverter_model_1000x.webp",
         imageAlt: "Fusion 20 kW commercial on-grid solar inverter card.",
         chips: ["20 kW", "On-grid", "10Y warranty", "C&I usage"],
         ctaLabel: "Request Datasheet",
