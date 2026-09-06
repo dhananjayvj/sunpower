@@ -20,6 +20,7 @@ import {
   MapPin,
   Mail,
   MessageCircle,
+  Phone,
   ShieldCheck,
   SunMedium,
   Star,
@@ -54,6 +55,8 @@ import {
 
 const serviceIcons = [SunMedium, Factory, ShieldCheck, BatteryCharging, FileText];
 const trustSignalIcons = [ShieldCheck, Home, IndianRupee, Map];
+const quoteInquiryIntro =
+  "Hello SUNPOWER team, I am interested in a solar solution for my property. Please help me arrange a site survey and share a quotation.";
 
 const avatars = [
   { imageUrl: "https://i.pravatar.cc/150?u=1", name: "Rajesh Sharma" },
@@ -169,7 +172,7 @@ export function SunPowerSite() {
 
   const whatsappQuoteHref = useMemo(() => {
     const message = [
-      "Hi SUNPOWER, I want a solar quote.",
+      quoteInquiryIntro,
       `Name: ${name || "Not shared yet"}`,
       `Email: ${email || "Not shared yet"}`,
       `Mobile: ${mobile || "Not shared yet"}`,
@@ -183,6 +186,7 @@ export function SunPowerSite() {
 
     return `${contact.whatsappHref}?text=${encodeURIComponent(message)}`;
   }, [calculatorMode, city, email, inquiryMessage, mobile, monthlyBill, name, requirement, roofAreaSqFt]);
+  const emailQuoteHref = `${contact.emailHref}?subject=${encodeURIComponent("Solar site survey and quotation request")}&body=${encodeURIComponent(quoteInquiryIntro)}`;
 
   const scrollToReview = (index: number) => {
     const viewport = reviewViewportRef.current;
@@ -962,7 +966,33 @@ export function SunPowerSite() {
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <a
-                  href={contact.emailHref}
+                  href={contact.phoneHref}
+                  className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-blue/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-accent-blue transition-transform group-hover:scale-105">
+                    <Phone className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">Call</span>
+                    <span className="mt-1 block text-sm font-semibold text-foreground">{contact.phoneDisplay}</span>
+                  </span>
+                </a>
+                <a
+                  href={whatsappQuoteHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-green/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-accent-green-dark transition-transform group-hover:scale-105">
+                    <MessageCircle className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">WhatsApp</span>
+                    <span className="mt-1 block text-sm font-semibold text-foreground">Start a chat</span>
+                  </span>
+                </a>
+                <a
+                  href={emailQuoteHref}
                   className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-blue/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-accent-blue transition-transform group-hover:scale-105">
@@ -990,18 +1020,6 @@ export function SunPowerSite() {
               </div>
 
               <div className="mt-8 space-y-5 text-base text-slate-700">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">Phone</p>
-                  <a href={contact.phoneHref} className="mt-2 inline-flex text-lg font-semibold text-foreground">
-                    {contact.phoneDisplay}
-                  </a>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">WhatsApp</p>
-                  <a href={contact.whatsappHref} className="mt-2 inline-flex font-semibold text-accent-green-dark">
-                    Start a chat
-                  </a>
-                </div>
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted">Address</p>
                   <p className="mt-2 max-w-md leading-7">{contact.address}</p>
