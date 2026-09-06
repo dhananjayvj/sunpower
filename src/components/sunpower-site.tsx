@@ -60,21 +60,21 @@ const avatars = [
   { imageUrl: "https://i.pravatar.cc/150?u=3", name: "Sunita Verma" },
 ];
 
-function BrandName() {
+function BrandName({ className }: { className?: string }) {
   return (
-    <span className="brand-name michroma-regular">
+    <span className={cn("brand-name michroma-regular", className)}>
       <span className="text-accent-blue">SUN</span>
       <span className="text-accent-green">POWER</span>
     </span>
   );
 }
 
-function BrandText({ children }: { children: string }) {
+function BrandText({ children, brandClassName }: { children: string; brandClassName?: string }) {
   return (
     <>
       {children.split(/(Sun Power|SUNPOWER)/g).map((part, index) =>
         part === "Sun Power" || part === "SUNPOWER" ? (
-          <BrandName key={`${part}-${index}`} />
+          <BrandName key={`${part}-${index}`} className={brandClassName} />
         ) : (
           part
         ),
@@ -87,10 +87,12 @@ function SectionHeading({
   eyebrow,
   title,
   description,
+  titleBrandClassName,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  titleBrandClassName?: string;
 }) {
   return (
     <div className="max-w-2xl space-y-4">
@@ -98,7 +100,7 @@ function SectionHeading({
         <BrandText>{eyebrow}</BrandText>
       </p>
       <h2 className="text-balance text-3xl leading-tight font-semibold tracking-[-0.04em] text-foreground sm:text-4xl">
-        <BrandText>{title}</BrandText>
+        <BrandText brandClassName={titleBrandClassName}>{title}</BrandText>
       </h2>
       <p className="text-pretty text-base leading-7 text-muted sm:text-lg">
         <BrandText>{description}</BrandText>
@@ -939,6 +941,7 @@ export function SunPowerSite() {
                   eyebrow="Contact"
                   title="Speak with the SUNPOWER team"
                   description="Share your requirement and we will help you plan the right rooftop solar system for your property."
+                  titleBrandClassName="text-[0.68em]"
                 />
               </div>
 
