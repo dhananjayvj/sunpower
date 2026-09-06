@@ -9,6 +9,7 @@ import {
   BadgeCheck,
   BatteryCharging,
   Bolt,
+  Camera,
   Calculator,
   ChevronRight,
   ChevronDown,
@@ -18,6 +19,7 @@ import {
   IndianRupee,
   Map,
   MapPin,
+  Mail,
   MessageCircle,
   ShieldCheck,
   SunMedium,
@@ -947,6 +949,35 @@ export function SunPowerSite() {
 
               <div className="mt-6">
                 <AvatarCircles numPeople={3} avatarUrls={avatars} />
+              </div>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <a
+                  href={contact.emailHref}
+                  className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-blue/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-accent-blue transition-transform group-hover:scale-105">
+                    <Mail className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">Email</span>
+                    <span className="mt-1 block truncate text-sm font-semibold text-foreground">{contact.email}</span>
+                  </span>
+                </a>
+                <a
+                  href={contact.instagramHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-green/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-accent-green-dark transition-transform group-hover:scale-105">
+                    <Camera className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">Instagram</span>
+                    <span className="mt-1 block text-sm font-semibold text-foreground">@sunpowerind</span>
+                  </span>
+                </a>
               </div>
 
               <div className="mt-8 space-y-5 text-base text-slate-700">

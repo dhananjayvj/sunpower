@@ -4,6 +4,9 @@ export const contact = {
   phoneDisplay: "+91 95604 73434",
   phoneHref: "tel:+919560473434",
   whatsappHref: "https://wa.me/919560473434",
+  email: "vansh@sunpowerind.com",
+  emailHref: "mailto:vansh@sunpowerind.com",
+  instagramHref: "https://www.instagram.com/sunpowerind?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
   address:
     "Office No. 3, B-47/A, Lane No. 6, Joshi Colony, I.P. Extension, Delhi - 110092",
   mapsHref: "https://maps.app.goo.gl/MgfvQ3EPFBjs8dBX7?g_st=aw",
