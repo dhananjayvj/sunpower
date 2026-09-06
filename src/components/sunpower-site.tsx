@@ -9,7 +9,6 @@ import {
   BadgeCheck,
   BatteryCharging,
   Bolt,
-  Camera,
   Calculator,
   ChevronRight,
   ChevronDown,
@@ -68,6 +67,16 @@ function BrandName({ className }: { className?: string }) {
       <span className="text-accent-blue">SUN</span>
       <span className="text-accent-green">POWER</span>
     </span>
+  );
+}
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
   );
 }
 
@@ -971,7 +980,7 @@ export function SunPowerSite() {
                   className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-green/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-accent-green-dark transition-transform group-hover:scale-105">
-                    <Camera className="h-5 w-5" />
+                    <InstagramIcon className="h-5 w-5" />
                   </span>
                   <span>
                     <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">Instagram</span>
