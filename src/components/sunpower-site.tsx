@@ -26,7 +26,6 @@ import {
   Star,
 } from "lucide-react";
 import { MobileNav } from "@/components/mobile-nav";
-import { AvatarCircles } from "@/registry/magicui/avatar-circles";
 import { BorderBeam } from "@/registry/magicui/border-beam";
 import { TextAnimate } from "@/registry/magicui/text-animate";
 import { Button } from "@/components/ui/button";
@@ -57,12 +56,6 @@ const serviceIcons = [SunMedium, Factory, ShieldCheck, BatteryCharging, FileText
 const trustSignalIcons = [ShieldCheck, Home, IndianRupee, Map];
 const quoteInquiryIntro =
   "Hello SUNPOWER team, I am interested in a solar solution for my property. Please help me arrange a site survey and share a quotation.";
-
-const avatars = [
-  { imageUrl: "https://i.pravatar.cc/150?u=1", name: "Rajesh Sharma" },
-  { imageUrl: "https://i.pravatar.cc/150?u=2", name: "Amit Aggarwal" },
-  { imageUrl: "https://i.pravatar.cc/150?u=3", name: "Sunita Verma" },
-];
 
 function BrandName({ className }: { className?: string }) {
   return (
@@ -958,10 +951,6 @@ export function SunPowerSite() {
                   description="Share your requirement and we will help you plan the right rooftop solar system for your property."
                   titleBrandClassName="text-[0.68em]"
                 />
-              </div>
-
-              <div className="mt-6">
-                <AvatarCircles numPeople={3} avatarUrls={avatars} />
               </div>
 
               <div className="mt-6 grid w-full min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
