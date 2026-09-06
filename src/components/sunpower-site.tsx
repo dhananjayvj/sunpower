@@ -948,9 +948,9 @@ export function SunPowerSite() {
       </section>
 
       <section id="contact" className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
-        <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
+        <div className="section-shell px-4 py-6 sm:px-8 sm:py-8 lg:px-10">
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
-            <Reveal className="card-panel p-7 sm:p-8">
+            <Reveal className="card-panel w-full min-w-0 p-5 sm:p-8">
               <div className="max-w-xl">
                 <SectionHeading
                   eyebrow="Contact"
@@ -964,36 +964,36 @@ export function SunPowerSite() {
                 <AvatarCircles numPeople={3} avatarUrls={avatars} />
               </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="mt-6 grid w-full min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
                 <a
                   href={contact.phoneHref}
-                  className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-blue/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                  className="group flex w-full min-w-0 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 transition-colors hover:border-accent-blue/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 sm:min-h-20 sm:p-4"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-accent-blue transition-transform group-hover:scale-105">
                     <Phone className="h-5 w-5" />
                   </span>
                   <span className="min-w-0">
-                    <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">Call</span>
-                    <span className="mt-1 block text-sm font-semibold text-foreground">{contact.phoneDisplay}</span>
+                    <span className="block truncate text-xs font-semibold uppercase tracking-[0.16em] text-muted">Call</span>
+                    <span className="mt-1 block truncate text-sm font-semibold text-foreground">{contact.phoneDisplay}</span>
                   </span>
                 </a>
                 <a
                   href={whatsappQuoteHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-green/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                  className="group flex w-full min-w-0 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 transition-colors hover:border-accent-green/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 sm:min-h-20 sm:p-4"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-accent-green-dark transition-transform group-hover:scale-105">
                     <MessageCircle className="h-5 w-5" />
                   </span>
-                  <span>
-                    <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">WhatsApp</span>
-                    <span className="mt-1 block text-sm font-semibold text-foreground">Start a chat</span>
+                  <span className="min-w-0">
+                    <span className="block truncate text-xs font-semibold uppercase tracking-[0.16em] text-muted">WhatsApp</span>
+                    <span className="mt-1 block truncate text-sm font-semibold text-foreground">Start a chat</span>
                   </span>
                 </a>
                 <a
                   href={emailQuoteHref}
-                  className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-blue/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                  className="group flex w-full min-w-0 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 transition-colors hover:border-accent-blue/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 sm:min-h-20 sm:p-4"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-accent-blue transition-transform group-hover:scale-105">
                     <Mail className="h-5 w-5" />
@@ -1007,14 +1007,14 @@ export function SunPowerSite() {
                   href={contact.instagramHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex min-h-20 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors hover:border-accent-green/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                  className="group flex w-full min-w-0 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 transition-colors hover:border-accent-green/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 sm:min-h-20 sm:p-4"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-accent-green-dark transition-transform group-hover:scale-105">
                     <InstagramIcon className="h-5 w-5" />
                   </span>
-                  <span>
-                    <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">Instagram</span>
-                    <span className="mt-1 block text-sm font-semibold text-foreground">@sunpowerind</span>
+                  <span className="min-w-0">
+                    <span className="block truncate text-xs font-semibold uppercase tracking-[0.16em] text-muted">Instagram</span>
+                    <span className="mt-1 block truncate text-sm font-semibold text-foreground">@sunpowerind</span>
                   </span>
                 </a>
               </div>
