@@ -939,7 +939,7 @@ export function SunPowerSite() {
               <div className="max-w-xl">
                 <SectionHeading
                   eyebrow="Contact"
-                  title="Speak with the SUNPOWER team"
+                  title="Speak with SUNPOWER team"
                   description="Share your requirement and we will help you plan the right rooftop solar system for your property."
                   titleBrandClassName="text-[0.68em]"
                 />
