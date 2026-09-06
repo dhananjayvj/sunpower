@@ -58,9 +58,6 @@ const avatars = [
   { imageUrl: "https://i.pravatar.cc/150?u=1", name: "Rajesh Sharma" },
   { imageUrl: "https://i.pravatar.cc/150?u=2", name: "Amit Aggarwal" },
   { imageUrl: "https://i.pravatar.cc/150?u=3", name: "Sunita Verma" },
-  { imageUrl: "https://i.pravatar.cc/150?u=4", name: "Vikram Malhotra" },
-  { imageUrl: "https://i.pravatar.cc/150?u=5", name: "Neeraj Gupta" },
-  { imageUrl: "https://i.pravatar.cc/150?u=6", name: "Priya Mehta" },
 ];
 
 function BrandName() {
@@ -679,7 +676,7 @@ export function SunPowerSite() {
 
           <div className="mt-12 space-y-8">
             {productCatalogSections.map((section, sectionIndex) => {
-              const isBatterySection = section.title === "Batteries";
+              const usesSquareMedia = ["Solar Panels", "Batteries", "Inverters"].includes(section.title);
 
               return (
                 <motion.div
@@ -719,7 +716,7 @@ export function SunPowerSite() {
                             <div
                               className={cn(
                                 "overflow-hidden rounded-[1rem] border border-slate-200 bg-slate-50",
-                                isBatterySection ? "aspect-square" : "aspect-video",
+                                usesSquareMedia ? "aspect-square" : "aspect-video",
                               )}
                             >
                               <img
@@ -937,14 +934,16 @@ export function SunPowerSite() {
         <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
             <Reveal className="card-panel p-7 sm:p-8">
-              <SectionHeading
-                eyebrow="Contact"
-                title="Speak with the SUNPOWER team"
-                description="Share your requirement and we will help you plan the right rooftop solar system for your property."
-              />
+              <div className="max-w-xl">
+                <SectionHeading
+                  eyebrow="Contact"
+                  title="Speak with the SUNPOWER team"
+                  description="Share your requirement and we will help you plan the right rooftop solar system for your property."
+                />
+              </div>
 
               <div className="mt-6">
-                <AvatarCircles numPeople={99} avatarUrls={avatars} />
+                <AvatarCircles numPeople={3} avatarUrls={avatars} />
               </div>
 
               <div className="mt-8 space-y-5 text-base text-slate-700">
