@@ -825,7 +825,7 @@ export function SunPowerSite() {
                 key={card.title}
                 layoutId={`resource-${index}`}
                 triggerRadius="1.85rem"
-                contentRadius="1.5rem"
+                contentRadius="1.85rem"
               >
                 <ExpandableScreenTrigger className="transition-transform duration-300 hover:-translate-y-1">
                   <article className="relative flex h-full min-h-56 flex-col justify-between rounded-[1.85rem] p-6">

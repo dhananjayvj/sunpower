@@ -188,7 +188,10 @@ export function ExpandableScreenContent({
               },
               borderRadius: { duration: animationDuration, ease: [0.23, 1, 0.32, 1] },
             }}
-            style={{ borderRadius: contentRadius }}
+            style={{
+              borderRadius: contentRadius,
+              clipPath: `inset(0 round ${contentRadius})`,
+            }}
             className={`relative z-10 w-full max-w-4xl overflow-hidden bg-white ${className}`}
           >
             <div className="max-h-[calc(100dvh-1.5rem)] overflow-y-auto">
