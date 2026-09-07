@@ -6,7 +6,7 @@ import { contact } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Thank You | SUNPOWER",
   description:
-    "Thank-you page for SUNPOWER enquiries with next steps for WhatsApp, call-back requests, and returning to the main site.",
+    "Thank you for contacting SUNPOWER. Our team will be in touch shortly about your solar requirements.",
 };
 
 export default function ThankYouPage() {
@@ -22,8 +22,8 @@ export default function ThankYouPage() {
           Your quote request is on the right path.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">
-          The site is designed around direct WhatsApp and call follow-up, so this page keeps the
-          handoff clear for residential and commercial buyers who are ready to move to the next step.
+          Thank you for contacting SUNPOWER. Our team will review your enquiry and get in touch
+          shortly to understand your requirements and discuss the right solar solution.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
