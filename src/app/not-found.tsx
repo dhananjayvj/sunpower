@@ -1,23 +1,36 @@
 import Link from "next/link";
+import { ArrowRight, Phone } from "lucide-react";
+import { contact } from "@/lib/site";
 
 export default function NotFound() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-4xl flex-col justify-center px-4 py-12 sm:px-6 lg:px-8">
-      <div className="card-panel p-8 text-center sm:p-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">404</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          This page does not exist.
-        </h1>
-        <p className="mt-5 text-lg leading-8 text-muted">
-          Send the visitor back to a useful action: quote request, call, or the main site.
+    <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_55%,#eef6f3_100%)] px-4 py-16 sm:px-6 lg:px-8">
+      <div className="w-full max-w-3xl rounded-[2rem] border border-slate-200/80 bg-white/95 p-8 text-center shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:p-12">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-blue-deep to-accent-green-dark text-2xl font-semibold text-white shadow-lg shadow-accent-blue-deep/15">
+          404
+        </div>
+        <p className="mt-7 text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">
+          SUNPOWER
         </p>
-        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+        <h1 className="mx-auto mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          Let&apos;s get you back to the right solar solution.
+        </h1>
+        <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-muted">
+          The page you&apos;re looking for may have moved. Explore our solar services or speak with
+          the SUNPOWER team about your requirement.
+        </p>
+        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Link href="/" className="button-primary justify-center">
-            Back to homepage
+            Go to homepage
+            <ArrowRight className="h-4 w-4" />
           </Link>
-          <Link href="/privacy" className="button-secondary justify-center">
-            Privacy policy
+          <Link href="/#contact" className="button-secondary justify-center">
+            Request a callback
           </Link>
+          <a href={contact.phoneHref} className="button-secondary justify-center">
+            <Phone className="h-4 w-4" />
+            Call {contact.phoneDisplay}
+          </a>
         </div>
       </div>
     </main>
