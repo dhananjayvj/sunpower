@@ -597,8 +597,8 @@ export function SunPowerSite() {
           />
 
           <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-muted">Swipe to compare project experiences.</p>
-            <div className="flex items-center gap-2">
+            <p className="text-sm text-muted lg:hidden">Swipe to compare project experiences.</p>
+            <div className="flex items-center gap-2 lg:hidden">
               <button
                 type="button"
                 onClick={() => scrollToReview((activeReview - 1 + testimonials.length) % testimonials.length)}
@@ -630,7 +630,7 @@ export function SunPowerSite() {
           >
             <div className="testimonial-marquee-track flex w-max gap-4 sm:gap-6 lg:grid lg:w-full lg:grid-cols-3">{renderTestimonials()}</div>
           </div>
-          <div className="mt-2 flex justify-center gap-1" aria-label="Review navigation">
+          <div className="mt-2 flex justify-center gap-1 lg:hidden" aria-label="Review navigation">
             {testimonials.map((testimonial, index) => (
               <button
                 key={testimonial.name}
