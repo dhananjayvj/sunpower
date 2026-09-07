@@ -54,8 +54,7 @@ import {
 
 const serviceIcons = [SunMedium, Factory, ShieldCheck, BatteryCharging, FileText];
 const trustSignalIcons = [ShieldCheck, Home, IndianRupee, Map];
-const quoteInquiryIntro =
-  "Hello SUNPOWER team, I am interested in a solar solution for my property. Please help me arrange a site survey and share a quotation.";
+const quoteInquiryIntro = "Hello SUNPOWER team, I'm interested in a solar solution for my property. Can we connect?";
 
 function BrandName({ className }: { className?: string }) {
   return (
@@ -163,22 +162,7 @@ export function SunPowerSite() {
     [calculatorMode, monthlyBill, roofAreaSqFt],
   );
 
-  const whatsappQuoteHref = useMemo(() => {
-    const message = [
-      quoteInquiryIntro,
-      `Name: ${name || "Not shared yet"}`,
-      `Email: ${email || "Not shared yet"}`,
-      `Mobile: ${mobile || "Not shared yet"}`,
-      `City: ${city || "Delhi NCR"}`,
-      `Requirement: ${requirement || "Residential rooftop solar"}`,
-      `Message: ${inquiryMessage || "Not shared yet"}`,
-      calculatorMode === "bill"
-        ? `Monthly bill: Rs ${monthlyBill.toLocaleString("en-IN")}`
-        : `Approx. roof area: ${roofAreaSqFt} sq ft`,
-    ].join("\n");
-
-    return `${contact.whatsappHref}?text=${encodeURIComponent(message)}`;
-  }, [calculatorMode, city, email, inquiryMessage, mobile, monthlyBill, name, requirement, roofAreaSqFt]);
+  const whatsappQuoteHref = `${contact.whatsappHref}?text=${encodeURIComponent(quoteInquiryIntro)}`;
   const emailQuoteHref = `${contact.emailHref}?subject=${encodeURIComponent("Solar site survey and quotation request")}&body=${encodeURIComponent(quoteInquiryIntro)}`;
 
   const scrollToReview = (index: number) => {
