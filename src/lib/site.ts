@@ -1,4 +1,4 @@
-export const siteUrl = "https://dhananjayvj.github.io/sunpower";
+export const siteUrl = "https://sunpowerind.com";
 
 export const contact = {
   phoneDisplay: "+91 95604 73434",

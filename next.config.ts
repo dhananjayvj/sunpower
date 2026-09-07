@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
-const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
-const repoBasePath = isGithubActions && repositoryName ? `/${repositoryName}` : "";
+// The site is served from the domain root on GitHub Pages. Keep this
+// optional so a project-path preview can still be built explicitly when needed.
+const repoBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
   output: "export",
