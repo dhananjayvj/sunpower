@@ -189,16 +189,18 @@ export function ExpandableScreenContent({
               borderRadius: { duration: animationDuration, ease: [0.23, 1, 0.32, 1] },
             }}
             style={{ borderRadius: contentRadius }}
-            className={`relative z-10 flex h-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-4xl overflow-y-auto bg-white ${className}`}
+            className={`relative z-10 w-full max-w-4xl overflow-hidden bg-white ${className}`}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-              className="relative z-10 w-full"
-            >
-              {children}
-            </motion.div>
+            <div className="max-h-[calc(100dvh-1.5rem)] overflow-y-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
+                className="relative z-10 w-full"
+              >
+                {children}
+              </motion.div>
+            </div>
 
             {showCloseButton && (
               <motion.button
