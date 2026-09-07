@@ -1148,9 +1148,6 @@ export function SunPowerSite() {
               <Link href="/privacy" className="hover:text-accent-blue">
                 Privacy policy
               </Link>
-              <Link href="/thank-you" className="hover:text-accent-blue">
-                Thank-you page
-              </Link>
             </div>
           </div>
         </div>
