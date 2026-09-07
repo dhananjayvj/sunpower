@@ -248,7 +248,7 @@ export function SunPowerSite() {
               height={1001}
               loading="eager"
               decoding="async"
-              className="h-12 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:h-14 lg:h-16"
+              className="h-14 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:h-16 lg:h-[4.25rem]"
             />
           </a>
 
