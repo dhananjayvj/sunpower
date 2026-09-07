@@ -20,9 +20,7 @@ import {
   MapPin,
   Mail,
   MessageCircle,
-  Pause,
   Phone,
-  Play,
   ShieldCheck,
   SunMedium,
   Star,
@@ -138,12 +136,9 @@ export function SunPowerSite() {
   const [mobile, setMobile] = useState("");
   const [inquiryMessage, setInquiryMessage] = useState("");
   const [activeReview, setActiveReview] = useState(0);
-  const [isReviewAutoplaying, setIsReviewAutoplaying] = useState(false);
-  const [isReviewVisible, setIsReviewVisible] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const reviewViewportRef = useRef<HTMLDivElement>(null);
-  const reviewSectionRef = useRef<HTMLElement>(null);
   const aboutImageRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: aboutImageProgress } = useScroll({
     target: aboutImageRef,
@@ -158,35 +153,6 @@ export function SunPowerSite() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    const section = reviewSectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsReviewVisible(entry.isIntersecting),
-      { threshold: 0.2 },
-    );
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isReviewAutoplaying || !isReviewVisible || shouldReduceMotion) return;
-
-    const interval = window.setInterval(() => {
-      const nextIndex = (activeReview + 1) % testimonials.length;
-      const viewport = reviewViewportRef.current;
-      const card = viewport?.querySelector<HTMLElement>(`[data-review-index="${nextIndex}"]`);
-      if (viewport && card) {
-        viewport.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
-        setActiveReview(nextIndex);
-      }
-    }, 5000);
-
-    return () => window.clearInterval(interval);
-  }, [activeReview, isReviewAutoplaying, isReviewVisible, shouldReduceMotion]);
 
   const estimate = useMemo(
     () =>
@@ -215,7 +181,7 @@ export function SunPowerSite() {
       <article
         key={testimonial.name}
         data-review-index={index}
-        className="flex min-w-[300px] max-w-[380px] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:min-w-[360px]"
+        className="flex min-w-[300px] max-w-[380px] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:min-w-[360px] lg:min-w-0 lg:max-w-none"
       >
         <div>
           <div className="flex items-center gap-1 text-amber-400" aria-label="5 out of 5 stars">
@@ -557,7 +523,7 @@ export function SunPowerSite() {
             description="Choose the service you need and speak with SUNPOWER for a site survey, product recommendation, or project quotation."
           />
 
-          <div className="mt-10 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => {
               const Icon = serviceIcons[index];
 
@@ -610,7 +576,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="testimonials" ref={reviewSectionRef} className="border-y border-border/70 bg-slate-50">
+      <section id="testimonials" className="border-y border-border/70 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Customer Stories"
@@ -637,16 +603,6 @@ export function SunPowerSite() {
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
-              <button
-                type="button"
-                onClick={() => setIsReviewAutoplaying((value) => !value)}
-                aria-pressed={isReviewAutoplaying}
-                disabled={Boolean(shouldReduceMotion)}
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
-              >
-                {isReviewAutoplaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-                {isReviewAutoplaying ? "Pause" : "Play"}
-              </button>
             </div>
           </div>
           <div
@@ -658,9 +614,9 @@ export function SunPowerSite() {
                 : firstCard?.offsetWidth ?? 1;
               setActiveReview(Math.min(testimonials.length - 1, Math.round(event.currentTarget.scrollLeft / Math.max(cardStep, 1))));
             }}
-            className="testimonial-marquee-viewport group mt-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none"
+            className="testimonial-marquee-viewport group mt-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none lg:overflow-visible"
           >
-            <div className="testimonial-marquee-track flex w-max gap-4 sm:gap-6">{renderTestimonials()}</div>
+            <div className="testimonial-marquee-track flex w-max gap-4 sm:gap-6 lg:grid lg:w-full lg:grid-cols-3">{renderTestimonials()}</div>
           </div>
           <div className="mt-2 flex justify-center gap-1" aria-label="Review navigation">
             {testimonials.map((testimonial, index) => (
@@ -761,7 +717,7 @@ export function SunPowerSite() {
                     </div>
                   </div>
 
-                  <div className="grid gap-5 lg:grid-cols-3">
+                  <div className={cn("grid gap-5", section.title === "Solar Panels" ? "lg:grid-cols-2" : "lg:grid-cols-3")}>
                     {section.cards.map((card) => (
                       <article
                         key={card.name}
