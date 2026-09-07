@@ -3,9 +3,8 @@ import "./globals.css";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "SUNPOWER | Renewable Energy Solutions in Delhi NCR",
-  description:
-    "SUNPOWER is an authorized Loom Solar dealer in Delhi NCR for rooftop and ground-mounted solar, batteries, inverters, PM Surya Ghar subsidy support, and EPC/MMS contracting.",
+  title: "SUNPOWER | SOLAR SOLUTIONS in Delhi NCR",
+  description: "Residential, commercial, subsidy-linked solar solutions",
   keywords: [
     "solar company Delhi NCR",
     "rooftop solar Delhi",
@@ -20,9 +19,8 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "SUNPOWER | Renewable Energy Solutions in Delhi NCR",
-    description:
-      "Residential, commercial, industrial, rooftop, ground-mounted, subsidy-linked, and MMS solar solutions for Delhi NCR buyers.",
+    title: "SUNPOWER | SOLAR SOLUTIONS in Delhi NCR",
+    description: "Residential, commercial, subsidy-linked solar solutions",
     type: "website",
     url: siteUrl,
     images: [
@@ -33,6 +31,11 @@ export const metadata: Metadata = {
         alt: "SUNPOWER solar solutions in Delhi NCR",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SUNPOWER | SOLAR SOLUTIONS in Delhi NCR",
+    description: "Residential, commercial, subsidy-linked solar solutions",
   },
 };
 

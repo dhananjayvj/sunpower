@@ -54,12 +54,12 @@ export default function OpenGraphImage() {
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "22px", maxWidth: "880px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "22px", maxWidth: "880px" }}>
           <div style={{ fontSize: "66px", fontWeight: 700, lineHeight: 1.05 }}>
-            Rooftop solar that feels clear before it ever feels technical.
+            SUNPOWER | SOLAR SOLUTIONS in Delhi NCR
           </div>
           <div style={{ fontSize: "28px", lineHeight: 1.4, opacity: 0.88 }}>
-            Residential, commercial, industrial, subsidy guidance, batteries, inverters, and MMS contracting.
+            Residential, commercial, subsidy-linked solar solutions
           </div>
         </div>
       </div>
