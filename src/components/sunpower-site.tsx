@@ -27,6 +27,11 @@ import {
 import { MobileNav } from "@/components/mobile-nav";
 import { BorderBeam } from "@/registry/magicui/border-beam";
 import { TextAnimate } from "@/registry/magicui/text-animate";
+import {
+  ExpandableScreen,
+  ExpandableScreenContent,
+  ExpandableScreenTrigger,
+} from "@/components/ui/expandable-screen";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -133,7 +138,6 @@ export function SunPowerSite() {
   const [requirement] = useState("Residential rooftop solar");
   const [activeReview, setActiveReview] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [openResource, setOpenResource] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const reviewViewportRef = useRef<HTMLDivElement>(null);
   const aboutImageRef = useRef<HTMLDivElement>(null);
@@ -816,51 +820,51 @@ export function SunPowerSite() {
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {resourceCards.map((card, index) => {
-              const isOpen = openResource === index;
-
               return (
-              <motion.article
+              <ExpandableScreen
                 key={card.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-120px" }}
-                variants={fadeUp}
-                transition={{ ...transitions.smooth, delay: index * 0.05 }}
-                className={cn(
-                  "rounded-[1.85rem] border bg-white/95 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition-colors",
-                  isOpen ? "border-accent-blue-deep/45" : "border-slate-200/80",
-                )}
+                layoutId={`resource-${index}`}
+                triggerRadius="1.85rem"
+                contentRadius="1.5rem"
               >
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  aria-controls={`resource-detail-${index}`}
-                  onClick={() => setOpenResource(isOpen ? null : index)}
-                  className="flex min-h-11 w-full items-start justify-between gap-4 text-left"
-                >
-                  <span>
-                    <span className={cn("block text-xl font-semibold tracking-tight", isOpen ? "text-accent-blue-deep" : "text-foreground")}>
-                      {card.title}
+                <ExpandableScreenTrigger className="transition-transform duration-300 hover:-translate-y-1">
+                  <article className="relative flex h-full min-h-56 flex-col justify-between rounded-[1.85rem] p-6">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent-blue">
+                        Solar guide
+                      </p>
+                      <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
+                        {card.title}
+                      </h3>
+                      <p className="mt-3 text-base leading-7 text-muted">{card.description}</p>
+                    </div>
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent-blue-deep">
+                      Read the guide
+                      <ChevronRight className="h-4 w-4" />
                     </span>
-                    <span className="mt-3 block text-base leading-7 text-muted">{card.description}</span>
-                  </span>
-                  <ChevronDown className={cn("mt-1 h-5 w-5 shrink-0 text-accent-blue-deep transition-transform duration-300", isOpen && "rotate-180")} />
-                </button>
-                <AnimatePresence initial={false}>
-                  {isOpen ? (
-                    <motion.div
-                      id={`resource-detail-${index}`}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <p className="border-t border-slate-200 pt-4 text-sm leading-6 text-slate-700">{card.detail}</p>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </motion.article>
+                  </article>
+                </ExpandableScreenTrigger>
+                <ExpandableScreenContent className="border border-slate-200/80 shadow-[0_24px_80px_rgba(15,23,42,0.18)]">
+                  <div className="min-h-full bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-7 sm:p-12">
+                    <div className="max-w-2xl pt-10 sm:pt-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">
+                        Solar guide
+                      </p>
+                      <h2 className="mt-5 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
+                        {card.title}
+                      </h2>
+                      <p className="mt-5 text-lg leading-8 text-muted">{card.description}</p>
+                      <div className="mt-8 border-t border-slate-200 pt-7">
+                        <p className="text-base leading-8 text-slate-700">{card.detail}</p>
+                      </div>
+                      <a href="#contact" className="button-primary mt-9 inline-flex">
+                        Discuss your requirement
+                        <ChevronRight className="h-4 w-4" />
+                      </a>
+                    </div>
+                  </div>
+                </ExpandableScreenContent>
+              </ExpandableScreen>
               );
             })}
           </div>
