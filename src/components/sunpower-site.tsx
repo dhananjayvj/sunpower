@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
@@ -116,7 +115,6 @@ function SectionHeading({
 }
 
 export function SunPowerSite() {
-  const router = useRouter();
   const shouldReduceMotion = useReducedMotion();
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const brandLogoSrc = `${basePath}/images/logo.png`;
@@ -1028,16 +1026,16 @@ export function SunPowerSite() {
               </CardHeader>
               <CardContent className="relative z-10 p-7 pt-2 sm:p-8 sm:pt-3">
               <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                window.open(whatsappQuoteHref, "_blank", "noopener,noreferrer");
-                router.push("/thank-you");
-              }}
+              action="https://formspree.io/f/xnpqgzgr"
+              method="POST"
             >
+              <input type="hidden" name="_subject" value="New SUNPOWER website enquiry" />
+              <input type="hidden" name="_next" value="https://sunpowerind.com/thank-you/" />
               <div className="grid gap-4 sm:grid-cols-2">
                 <Label className="space-y-2">
                   <span>Name</span>
                   <Input
+                    name="name"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     className="input-field"
@@ -1048,6 +1046,7 @@ export function SunPowerSite() {
                 <Label className="space-y-2">
                   <span>Email</span>
                   <Input
+                    name="email"
                     type="email"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
@@ -1057,6 +1056,7 @@ export function SunPowerSite() {
                 <Label className="space-y-2">
                   <span>Phone</span>
                   <Input
+                    name="phone"
                     value={mobile}
                     onChange={(event) => setMobile(event.target.value)}
                     placeholder="+91"
@@ -1066,6 +1066,7 @@ export function SunPowerSite() {
                 <Label className="space-y-2 sm:col-span-2">
                   <span>Message</span>
                   <textarea
+                    name="message"
                     value={inquiryMessage}
                     onChange={(event) => setInquiryMessage(event.target.value)}
                     className="input-field min-h-28 resize-y"
