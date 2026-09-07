@@ -147,6 +147,18 @@ export function SunPowerSite() {
   const aboutImageY = useTransform(aboutImageProgress, [0, 1], ["-3%", "3%"]);
 
   useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+
+    // Prevent browser reload restoration from leaving the homepage slightly below the hero.
+    if (!window.location.hash) window.scrollTo(0, 0);
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 150);
 
     handleScroll();
