@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { siteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -29,25 +30,20 @@ export default function OpenGraphImage() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "18px",
+            gap: "22px",
           }}
         >
-          <div
+          <img
+            src={`${siteUrl}/images/logo.png`}
+            width={360}
+            height={196}
+            alt="SUNPOWER"
             style={{
-              height: "72px",
-              width: "72px",
-              borderRadius: "22px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "rgba(255,255,255,0.12)",
-              fontSize: "38px",
+              objectFit: "contain",
+              objectPosition: "left center",
             }}
-          >
-            ☀
-          </div>
+          />
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: "42px", fontWeight: 700 }}>SUNPOWER</div>
             <div style={{ fontSize: "20px", opacity: 0.8, letterSpacing: "0.28em", textTransform: "uppercase" }}>
               Delhi NCR solar
             </div>
