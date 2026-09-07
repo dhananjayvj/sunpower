@@ -193,7 +193,7 @@ export function SunPowerSite() {
       <article
         key={testimonial.name}
         data-review-index={index}
-        className="flex min-w-[300px] max-w-[380px] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:min-w-[360px] lg:min-w-0 lg:max-w-none"
+        className="flex w-[calc(100vw-2rem)] min-w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:w-auto sm:min-w-[360px] sm:max-w-[380px] lg:min-w-0 lg:max-w-none"
       >
         <div>
           <div className="flex items-center gap-1 text-amber-400" aria-label="5 out of 5 stars">
