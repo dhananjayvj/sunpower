@@ -6,6 +6,11 @@ SUNPOWER is a solar energy dealership and EPC/MMS contracting firm serving Delhi
 
 - Homepage: https://sunpowerind.com/
 - Services: https://sunpowerind.com/#services
+- Residential rooftop solar: https://sunpowerind.com/services/residential-rooftop-solar/
+- Commercial and industrial solar: https://sunpowerind.com/services/commercial-industrial-solar/
+- MMS mounting structure contracting: https://sunpowerind.com/services/mms-mounting-structure-contracting/
+- Batteries and inverters: https://sunpowerind.com/services/batteries-inverters/
+- PM Surya Ghar subsidy assistance: https://sunpowerind.com/services/pm-surya-ghar-subsidy-assistance/
 - Solar product catalog: https://sunpowerind.com/#catalog
 - Projects: https://sunpowerind.com/#projects
 - Solar resources: https://sunpowerind.com/#resources

@@ -163,27 +163,7 @@ summary::-webkit-details-marker {
 }
 
 .testimonial-marquee-track {
-  animation: testimonial-marquee 42s linear infinite;
-  will-change: transform;
-}
-
-.testimonial-marquee-viewport:hover .testimonial-marquee-track,
-.testimonial-marquee-viewport:focus-within .testimonial-marquee-track {
-  animation-play-state: paused;
-}
-
-.testimonial-marquee-track--reduced {
-  animation: none;
-}
-
-@keyframes testimonial-marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
+  will-change: auto;
 }
 
 @keyframes border-beam {
@@ -194,18 +174,4 @@ summary::-webkit-details-marker {
 
 .animate-border-beam {
   animation: border-beam 8s linear infinite;
-}
-
-@media (max-width: 767px) {
-  .testimonial-marquee-track {
-    animation: none;
-    will-change: auto;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .testimonial-marquee-track {
-    animation: none;
-    will-change: auto;
-  }
 }

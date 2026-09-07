@@ -105,6 +105,7 @@ export const serviceAreas = [
 
 export const services = [
   {
+    slug: "residential-rooftop-solar",
     title: "Residential Rooftop Solar",
     description: "Designed for homes that want lower electricity bills and dependable long-term generation.",
     bullets: [
@@ -116,6 +117,7 @@ export const services = [
     imageAlt: "Residential rooftop solar panel installation in Delhi NCR",
   },
   {
+    slug: "commercial-industrial-solar",
     title: "Commercial & Industrial Solar",
     description: "Engineered for facilities that need stronger savings, predictable output, and project discipline.",
     bullets: [
@@ -127,6 +129,7 @@ export const services = [
     imageAlt: "Commercial and industrial solar EPC installation for a large facility in Delhi NCR",
   },
   {
+    slug: "mms-mounting-structure-contracting",
     title: "MMS (Mounting Structure) Contracting",
     description: "Structure solutions built for stability, clean execution, and large-project coordination.",
     bullets: [
@@ -138,6 +141,7 @@ export const services = [
     imageAlt: "Solar mounting structure contracting work for a rooftop installation in Delhi NCR",
   },
   {
+    slug: "batteries-inverters",
     title: "Batteries & Inverters",
     description: "Smart power electronics and storage options for savings-first or backup-ready systems.",
     bullets: [
@@ -149,6 +153,7 @@ export const services = [
     imageAlt: "Solar battery and inverter setup for residential and commercial energy systems",
   },
   {
+    slug: "pm-surya-ghar-subsidy-assistance",
     title: "PM Surya Ghar Subsidy Assistance",
     description: "Clear guidance for homeowners applying for subsidy-linked rooftop solar.",
     bullets: [
@@ -161,6 +166,117 @@ export const services = [
   },
 ];
 
+export type ServicePageContent = {
+  intro: string;
+  audience: string;
+  scope: string[];
+  process: Array<{ title: string; detail: string }>;
+  questions: Array<{ question: string; answer: string }>;
+};
+
+export const servicePageContent: Record<string, ServicePageContent> = {
+  "residential-rooftop-solar": {
+    intro:
+      "Plan a right-sized rooftop system for your home with clear guidance from roof review through installation and commissioning.",
+    audience: "For homeowners comparing rooftop capacity, equipment, subsidy support, and the next practical step.",
+    scope: [
+      "Roof and electricity-use review",
+      "System sizing for available space and consumption",
+      "Panel, inverter, and mounting recommendations",
+      "Installation coordination and net-metering guidance",
+    ],
+    process: [
+      { title: "Understand the site", detail: "We review the roof, monthly bill, orientation, and access before recommending a system size." },
+      { title: "Build the proposal", detail: "You receive a practical equipment and installation scope aligned to the property." },
+      { title: "Install and hand over", detail: "Our team coordinates installation, commissioning, and the next documentation steps." },
+    ],
+    questions: [
+      { question: "Can you help with PM Surya Ghar documentation?", answer: "Yes. We explain the relevant document checklist and support the subsidy-linked application workflow." },
+      { question: "Do you install systems on all residential roofs?", answer: "The final recommendation depends on roof condition, usable area, shading, access, and the property's electrical setup." },
+    ],
+  },
+  "commercial-industrial-solar": {
+    intro:
+      "Reduce daytime grid dependence with a solar EPC plan built around facility load, roof conditions, execution access, and project coordination.",
+    audience: "For offices, factories, institutions, warehouses, and facility teams evaluating rooftop or ground-mounted solar.",
+    scope: [
+      "Load and tariff assessment",
+      "Rooftop and ground-mounted feasibility planning",
+      "Equipment and mounting structure coordination",
+      "Turnkey EPC installation and commissioning support",
+    ],
+    process: [
+      { title: "Assess the facility", detail: "We review consumption patterns, available surfaces, access constraints, and the expected project scope." },
+      { title: "Engineer the system", detail: "The proposal connects the generation plan with equipment selection, structure design, and site execution requirements." },
+      { title: "Coordinate delivery", detail: "Installation teams, project milestones, and commissioning activities are organized around the facility's operating needs." },
+    ],
+    questions: [
+      { question: "Do you handle projects above 100 kW?", answer: "Yes. Sun Power works across commercial and industrial scopes, including large-format projects up to 1 MW." },
+      { question: "Can an existing industrial roof be assessed?", answer: "Yes. A site review helps establish usable area, structural considerations, access, and the appropriate mounting approach." },
+    ],
+  },
+  "mms-mounting-structure-contracting": {
+    intro:
+      "Get site-specific mounting structure support for rooftop and larger solar installations where stability, alignment, and coordination matter.",
+    audience: "For EPC teams, facility owners, contractors, and project managers who need dependable MMS fabrication or erection support.",
+    scope: [
+      "Site-specific structure layouts",
+      "Fabrication and erection coordination",
+      "Rooftop and ground-mounted applications",
+      "Interface management with solar EPC work",
+    ],
+    process: [
+      { title: "Review the site", detail: "We study the roof or ground condition, module arrangement, access, and project constraints." },
+      { title: "Coordinate the structure", detail: "The mounting approach is aligned with module dimensions, loading considerations, and installation sequencing." },
+      { title: "Support execution", detail: "Fabrication, delivery, erection, and coordination are planned to keep the solar installation moving." },
+    ],
+    questions: [
+      { question: "Can MMS work be scoped separately from EPC?", answer: "Yes. Mounting structure contracting can be discussed as a focused work package or as part of a wider solar project." },
+      { question: "Is the same structure used on every site?", answer: "No. Layout and execution depend on the surface, module arrangement, loading requirements, and access conditions." },
+    ],
+  },
+  "batteries-inverters": {
+    intro:
+      "Choose the power electronics and storage approach that fits your priorities, whether that is grid savings, backup resilience, or a hybrid setup.",
+    audience: "For homeowners and facility teams comparing on-grid, off-grid, hybrid, inverter, and lithium battery configurations.",
+    scope: [
+      "On-grid and hybrid system planning",
+      "Battery capacity and backup requirement review",
+      "Inverter and panel compatibility checks",
+      "Installation and commissioning coordination",
+    ],
+    process: [
+      { title: "Clarify the priority", detail: "We start with your load profile, backup expectation, outage pattern, and available solar capacity." },
+      { title: "Match the equipment", detail: "Recommendations are based on system type, compatibility, operating conditions, and the intended use." },
+      { title: "Integrate and test", detail: "The inverter and storage system are integrated with the solar installation and checked during handover." },
+    ],
+    questions: [
+      { question: "Do I need a battery for an on-grid system?", answer: "Not always. Batteries are primarily considered when backup during outages or stored-energy use is important." },
+      { question: "Can a battery be added later?", answer: "It depends on the inverter architecture, system compatibility, available space, and the future load requirement." },
+    ],
+  },
+  "pm-surya-ghar-subsidy-assistance": {
+    intro:
+      "Understand the PM Surya Ghar process with practical support for eligibility, documents, application steps, and rooftop installation coordination.",
+    audience: "For eligible homeowners who want to understand the subsidy-linked rooftop solar journey before they proceed.",
+    scope: [
+      "Eligibility and requirement review",
+      "Document checklist guidance",
+      "Application workflow support",
+      "Rooftop system planning alongside the subsidy process",
+    ],
+    process: [
+      { title: "Check the requirement", detail: "We discuss the property, electricity connection, roof, and system requirement to identify the relevant next steps." },
+      { title: "Prepare the documents", detail: "You receive a clear checklist so the application and installation coordination can move in the right sequence." },
+      { title: "Coordinate the project", detail: "Sun Power supports the rooftop system planning and explains the documentation milestones as the project progresses." },
+    ],
+    questions: [
+      { question: "Does every household receive the same subsidy?", answer: "Subsidy eligibility and amount depend on the applicable government rules and the qualifying installation details." },
+      { question: "Can you explain the process before I book a site survey?", answer: "Yes. We can first discuss the broad eligibility and documentation requirements, then plan the site review." },
+    ],
+  },
+};
+
 export type ProductCard = {
   name: string;
   badge: string;
@@ -168,19 +284,6 @@ export type ProductCard = {
   imageAlt: string;
   chips: string[];
   ctaLabel: string;
-};
-
-const equipmentPlaceholder = (title: string, tone: "green" | "yellow" | "blue" | "slate") => {
-  const palettes = {
-    green: ["#ecfdf5", "#d1fae5", "#166534"],
-    yellow: ["#fffbeb", "#fef3c7", "#854d0e"],
-    blue: ["#eff6ff", "#dbeafe", "#1e3a8a"],
-    slate: ["#f8fafc", "#e2e8f0", "#334155"],
-  } as const;
-  const [start, end, ink] = palettes[tone];
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="${title}"><defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${start}"/><stop offset="1" stop-color="${end}"/></linearGradient></defs><rect width="800" height="600" rx="42" fill="url(#bg)"/><rect x="158" y="120" width="484" height="292" rx="28" fill="white" fill-opacity=".72" stroke="${ink}" stroke-opacity=".16" stroke-width="4"/><path d="M190 180h420M190 240h420M190 300h420M190 360h420M260 140v252M400 140v252M540 140v252" stroke="${ink}" stroke-opacity=".18" stroke-width="4"/><circle cx="620" cy="118" r="42" fill="#ffd60a" fill-opacity=".88"/><text x="400" y="488" fill="${ink}" font-family="Manrope, Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle">${title}</text></svg>`;
-
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 };
 
 export const productCatalogSections: Array<{

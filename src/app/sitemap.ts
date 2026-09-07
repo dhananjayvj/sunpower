@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/site";
+import { services, siteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -13,5 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}/privacy`,
       lastModified: new Date("2026-09-03"),
     },
+    ...services.map((service) => ({
+      url: `${siteUrl}/services/${service.slug}`,
+      lastModified: new Date("2026-09-07"),
+    })),
   ];
 }

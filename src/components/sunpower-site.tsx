@@ -10,6 +10,7 @@ import {
   Bolt,
   Calculator,
   ChevronRight,
+  ChevronLeft,
   ChevronDown,
   Factory,
   FileText,
@@ -19,7 +20,9 @@ import {
   MapPin,
   Mail,
   MessageCircle,
+  Pause,
   Phone,
+  Play,
   ShieldCheck,
   SunMedium,
   Star,
@@ -134,12 +137,13 @@ export function SunPowerSite() {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [inquiryMessage, setInquiryMessage] = useState("");
-  const [city] = useState("Delhi NCR");
-  const [requirement] = useState("Residential rooftop solar");
   const [activeReview, setActiveReview] = useState(0);
+  const [isReviewAutoplaying, setIsReviewAutoplaying] = useState(false);
+  const [isReviewVisible, setIsReviewVisible] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const reviewViewportRef = useRef<HTMLDivElement>(null);
+  const reviewSectionRef = useRef<HTMLElement>(null);
   const aboutImageRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: aboutImageProgress } = useScroll({
     target: aboutImageRef,
@@ -154,6 +158,35 @@ export function SunPowerSite() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const section = reviewSectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsReviewVisible(entry.isIntersecting),
+      { threshold: 0.2 },
+    );
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isReviewAutoplaying || !isReviewVisible || shouldReduceMotion) return;
+
+    const interval = window.setInterval(() => {
+      const nextIndex = (activeReview + 1) % testimonials.length;
+      const viewport = reviewViewportRef.current;
+      const card = viewport?.querySelector<HTMLElement>(`[data-review-index="${nextIndex}"]`);
+      if (viewport && card) {
+        viewport.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+        setActiveReview(nextIndex);
+      }
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [activeReview, isReviewAutoplaying, isReviewVisible, shouldReduceMotion]);
 
   const estimate = useMemo(
     () =>
@@ -177,10 +210,10 @@ export function SunPowerSite() {
     }
   };
 
-  const renderTestimonials = (duplicate = false) =>
+  const renderTestimonials = () =>
     testimonials.map((testimonial, index) => (
       <article
-        key={`${duplicate ? "duplicate" : "primary"}-${testimonial.name}`}
+        key={testimonial.name}
         data-review-index={index}
         className="flex min-w-[300px] max-w-[380px] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:min-w-[360px]"
       >
@@ -563,6 +596,13 @@ export function SunPowerSite() {
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="mt-7 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-accent-blue-deep underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+                  >
+                    View service details
+                    <ChevronRight className="h-4 w-4" />
+                  </Link>
                 </motion.article>
               );
             })}
@@ -570,7 +610,7 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="testimonials" className="border-y border-border/70 bg-slate-50">
+      <section id="testimonials" ref={reviewSectionRef} className="border-y border-border/70 bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Customer Stories"
@@ -578,6 +618,37 @@ export function SunPowerSite() {
             description="Real project experiences from homeowners, businesses, and industrial teams who worked with SUNPOWER."
           />
 
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
+            <p className="text-sm text-muted">Swipe to compare project experiences.</p>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => scrollToReview((activeReview - 1 + testimonials.length) % testimonials.length)}
+                aria-label="Previous customer review"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToReview((activeReview + 1) % testimonials.length)}
+                aria-label="Next customer review"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsReviewAutoplaying((value) => !value)}
+                aria-pressed={isReviewAutoplaying}
+                disabled={Boolean(shouldReduceMotion)}
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+              >
+                {isReviewAutoplaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                {isReviewAutoplaying ? "Pause" : "Play"}
+              </button>
+            </div>
+          </div>
           <div
             ref={reviewViewportRef}
             onScroll={(event) => {
@@ -587,21 +658,11 @@ export function SunPowerSite() {
                 : firstCard?.offsetWidth ?? 1;
               setActiveReview(Math.min(testimonials.length - 1, Math.round(event.currentTarget.scrollLeft / Math.max(cardStep, 1))));
             }}
-            className="testimonial-marquee-viewport group mt-10 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none"
+            className="testimonial-marquee-viewport group mt-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none"
           >
-            <div
-              className={cn(
-                "testimonial-marquee-track flex w-max gap-4 sm:gap-6",
-                shouldReduceMotion ? "testimonial-marquee-track--reduced" : "",
-              )}
-            >
-              <div className="flex gap-4 sm:gap-6">{renderTestimonials()}</div>
-              <div aria-hidden="true" className="flex gap-4 sm:gap-6">
-                {renderTestimonials(true)}
-              </div>
-            </div>
+            <div className="testimonial-marquee-track flex w-max gap-4 sm:gap-6">{renderTestimonials()}</div>
           </div>
-          <div className="mt-2 flex justify-center gap-2" aria-label="Review navigation">
+          <div className="mt-2 flex justify-center gap-1" aria-label="Review navigation">
             {testimonials.map((testimonial, index) => (
               <button
                 key={testimonial.name}
@@ -609,11 +670,16 @@ export function SunPowerSite() {
                 aria-label={`Show review ${index + 1}`}
                 aria-current={activeReview === index ? "true" : undefined}
                 onClick={() => scrollToReview(index)}
-                className={cn(
-                  "h-2.5 rounded-full transition-all",
-                  activeReview === index ? "w-7 bg-accent-blue" : "w-2.5 bg-slate-300 hover:bg-slate-400",
-                )}
-              />
+                className="flex h-11 w-11 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
+              >
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "block h-2.5 rounded-full transition-all",
+                    activeReview === index ? "w-7 bg-accent-blue" : "w-2.5 bg-slate-300",
+                  )}
+                />
+              </button>
             ))}
           </div>
         </div>
@@ -844,23 +910,26 @@ export function SunPowerSite() {
                     </span>
                   </article>
                 </ExpandableScreenTrigger>
-                <ExpandableScreenContent className="border border-slate-200/80 shadow-[0_24px_80px_rgba(15,23,42,0.18)]">
+                <ExpandableScreenContent
+                  ariaLabelledBy={`resource-title-${index}`}
+                  className="border border-slate-200/80 shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
+                >
                   <div className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-7 sm:p-10 lg:p-12">
                     <div className="max-w-2xl">
                       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">
                         Solar guide
                       </p>
-                      <h2 className="mt-5 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
+                      <h2 id={`resource-title-${index}`} className="mt-5 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
                         {card.title}
                       </h2>
                       <p className="mt-5 text-lg leading-8 text-muted">{card.description}</p>
                       <div className="mt-8 border-t border-slate-200 pt-7">
                         <p className="text-base leading-8 text-slate-700">{card.detail}</p>
                       </div>
-                      <a href="/#contact" className="button-primary mt-9 inline-flex">
+                      <Link href="/#contact" className="button-primary mt-9 inline-flex">
                         Discuss your requirement
                         <ChevronRight className="h-4 w-4" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </ExpandableScreenContent>
