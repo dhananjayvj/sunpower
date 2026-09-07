@@ -815,7 +815,7 @@ export function SunPowerSite() {
           <SectionHeading
             eyebrow="Resources"
             title="Clear answers before you book your survey"
-            description="Use these guides to understand system types, subsidy steps, panel choices, and the basics of rooftop solar."
+            description="Practical guidance to help you compare system types, panel categories, subsidy requirements, and the installation journey."
           />
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -845,8 +845,8 @@ export function SunPowerSite() {
                   </article>
                 </ExpandableScreenTrigger>
                 <ExpandableScreenContent className="border border-slate-200/80 shadow-[0_24px_80px_rgba(15,23,42,0.18)]">
-                  <div className="min-h-full bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-7 sm:p-12">
-                    <div className="max-w-2xl pt-10 sm:pt-4">
+                  <div className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-7 sm:p-10 lg:p-12">
+                    <div className="max-w-2xl">
                       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent-blue">
                         Solar guide
                       </p>
@@ -857,7 +857,7 @@ export function SunPowerSite() {
                       <div className="mt-8 border-t border-slate-200 pt-7">
                         <p className="text-base leading-8 text-slate-700">{card.detail}</p>
                       </div>
-                      <a href="#contact" className="button-primary mt-9 inline-flex">
+                      <a href="/#contact" className="button-primary mt-9 inline-flex">
                         Discuss your requirement
                         <ChevronRight className="h-4 w-4" />
                       </a>

@@ -166,18 +166,35 @@ export function ExpandableScreenContent({
   return (
     <AnimatePresence initial={false}>
       {isExpanded && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/35 p-3 backdrop-blur-sm sm:p-5">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-5">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={collapse}
+            aria-hidden="true"
+            className="absolute inset-0 bg-slate-950/35 backdrop-blur-sm"
+          />
           <motion.div
             layout
             layoutId={layoutId}
-            transition={{ duration: animationDuration, ease: [0.23, 1, 0.32, 1] }}
+            transition={{
+              layout: {
+                type: "spring",
+                stiffness: 260,
+                damping: 30,
+                mass: 0.85,
+              },
+              borderRadius: { duration: animationDuration, ease: [0.23, 1, 0.32, 1] },
+            }}
             style={{ borderRadius: contentRadius }}
-            className={`relative flex h-full max-h-[min(760px,calc(100dvh-1.5rem))] w-full max-w-4xl overflow-y-auto bg-white ${className}`}
+            className={`relative z-10 flex h-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-4xl overflow-y-auto bg-white ${className}`}
           >
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.12, duration: 0.35 }}
+              transition={{ delay: 0.1, duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
               className="relative z-10 w-full"
             >
               {children}
