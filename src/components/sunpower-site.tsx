@@ -294,7 +294,7 @@ export function SunPowerSite() {
 
             <motion.div variants={fadeUp} className="space-y-5">
               <div className="mx-auto w-full max-w-5xl text-center">
-                <h1 className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-3xl leading-tight font-semibold tracking-[-0.06em] text-transparent whitespace-normal md:text-5xl lg:text-6xl">
+                <h1 className="text-3xl leading-tight font-semibold tracking-[-0.06em] text-white whitespace-normal md:text-5xl lg:text-6xl">
                   <span className="block">
                     <TextAnimate animation="blurInUp" by="word" once>
                       Clean, Reliable Solar Energy
@@ -312,7 +312,7 @@ export function SunPowerSite() {
                   </span>
                 </h1>
               </div>
-              <p className="max-w-2xl text-pretty text-lg leading-8 text-slate-200 sm:text-xl">
+              <p className="max-w-2xl text-center text-pretty text-lg leading-8 text-slate-200 sm:text-xl lg:text-left">
                 End-to-end rooftop installations, PM Surya Ghar support, Loom Solar product access,
                 and commercial EPC contracting.
               </p>
@@ -321,14 +321,19 @@ export function SunPowerSite() {
                 Book a Free Site Survey
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a href={whatsappQuoteHref} target="_blank" rel="noreferrer" className="button-whatsapp">
+              <a
+                href={whatsappQuoteHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/70 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-colors hover:-translate-y-0.5 hover:bg-white/10 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-accent-blue-deep"
+              >
                 Chat on WhatsApp
                 <MessageCircle className="h-4 w-4" />
               </a>
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 text-sm text-slate-200">
-              <span className="rounded-full border border-white/25 bg-white/10 px-3 py-2">
+              <span className="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs sm:text-sm">
                 Rooftop solar, EPC delivery, and subsidy support under one team
               </span>
               <a href="#resources" className="font-semibold text-emerald-200 underline-offset-4 hover:text-emerald-100 hover:underline">
