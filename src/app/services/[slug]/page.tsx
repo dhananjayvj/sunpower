@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       description: content.intro,
       url: `${siteUrl}/services/${service.slug}`,
       type: "article",
-      images: [{ url: `${siteUrl}/images/logo.png`, alt: "SUNPOWER solar solutions" }],
+      images: [{ url: `${siteUrl}/images/logo-optimized.png`, alt: "SUNPOWER solar solutions" }],
     },
   };
 }
