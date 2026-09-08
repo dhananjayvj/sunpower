@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
@@ -10,7 +12,6 @@ import {
   Bolt,
   Calculator,
   ChevronRight,
-  ChevronLeft,
   ChevronDown,
   Factory,
   FileText,
@@ -23,7 +24,6 @@ import {
   Phone,
   ShieldCheck,
   SunMedium,
-  Star,
 } from "lucide-react";
 import { MobileNav } from "@/components/mobile-nav";
 import { BorderBeam } from "@/registry/magicui/border-beam";
@@ -53,9 +53,9 @@ import {
   resourceCards,
   serviceAreas,
   services,
-  testimonials,
   trustSignals,
 } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 
 const serviceIcons = [SunMedium, Factory, ShieldCheck, BatteryCharging, FileText];
 const trustSignalIcons = [ShieldCheck, Home, IndianRupee, Map];
@@ -121,9 +121,10 @@ function SectionHeading({
 }
 
 export function SunPowerSite() {
+  const router = useRouter();
   const shouldReduceMotion = useReducedMotion();
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const brandLogoSrc = `${basePath}/images/logo.png`;
+  const brandLogoSrc = `${basePath}/images/logo-optimized.png`;
   const withBasePath = (src: string) => `${basePath}${src}`;
   const aboutPhotoSrc = withBasePath("/images/install-team.webp");
 
@@ -135,10 +136,10 @@ export function SunPowerSite() {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [inquiryMessage, setInquiryMessage] = useState("");
-  const [activeReview, setActiveReview] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const reviewViewportRef = useRef<HTMLDivElement>(null);
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const toggleMobileMenu = useCallback(() => setMobileMenuOpen((value) => !value), []);
   const aboutImageRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: aboutImageProgress } = useScroll({
     target: aboutImageRef,
@@ -178,50 +179,33 @@ export function SunPowerSite() {
   const whatsappQuoteHref = `${contact.whatsappHref}?text=${encodeURIComponent(quoteInquiryIntro)}`;
   const emailQuoteHref = `${contact.emailHref}?subject=${encodeURIComponent("Solar site survey and quotation request")}&body=${encodeURIComponent(quoteInquiryIntro)}`;
 
-  const scrollToReview = (index: number) => {
-    const viewport = reviewViewportRef.current;
-    const card = viewport?.querySelector<HTMLElement>(`[data-review-index="${index}"]`);
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setFormStatus("submitting");
+    trackEvent("form_submit", { form_name: "callback" });
 
-    if (viewport && card) {
-      viewport.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
-      setActiveReview(index);
+    try {
+      const response = await fetch(event.currentTarget.action, {
+        method: "POST",
+        body: new FormData(event.currentTarget),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
+      setFormStatus("success");
+      trackEvent("form_submit_success", { form_name: "callback" });
+      window.setTimeout(() => router.push("/thank-you/"), 700);
+    } catch {
+      setFormStatus("error");
+      trackEvent("form_submit_error", { form_name: "callback" });
     }
   };
 
-  const renderTestimonials = () =>
-    testimonials.map((testimonial, index) => (
-      <article
-        key={testimonial.name}
-        data-review-index={index}
-        className="flex w-[calc(100vw-2rem)] min-w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] snap-start flex-col justify-between rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-md sm:w-auto sm:min-w-[360px] sm:max-w-[380px] lg:min-w-0 lg:max-w-none"
-      >
-        <div>
-          <div className="flex items-center gap-1 text-amber-400" aria-label="5 out of 5 stars">
-            {Array.from({ length: 5 }).map((_, starIndex) => (
-              <Star key={starIndex} className="h-4 w-4 fill-current" aria-hidden="true" />
-            ))}
-          </div>
-          <p className="mt-5 text-base leading-7 text-slate-700">
-            &ldquo;<BrandText>{testimonial.quote}</BrandText>&rdquo;
-          </p>
-        </div>
-        <div className="mt-8 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-sm font-semibold text-white">
-            {testimonial.initials}
-          </div>
-          <div>
-            <p className="font-semibold text-foreground">{testimonial.name}</p>
-            <p className="text-sm text-muted">{testimonial.location}</p>
-            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent-blue">
-              {testimonial.system}
-            </p>
-          </div>
-        </div>
-      </article>
-    ));
-
   return (
-    <main className="relative isolate overflow-x-hidden pt-20 pb-20 md:pb-0">
+    <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
+      <main id="main-content" className="relative isolate overflow-x-hidden pt-20 pb-20 md:pb-0">
       <ScrollProgress />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(15,23,42,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
@@ -229,6 +213,7 @@ export function SunPowerSite() {
         href={whatsappQuoteHref}
         target="_blank"
         rel="noreferrer"
+        onClick={() => trackEvent("whatsapp_click", { placement: "floating" })}
         aria-label="Chat on WhatsApp"
         className="fixed right-5 bottom-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#22C55E] text-white shadow-[0_18px_45px_rgba(34,197,94,0.2)] hover:scale-[1.04] hover:bg-[#16a34a] hover:shadow-[0_22px_52px_rgba(34,197,94,0.24)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 md:inline-flex"
       >
@@ -238,13 +223,13 @@ export function SunPowerSite() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md transition-all">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <a href="#home" className="flex items-center gap-4">
-            <img
+            <Image
               src={brandLogoSrc}
               alt="SUNPOWER Renewable Energy Solutions logo"
               width={1930}
               height={1001}
-              loading="eager"
-              decoding="async"
+              priority
+              sizes="(max-width: 640px) 140px, 190px"
               className="h-14 w-auto object-contain drop-shadow-[0_10px_24px_rgba(15,23,42,0.08)] sm:h-16 lg:h-[4.25rem]"
             />
           </a>
@@ -262,12 +247,12 @@ export function SunPowerSite() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a href={contact.phoneHref} className="hidden text-sm font-semibold text-foreground md:inline">
+            <a href={contact.phoneHref} onClick={() => trackEvent("phone_click", { placement: "header" })} className="hidden text-sm font-semibold text-foreground md:inline">
               Call Now
             </a>
             <MobileNav
               open={mobileMenuOpen}
-              onToggle={() => setMobileMenuOpen((value) => !value)}
+              onToggle={toggleMobileMenu}
               items={navigation}
             />
           </div>
@@ -317,7 +302,7 @@ export function SunPowerSite() {
                 and commercial EPC contracting.
               </p>
             <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
-              <a href="#contact" className="button-whatsapp">
+              <a href="#contact" onClick={() => trackEvent("quote_cta_click", { placement: "hero" })} className="button-whatsapp">
                 Book a Free Site Survey
                 <ArrowRight className="h-4 w-4" />
               </a>
@@ -325,6 +310,7 @@ export function SunPowerSite() {
                 href={whatsappQuoteHref}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackEvent("whatsapp_click", { placement: "hero" })}
                 className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/70 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-colors hover:-translate-y-0.5 hover:bg-white/10 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-accent-blue-deep"
               >
                 Chat on WhatsApp
@@ -332,17 +318,6 @@ export function SunPowerSite() {
               </a>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 text-sm text-slate-200">
-              <span className="rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs sm:text-sm">
-                Rooftop solar, EPC delivery, and subsidy support under one team
-              </span>
-              <a href="#resources" className="font-semibold text-emerald-200 underline-offset-4 hover:text-emerald-100 hover:underline">
-                Learn how solar works
-              </a>
-              <a href="#projects" className="font-semibold text-emerald-200 underline-offset-4 hover:text-emerald-100 hover:underline">
-                View recent project types
-              </a>
-            </motion.div>
             </motion.div>
           </motion.div>
 
@@ -433,9 +408,12 @@ export function SunPowerSite() {
 
             <div className="mt-5 rounded-[1.5rem] bg-accent-blue-deep p-4 text-white sm:mt-8 sm:rounded-[2rem] sm:p-6">
               <div className="flex flex-wrap gap-2 sm:gap-3">
-                <button
-                  type="button"
-                  onClick={() => setCalculatorMode("bill")}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCalculatorMode("bill");
+                      trackEvent("calculator_interaction", { mode: "bill" });
+                    }}
                   className={cn(
                     "rounded-full px-4 py-1.5 text-sm font-semibold sm:py-2",
                     calculatorMode === "bill" ? "bg-white text-slate-950" : "bg-white/10 text-white",
@@ -443,9 +421,12 @@ export function SunPowerSite() {
                 >
                   Monthly bill
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setCalculatorMode("roof")}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCalculatorMode("roof");
+                      trackEvent("calculator_interaction", { mode: "roof" });
+                    }}
                   className={cn(
                     "rounded-full px-4 py-1.5 text-sm font-semibold sm:py-2",
                     calculatorMode === "roof" ? "bg-white text-slate-950" : "bg-white/10 text-white",
@@ -471,15 +452,17 @@ export function SunPowerSite() {
 
               <input
                 type="range"
+                aria-label={calculatorMode === "bill" ? "Monthly electricity bill" : "Usable roof area"}
                 min={calculatorMode === "bill" ? 1500 : 200}
                 max={calculatorMode === "bill" ? 50000 : 5000}
                 step={calculatorMode === "bill" ? 500 : 50}
                 value={calculatorMode === "bill" ? monthlyBill : roofAreaSqFt}
-                onChange={(event) =>
-                  calculatorMode === "bill"
-                    ? setMonthlyBill(Number(event.target.value))
-                    : setRoofAreaSqFt(Number(event.target.value))
-                }
+                onChange={(event) => {
+                  const value = Number(event.target.value);
+                  if (calculatorMode === "bill") setMonthlyBill(value);
+                  else setRoofAreaSqFt(value);
+                  trackEvent("calculator_interaction", { mode: calculatorMode, value });
+                }}
                 className="mt-5 h-2 w-full cursor-pointer appearance-none rounded-full bg-white/20 accent-green sm:mt-8"
               />
 
@@ -556,11 +539,11 @@ export function SunPowerSite() {
                   className="group card-panel flex h-full flex-col p-6"
                 >
                   <div className="relative -mx-6 -mt-6 mb-6 aspect-video overflow-hidden rounded-t-[1.25rem] bg-slate-100">
-                    <img
+                    <Image
                       src={withBasePath(service.imageSrc)}
                       alt={service.imageAlt}
-                      loading="lazy"
-                      decoding="async"
+                      fill
+                      sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 25vw"
                       className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
@@ -593,71 +576,6 @@ export function SunPowerSite() {
         </div>
       </section>
 
-      <section id="testimonials" className="border-y border-border/70 bg-slate-50">
-        <div className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Customer Stories"
-            title="What Delhi NCR customers say after installation"
-            description="Real project experiences from homeowners, businesses, and industrial teams who worked with SUNPOWER."
-          />
-
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-muted lg:hidden">Swipe to compare project experiences.</p>
-            <div className="flex items-center gap-2 lg:hidden">
-              <button
-                type="button"
-                onClick={() => scrollToReview((activeReview - 1 + testimonials.length) % testimonials.length)}
-                aria-label="Previous customer review"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollToReview((activeReview + 1) % testimonials.length)}
-                aria-label="Next customer review"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-          <div
-            ref={reviewViewportRef}
-            onScroll={(event) => {
-              const firstCard = event.currentTarget.querySelector<HTMLElement>("[data-review-index='0']");
-              const cardStep = firstCard?.nextElementSibling instanceof HTMLElement
-                ? firstCard.nextElementSibling.offsetLeft - firstCard.offsetLeft
-                : firstCard?.offsetWidth ?? 1;
-              setActiveReview(Math.min(testimonials.length - 1, Math.round(event.currentTarget.scrollLeft / Math.max(cardStep, 1))));
-            }}
-            className="testimonial-marquee-viewport group mt-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-none lg:overflow-visible"
-          >
-            <div className="testimonial-marquee-track flex w-max gap-4 sm:gap-6 lg:grid lg:w-full lg:grid-cols-3">{renderTestimonials()}</div>
-          </div>
-          <div className="mt-2 flex justify-center gap-1 lg:hidden" aria-label="Review navigation">
-            {testimonials.map((testimonial, index) => (
-              <button
-                key={testimonial.name}
-                type="button"
-                aria-label={`Show review ${index + 1}`}
-                aria-current={activeReview === index ? "true" : undefined}
-                onClick={() => scrollToReview(index)}
-                className="flex h-11 w-11 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2"
-              >
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    "block h-2.5 rounded-full transition-all",
-                    activeReview === index ? "w-7 bg-accent-blue" : "w-2.5 bg-slate-300",
-                  )}
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="projects" className="mx-auto max-w-7xl px-4 py-18 sm:px-6 lg:px-8">
         <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
           <SectionHeading
@@ -678,11 +596,11 @@ export function SunPowerSite() {
                 className="group card-panel overflow-hidden"
               >
                 <div className="relative aspect-video bg-slate-100">
-                  <img
+                  <Image
                     src={withBasePath(project.imageSrc)}
                     alt={project.imageAlt}
-                    loading="lazy"
-                    decoding="async"
+                    fill
+                    sizes="(max-width: 1023px) 100vw, 33vw"
                     className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -750,15 +668,15 @@ export function SunPowerSite() {
                           <div className="px-5 pt-4">
                             <div
                               className={cn(
-                                "overflow-hidden rounded-[1rem] border border-slate-200 bg-slate-50",
+                                "relative overflow-hidden rounded-[1rem] border border-slate-200 bg-slate-50",
                                 usesSquareMedia ? "aspect-square" : "aspect-video",
                               )}
                             >
-                              <img
+                              <Image
                                 src={card.imageSrc.startsWith("/") ? withBasePath(card.imageSrc) : card.imageSrc}
                                 alt={card.imageAlt}
-                                loading="lazy"
-                                decoding="async"
+                                fill
+                                sizes="(max-width: 1023px) 100vw, 33vw"
                                 className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
                               />
                             </div>
@@ -780,13 +698,14 @@ export function SunPowerSite() {
                             </div>
                             <a
                               href={`${contact.whatsappHref}?text=${encodeURIComponent(
-                                `Hi SUNPOWER, please share the datasheet for ${card.name}.`,
+                                `Hi SUNPOWER, I would like more information about ${card.name}.`,
                               )}`}
                               target="_blank"
                               rel="noreferrer"
+                              onClick={() => trackEvent("whatsapp_click", { placement: "product", product: card.name })}
                               className="button-secondary mt-5 justify-center"
                             >
-                              {card.ctaLabel}
+                              Request via WhatsApp
                             </a>
                           </div>
                         </div>
@@ -821,14 +740,18 @@ export function SunPowerSite() {
 
           <Reveal delay={0.05} className="card-panel overflow-hidden p-3 sm:p-4">
             <div ref={aboutImageRef} className="group relative aspect-video overflow-hidden rounded-[1.25rem] bg-slate-100">
-              <motion.img
-                src={aboutPhotoSrc}
-                alt="SUNPOWER engineering team with rooftop solar installation equipment"
-                loading="lazy"
-                decoding="async"
+              <motion.div
                 style={{ y: shouldReduceMotion ? 0 : aboutImageY }}
-                className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
-              />
+                className="absolute inset-[-3%]"
+              >
+                <Image
+                  src={aboutPhotoSrc}
+                  alt="SUNPOWER engineering team with rooftop solar installation equipment"
+                  fill
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  className="object-contain object-center transition-transform duration-700 group-hover:scale-105"
+                />
+              </motion.div>
             </div>
             <div className="mt-4 rounded-[1.25rem] border border-border bg-white/72 p-5">
               <p className="max-w-lg text-base leading-7 text-slate-700">
@@ -984,6 +907,7 @@ export function SunPowerSite() {
               <div className="mt-6 grid w-full min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
                 <a
                   href={contact.phoneHref}
+                  onClick={() => trackEvent("phone_click", { placement: "contact" })}
                   className="group flex w-full min-w-0 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 transition-colors hover:border-accent-blue/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 sm:min-h-20 sm:p-4"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-accent-blue transition-transform group-hover:scale-105">
@@ -998,6 +922,7 @@ export function SunPowerSite() {
                   href={whatsappQuoteHref}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => trackEvent("whatsapp_click", { placement: "contact" })}
                   className="group flex w-full min-w-0 items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 transition-colors hover:border-accent-green/40 hover:bg-white focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 sm:min-h-20 sm:p-4"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-accent-green-dark transition-transform group-hover:scale-105">
@@ -1074,6 +999,7 @@ export function SunPowerSite() {
               <form
               action="https://formspree.io/f/xnpqgzgr"
               method="POST"
+              onSubmit={handleContactSubmit}
             >
               <input type="hidden" name="_subject" value="New SUNPOWER website enquiry" />
               <input type="hidden" name="_next" value="https://sunpowerind.com/thank-you/" />
@@ -1123,11 +1049,21 @@ export function SunPowerSite() {
               </div>
 
               <CardFooter className="p-0 pt-6">
-                <Button type="submit" className="w-full justify-center">
-                  Request a Callback
+                <Button type="submit" disabled={formStatus === "submitting"} className="w-full justify-center">
+                  {formStatus === "submitting" ? "Sending..." : "Request a Callback"}
                   <MessageCircle className="h-4 w-4" />
                 </Button>
               </CardFooter>
+              {formStatus === "success" ? (
+                <p role="status" className="mt-4 text-sm font-semibold text-accent-green-dark">
+                  Your enquiry has been received. Redirecting you to the confirmation page.
+                </p>
+              ) : null}
+              {formStatus === "error" ? (
+                <p role="alert" className="mt-4 text-sm font-semibold text-red-700">
+                  We could not send your enquiry right now. Please try again or contact us on WhatsApp.
+                </p>
+              ) : null}
             </form>
             </CardContent>
             <BorderBeam duration={8} size={100} />
@@ -1170,13 +1106,12 @@ export function SunPowerSite() {
       <footer className="border-t border-slate-200 bg-slate-100 text-slate-700">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-slate-600 sm:px-6 lg:px-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <img
+            <Image
               src={brandLogoSrc}
               alt="SUNPOWER logo"
               width={1930}
               height={1001}
-              loading="lazy"
-              decoding="async"
+              sizes="120px"
               className="h-12 w-auto rounded-lg object-contain"
             />
             <p className="mt-3 max-w-xl leading-6">
@@ -1185,7 +1120,7 @@ export function SunPowerSite() {
             </p>
           </div>
           <div className="space-y-2 md:text-right">
-            <a href={contact.phoneHref} className="block font-semibold text-slate-900">
+            <a href={contact.phoneHref} onClick={() => trackEvent("phone_click", { placement: "footer" })} className="block font-semibold text-slate-900">
               {contact.phoneDisplay}
             </a>
             <p>{contact.address}</p>
@@ -1210,7 +1145,12 @@ export function SunPowerSite() {
         )}
       >
         <div className="mx-auto flex w-full max-w-xl gap-3">
-          <a href="#calculator" tabIndex={isScrolled ? 0 : -1} className="button-primary min-w-0 flex-1 justify-center whitespace-nowrap">
+          <a
+            href="#calculator"
+            onClick={() => trackEvent("quote_cta_click", { placement: "sticky_mobile" })}
+            tabIndex={isScrolled ? 0 : -1}
+            className="button-primary min-w-0 flex-1 justify-center whitespace-nowrap"
+          >
             <Calculator className="h-4 w-4" />
             Free Quote
           </a>
@@ -1218,6 +1158,7 @@ export function SunPowerSite() {
             href={whatsappQuoteHref}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackEvent("whatsapp_click", { placement: "sticky_mobile" })}
             tabIndex={isScrolled ? 0 : -1}
             className="button-whatsapp min-w-0 flex-1 justify-center"
           >
@@ -1226,6 +1167,7 @@ export function SunPowerSite() {
           </a>
         </div>
       </motion.div>
-    </main>
+      </main>
+    </>
   );
 }

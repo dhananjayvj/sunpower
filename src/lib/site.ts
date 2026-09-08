@@ -26,49 +26,6 @@ export const navigation = [
   { href: "#contact", label: "Contact" },
 ];
 
-export const testimonials = [
-  {
-    name: "Rajesh Sharma",
-    location: "I.P. Extension, Delhi",
-    system: "5 kW Rooftop System",
-    initials: "RS",
-    quote:
-      "SUNPOWER handled our DISCOM net-metering and PM Surya Ghar paperwork from start to finish. Our power bill dropped from Rs 7,200 to near zero within two billing cycles.",
-  },
-  {
-    name: "Amit Aggarwal",
-    location: "Sector 62, Noida",
-    system: "25 kW Commercial Setup",
-    initials: "AA",
-    quote:
-      "Installed a 25 kW on-grid setup on our office terrace. The team was punctual, used authentic Loom Solar panels, and the structure fabrication was remarkably sturdy.",
-  },
-  {
-    name: "Sunita Verma",
-    location: "Rohini Sector 13, Delhi",
-    system: "3 kW Residential",
-    initials: "SV",
-    quote:
-      "Very transparent quotation with zero hidden fees. The subsidy workflow was clearly explained, and installation took just three days with clean, concealed wiring.",
-  },
-  {
-    name: "Vikram Malhotra",
-    location: "DLF Phase 3, Gurugram",
-    system: "10 kW Hybrid System",
-    initials: "VM",
-    quote:
-      "Opted for a hybrid setup with CAML lithium batteries. Power outages during peak summer are no longer an issue, and generation tracking works seamlessly.",
-  },
-  {
-    name: "Neeraj Gupta",
-    location: "Sahibabad Industrial Area, Ghaziabad",
-    system: "100 kW Industrial Project",
-    initials: "NG",
-    quote:
-      "Solid EPC execution. They engineered custom elevated mounting structures for our factory shed and synchronized with the grid right on schedule.",
-  },
-];
-
 export const trustSignals = [
   "Verified product guidance for residential and commercial buyers",
   "Rooftop and ground-mounted solar project execution",
@@ -283,7 +240,6 @@ export type ProductCard = {
   imageSrc: string;
   imageAlt: string;
   chips: string[];
-  ctaLabel: string;
 };
 
 export const productCatalogSections: Array<{
@@ -301,7 +257,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/Shark 550 Mono PERC.webp",
         imageAlt: "Loom Solar Shark 550 Mono PERC solar panel card.",
         chips: ["550 Wp", "Mono PERC", "10Y product", "25Y performance"],
-        ctaLabel: "Request Datasheet",
       },
       {
         name: "Tata Power Solar Rooftop Modules",
@@ -309,7 +264,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/tata-power-solar-540w-glass-glass-mono-perc-bifacial-144-half-cells-efficiency-21-29-tp540hg10b.png",
         imageAlt: "Tata Power Solar rooftop module card.",
         chips: ["540-550 Wp", "Mono PERC", "25Y module coverage", "Home & C&I"],
-        ctaLabel: "Request Datasheet",
       },
       {
         name: "Adani Shine TOPCon Modules",
@@ -317,7 +271,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/Adani-Solar_Panel_DCR_565wp_TOPCon.webp",
         imageAlt: "Adani Shine TOPCon solar module card.",
         chips: ["565-590 Wp", "TOPCon", "Utility-grade build", "Datasheet on request"],
-        ctaLabel: "Request Datasheet",
       },
       {
         name: "Waaree 540 Mono PERC DCR",
@@ -325,7 +278,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/waaree 540 Mono PERC.png",
         imageAlt: "Waaree 540 Mono PERC DCR solar module card.",
         chips: ["540 Wp", "Mono PERC DCR", "12Y product", "27Y output"],
-        ctaLabel: "Request Datasheet",
       },
     ],
   },
@@ -339,7 +291,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/Caml_10012_Features_Image_1000x.webp",
         imageAlt: "Loom Solar CAML 12.8V 100Ah LiFePO4 Lithium Battery",
         chips: ["12.8V / 100Ah", "1.28 kWh", "LiFePO4", "3Y warranty"],
-        ctaLabel: "Request Datasheet",
       },
       {
         name: "CAML 5.12 kWh Wall-Mount Battery",
@@ -347,7 +298,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/100Ah_51.2_V_WM_Front_Image_500x.webp",
         imageAlt: "Loom Solar CAML 5.12 kWh 51.2V Wall-Mount Battery",
         chips: ["51.2V / 100Ah", "6000+ cycles", "5Y warranty", "Rack / wall"],
-        ctaLabel: "Request Datasheet",
       },
       {
         name: "CAML 10.24 kWh Battery",
@@ -355,7 +305,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/CAML 10.24 kWh Battery .jpg",
         imageAlt: "CAML 10.24 kWh commercial battery storage card.",
         chips: ["51.2V / 200Ah", "LiFePO4", "5Y warranty", "High backup"],
-        ctaLabel: "Request Datasheet",
       },
     ],
   },
@@ -369,7 +318,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/Fusion_5_Kw_Hybrid_Inverter_1000x.webp",
         imageAlt: "Fusion 5 kW hybrid solar inverter card.",
         chips: ["5 kW", "48V hybrid", "5Y warranty", "Home / small office"],
-        ctaLabel: "Request Datasheet",
       },
       {
         name: "Fusion 10 kW On-Grid",
@@ -377,7 +325,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/Fusion_10_kW_3phase_0n-Grid_Inverter_model_1000x.webp",
         imageAlt: "Fusion 10 kW on-grid solar inverter card.",
         chips: ["10 kW", "3 phase", "10Y warranty", "Commercial rooftops"],
-        ctaLabel: "Request Datasheet",
       },
       {
         name: "Fusion 20 kW On-Grid",
@@ -385,7 +332,6 @@ export const productCatalogSections: Array<{
         imageSrc: "/images/Fusion_20_kW_3phase_0n-Grid_Inverter_model_1000x.webp",
         imageAlt: "Fusion 20 kW commercial on-grid solar inverter card.",
         chips: ["20 kW", "On-grid", "10Y warranty", "C&I usage"],
-        ctaLabel: "Request Datasheet",
       },
     ],
   },

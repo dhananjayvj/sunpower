@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    remotePatterns: [{ protocol: "https", hostname: "i.pravatar.cc" }],
   },
   basePath: repoBasePath,
   assetPrefix: repoBasePath,

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import { transitions } from "@/lib/motion";
 
@@ -19,13 +20,61 @@ export function MobileNav({
   items: NavItem[];
 }) {
   const shouldReduceMotion = useReducedMotion();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
+  const wasOpen = useRef(false);
+
+  useEffect(() => {
+    if (!open) {
+      if (wasOpen.current) menuButtonRef.current?.focus();
+      wasOpen.current = false;
+      return;
+    }
+
+    wasOpen.current = true;
+    const focusable = () =>
+      Array.from(
+        menuRef.current?.querySelectorAll<HTMLElement>(
+          "a[href], button:not([disabled]), [tabindex]:not([tabindex=\"-1\"])",
+        ) ?? [],
+      );
+    const firstItem = focusable()[0];
+    window.setTimeout(() => firstItem?.focus(), 0);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onToggle();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+      const items = focusable();
+      if (!items.length) return;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onToggle, open]);
 
   return (
     <div className="md:hidden">
       <button
         type="button"
+        ref={menuButtonRef}
         aria-expanded={open}
         aria-label={open ? "Close menu" : "Open menu"}
+        aria-controls="mobile-navigation"
         onClick={onToggle}
         className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white p-2 text-slate-950 shadow-sm hover:border-accent-blue/30 hover:shadow-md touch-manipulation"
       >
@@ -48,6 +97,9 @@ export function MobileNav({
               animate={shouldReduceMotion ? {} : { opacity: 1, y: 0, scale: 1 }}
               exit={shouldReduceMotion ? {} : { opacity: 0, y: -16, scale: 0.98 }}
               transition={shouldReduceMotion ? { duration: 0 } : transitions.springSoft}
+              ref={menuRef}
+              id="mobile-navigation"
+              aria-label="Mobile navigation"
               className="fixed inset-x-4 top-22 z-50 rounded-[2rem] border border-slate-200 bg-[linear-gradient(145deg,#ffffff,#f4f8fb)] p-4 shadow-[0_24px_60px_rgba(15,23,42,0.2)]"
             >
               <div className="grid gap-2">

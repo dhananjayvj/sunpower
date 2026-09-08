@@ -19,7 +19,7 @@ The SUNPOWER website is a mobile-first solar lead-generation website for residen
 - WhatsApp, phone, email, Instagram, and Google Maps contact paths.
 - Formspree enquiry form with thank-you redirect.
 - Custom 404 page, privacy page, and post-enquiry thank-you page.
-- Mobile navigation, sticky mobile CTAs, accessible accordions, testimonial controls, and responsive card grids.
+- Mobile navigation, sticky mobile CTAs, accessible accordions, responsive card grids, and project showcase layouts.
 
 ## Local Development
 
@@ -110,6 +110,26 @@ The site includes:
 - `llms.txt` with verified business information and service links.
 
 Google Search Console, Google Business Profile, and Bing Webmaster verification are managed outside the repository through the relevant client accounts.
+
+## Conversion Analytics
+
+The website emits GA4-compatible events for:
+
+- `quote_cta_click`
+- `whatsapp_click`
+- `phone_click`
+- `calculator_interaction`
+- `form_submit`
+- `form_submit_success`
+- `form_submit_error`
+
+To collect these events in Google Analytics, add the GA4 measurement ID to the deployment environment:
+
+```text
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+The site loads the Google Analytics script only when this variable is present. Event dispatch is implemented in `src/lib/analytics.ts`.
 
 ## Repository Ownership
 

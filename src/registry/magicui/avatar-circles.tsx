@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export type AvatarCircle = {
   imageUrl: string;
   name: string;
@@ -18,13 +20,13 @@ export function AvatarCircles({
             key={avatar.name}
             className="rounded-full border-2 border-white bg-slate-100 transition-transform hover:z-10 hover:-translate-y-1"
           >
-            <img
+            <Image
               src={avatar.imageUrl}
               alt={avatar.name}
               width={40}
               height={40}
-              loading="lazy"
-              decoding="async"
+              sizes="40px"
+              unoptimized
               className="h-10 w-10 rounded-full object-cover"
             />
           </div>
