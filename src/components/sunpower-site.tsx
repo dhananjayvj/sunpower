@@ -505,7 +505,7 @@ export function SunPowerSite() {
             <ol className="mt-8 list-none space-y-4 p-0">
               {processSteps.map((step, index) => (
                 <li key={step} className="flex gap-4 rounded-[1.25rem] border border-border bg-white/78 p-4 sm:p-5">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-green text-sm font-bold text-white shadow-[0_10px_22px_rgba(34,197,94,0.2)]">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-accent-blue-deep to-accent-green-dark text-sm font-bold text-white shadow-[0_10px_22px_rgba(11,25,44,0.2)]">
                     0{index + 1}
                   </div>
                   <p className="text-base leading-7 text-slate-700">{step}</p>
