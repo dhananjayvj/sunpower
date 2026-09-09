@@ -12,7 +12,6 @@ import {
   Bolt,
   Calculator,
   ChevronRight,
-  ChevronDown,
   Factory,
   FileText,
   Home,
@@ -21,7 +20,9 @@ import {
   MapPin,
   Mail,
   MessageCircle,
+  Minus,
   Phone,
+  Plus,
   ShieldCheck,
   SunMedium,
 } from "lucide-react";
@@ -863,12 +864,33 @@ export function SunPowerSite() {
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
                   onClick={() => setOpenFaq(isOpen ? null : index)}
-                  className="flex min-h-11 w-full items-center justify-between gap-4 text-left"
+                  className="flex min-h-11 w-full items-center justify-start gap-3 text-left"
                 >
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-colors duration-300",
+                      isOpen
+                        ? "border-accent-green/40 bg-accent-green/10 text-accent-green-dark"
+                        : "border-slate-200 bg-slate-50 text-accent-blue-deep",
+                    )}
+                  >
+                    <Plus
+                      className={cn(
+                        "absolute h-5 w-5 transition-all duration-300",
+                        isOpen ? "scale-75 rotate-90 opacity-0" : "scale-100 opacity-100",
+                      )}
+                    />
+                    <Minus
+                      className={cn(
+                        "absolute h-5 w-5 transition-all duration-300",
+                        isOpen ? "scale-100 opacity-100" : "scale-75 opacity-0",
+                      )}
+                    />
+                  </span>
                   <span className={cn("text-lg font-semibold", isOpen ? "text-accent-blue-deep" : "text-foreground")}>
                     {item.question}
                   </span>
-                  <ChevronDown className={cn("h-5 w-5 shrink-0 text-accent-blue-deep transition-transform duration-300", isOpen && "rotate-180")} />
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen ? (
